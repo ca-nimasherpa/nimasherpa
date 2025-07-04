@@ -10,119 +10,96 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* [PREVIOUS CSS STYLES RETAINED - Abridged for clarity] */
+        /* Base Styles */
         :root { --primary: #0A1A2F; --accent: #00E0C7; --secondary: #2A4B7C; --light: #F5F9FC; --white: #FFFFFF; --dark: #222; --gray: #6C757D; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--light); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--light); line-height: 1.6; color: var(--dark); margin: 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 6rem 0; overflow: hidden; }
+        section { padding: 6rem 0; overflow-x: hidden; }
         .section-bg-alt { background-color: var(--white); }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
         .section-divider { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; }
         .section-subheader { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
-        
-        /* === NEW: Philosophy Compass Styles === */
+
+        /* Navigation, Hero, About, Footer etc. are kept simple and correct from before */
+        #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; transition: all 0.4s ease; }
+        #main-nav { background: rgba(10, 26, 47, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1.5rem 0; transition: padding 0.4s ease, box-shadow 0.4s ease; }
+        #main-nav.scrolled { padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .nav-brand h1 { font-family: 'Playfair Display', serif; color: white; font-size: 1.5rem; }
+        #main-menu ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-links a { color: white; text-decoration: none; position: relative; padding: 0.5rem 0; font-weight: 600; }
+        #hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; color: white; text-align: center; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+
+        /* === Philosophy Compass Styles === */
         #philosophy-compass { background: var(--primary); color: var(--white); }
         .compass-wrapper { max-width: 800px; margin: 0 auto; text-align: center; }
-        #compass-interactive-area {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 3rem 2rem;
-            margin-top: 2rem;
-            position: relative;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+        #compass-interactive-area { background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 3rem 2rem; margin-top: 2rem; position: relative; min-height: 300px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.1); }
         .axis-label { position: absolute; font-weight: 600; opacity: 0.7; }
         .axis-label.x-axis-1 { left: 2rem; top: 50%; transform: translateY(-50%); }
         .axis-label.x-axis-2 { right: 2rem; top: 50%; transform: translateY(-50%); }
         .axis-label.y-axis-1 { top: 1.5rem; left: 50%; transform: translateX(-50%); }
         .axis-label.y-axis-2 { bottom: 1.5rem; left: 50%; transform: translateX(-50%); }
-
-        #compass-handle {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            position: absolute;
-            cursor: grab;
-            z-index: 10;
-            box-shadow: 0 0 20px rgba(0, 224, 199, 0.5);
-            transition: transform 0.1s linear;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-        }
-        #compass-handle:grabbing { cursor: grabbing; }
-
+        #compass-handle { width: 50px; height: 50px; background: var(--accent); border-radius: 50%; position: absolute; cursor: grab; z-index: 10; box-shadow: 0 0 20px rgba(0, 224, 199, 0.5); display: flex; align-items: center; justify-content: center; color: var(--primary); }
         #compass-result-area { margin-top: 2.5rem; min-height: 120px; }
-        #compass-result-text { font-size: 1.5rem; font-weight: bold; font-family: 'Playfair Display', serif; }
+        #compass-result-text { font-size: 1.5rem; font-weight: bold; font-family: 'Playfair Display', serif; transition: opacity 0.3s; }
         #compass-result-description { max-width: 600px; margin: 1rem auto 0; color: rgba(255, 255, 255, 0.8); }
-        .compass-cta {
-            display: inline-block;
-            background: var(--accent);
-            color: var(--primary);
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 1.5rem;
-            opacity: 0;
-            transform: translateY(10px);
-            pointer-events: none;
-        }
+        .compass-cta { display: inline-block; background: var(--accent); color: var(--primary); padding: 0.8rem 2rem; border: none; border-radius: 4px; font-weight: 600; text-decoration: none; margin-top: 1.5rem; opacity: 0; transform: translateY(10px); pointer-events: none; transition: all 0.4s ease; }
         .compass-cta.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
 
-        /* Styles for filtering portfolio items */
-        .project-item, .insight-card { transition: transform 0.4s ease, opacity 0.4s ease; }
-        .project-item.is-hidden, .insight-card.is-hidden {
-            transform: scale(0.8);
-            opacity: 0;
-            pointer-events: none;
-            height: 0;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            border: none;
-        }
+        /* === SAFER Filtering Styles === */
+        /* Items are visible by default. JS will add 'is-hidden' to hide them */
+        .grid-item { transition: transform 0.4s ease, opacity 0.4s ease; }
+        .grid-item.is-hidden { transform: scale(0.8); opacity: 0; z-index: -1; }
+        
+        /* General Styles for Cards (Portfolio, Insights, etc.) */
+        .project-grid, .insights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+        .project-item, .insight-card { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); overflow: hidden; text-decoration: none; color: inherit; display: block; }
+        .project-item:hover, .insight-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .card-image-wrapper img { width: 100%; height: 200px; object-fit: cover; }
+        .card-content { padding: 1.5rem; }
+        .card-content h3 { color: var(--primary); }
     </style>
 </head>
 <body>
-    <!-- [Header and Hero sections are the same as before] -->
-    <header id="main-header"> <!-- ... --> </header>
-    <main>
-        <section id="hero"> <!-- ... --> </section>
-        <section id="about" class="section-bg-alt"> <!-- ... --> </section>
 
-        <!-- =================================================================
-        NEW: INVESTMENT PHILOSOPHY COMPASS
-        ================================================================== -->
+    <header id="main-header">
+        <nav id="main-nav" aria-label="Main navigation">
+            <div class="nav-container">
+                <a href="#hero" class="nav-brand"><h1>Nima Sherpa</h1></a>
+                <div id="main-menu">
+                    <ul class="nav-links">
+                         <li><a href="#about">About</a></li>
+                         <li><a href="#philosophy-compass">Philosophy</a></li>
+                         <li><a href="#portfolio">Portfolio</a></li>
+                         <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero"><h1>Strategic Finance</h1></section>
+        <section id="about" class="section-bg-alt">
+             <div class="container section-header"><h2>About Me</h2></div>
+        </section>
+
+        <!-- INVESTMENT PHILOSOPHY COMPASS -->
         <section id="philosophy-compass">
             <div class="container compass-wrapper">
                 <div class="section-header" data-aos="fade-up">
                     <h2 style="color: white;">Discover Your Investment Philosophy</h2>
                     <div class="section-divider"></div>
-                    <p class="section-subheader" style="color: rgba(255,255,255,0.8);">A personalized journey to align your mindset with proven strategies.</p>
                 </div>
-
                 <div id="compass-interactive-area" data-aos="zoom-in" data-aos-delay="200">
                     <span class="axis-label x-axis-1">Capital Preservation</span>
                     <span class="axis-label x-axis-2">Aggressive Growth</span>
                     <span class="axis-label y-axis-1">Market Intuition</span>
                     <span class="axis-label y-axis-2">Data-Driven Analysis</span>
-
-                    <div id="compass-handle" role="slider" aria-label="Investment Philosophy Selector">
-                        <i class="fas fa-arrows-alt"></i>
-                    </div>
+                    <div id="compass-handle" role="slider" aria-label="Investment Philosophy Selector"><i class="fas fa-arrows-alt"></i></div>
                 </div>
-
                 <div id="compass-result-area">
                     <h3 id="compass-result-text">Drag the orb to begin...</h3>
                     <p id="compass-result-description"></p>
@@ -131,148 +108,107 @@
             </div>
         </section>
 
-        <!-- [Experience, Portfolio, Insights, Contact, Footer sections are mostly the same but now have data-attributes] -->
-        <section id="experience"> <!-- ... --> </section>
-        
+        <!-- PORTFOLIO/CASE STUDIES -->
         <section id="portfolio" class="section-bg-alt">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>Selected Case Studies</h2>
                     <div class="section-divider"></div>
                 </div>
-                <!-- The grid now has an ID for JS targeting -->
                 <div id="project-grid" class="project-grid">
-                    <!-- ADDED data-philosophy attributes to each item -->
-                    <a href="#" class="project-item-link" data-philosophy="growth data">
-                        <article class="project-item" data-aos="fade-up"> <!-- ... --> </article>
+                    <!-- Added 'grid-item' class and clear data-philosophy tags -->
+                    <a href="#" class="project-item grid-item" data-aos="fade-up" data-philosophy="growth data">
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop" alt=""></div>
+                        <div class="card-content"><h3>Portfolio Optimization (Growth/Data)</h3><p>A case study on dynamic asset allocation models.</p></div>
                     </a>
-                    <a href="#" class="project-item-link" data-philosophy="preservation data">
-                        <article class="project-item" data-aos="fade-up" data-aos-delay="100"> <!-- ... --> </article>
+                    <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="100" data-philosophy="preservation data">
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop" alt=""></div>
+                        <div class="card-content"><h3>FP&A Automation (Preservation/Data)</h3><p>Implementing Python-based forecasting tools.</p></div>
                     </a>
-                    <a href="#" class="project-item-link" data-philosophy="growth intuition">
-                        <article class="project-item" data-aos="fade-up" data-aos-delay="200"> <!-- ... --> </article>
+                    <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="200" data-philosophy="growth intuition">
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop" alt=""></div>
+                        <div class="card-content"><h3>M&A Due Diligence (Growth/Intuition)</h3><p>Analysis for a high-value transaction.</p></div>
                     </a>
                 </div>
             </div>
         </section>
         
-        <section id="insights">
-            <div class="container">
-                 <div class="section-header" data-aos="fade-up">
-                    <h2>Market Insights</h2>
-                    <div class="section-divider"></div>
-                </div>
-                 <!-- The grid now has an ID for JS targeting -->
-                <div id="insights-grid" class="insights-grid">
-                    <a href="#" class="card-link-wrapper" data-aos="fade-up" data-philosophy="growth intuition">
-                        <article class="insight-card"> <!-- ... --> </article>
-                    </a>
-                     <a href="#" class="card-link-wrapper" data-aos="fade-up" data-aos-delay="150" data-philosophy="data">
-                        <article class="insight-card"> <!-- ... --> </article>
-                    </a>
-                     <a href="#" class="card-link-wrapper" data-aos="fade-up" data-aos-delay="300" data-philosophy="growth">
-                        <article class="insight-card"> <!-- ... --> </article>
-                    </a>
-                </div>
-            </div>
+        <section id="contact">
+             <div class="container section-header"><h2>Contact Me</h2></div>
         </section>
-
-        <section id="contact" class="section-bg-alt"> <!-- ... --> </section>
     </main>
-    <footer id="main-footer"> <!-- ... --> </footer>
 
-    <!-- JS Libraries and Custom Script -->
+    <footer id="main-footer"><p>© 2024 Nima Sherpa</p></footer>
+
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Isotope JS for filtering animation -->
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // [Previous scripts for Nav, Counters, AOS Init are retained]
+        // Initialize AOS animations
+        AOS.init({ duration: 800, once: true, offset: 100 });
+
+        // Sticky Navigation
+        const nav = document.getElementById('main-nav');
+        if (nav) { window.addEventListener('scroll', () => { window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled'); }); }
         
-        // === NEW: Investment Philosophy Compass Logic ===
+        // === Philosophy Compass Logic ===
         const compassArea = document.getElementById('compass-interactive-area');
-        const handle = document.getElementById('compass-handle');
-        const resultText = document.getElementById('compass-result-text');
-        const resultDesc = document.getElementById('compass-result-description');
-        const ctaBtn = document.getElementById('compass-cta-btn');
+        if (compassArea) {
+            const handle = document.getElementById('compass-handle');
+            const resultText = document.getElementById('compass-result-text');
+            const resultDesc = document.getElementById('compass-result-description');
+            const ctaBtn = document.getElementById('compass-cta-btn');
+            const gridItems = document.querySelectorAll('.grid-item');
 
-        if (!compassArea || !handle) return;
+            let isDragging = false;
+            let currentPhilosophy = '';
 
-        let isDragging = false;
-        
-        const philosophyMatrix = {
-            'growth data': { title: 'Data-Led Growth', desc: 'This philosophy prioritizes high-growth opportunities, validated by rigorous quantitative analysis and financial modeling.'},
-            'growth intuition': { title: 'Intuitive Growth', desc: 'This approach seeks high-growth sectors, guided by market trends, emerging technologies, and strategic foresight.'},
-            'preservation data': { title: 'Quantitative Preservation', desc: 'This philosophy focuses on protecting capital through data-driven risk management and investments in stable, proven assets.'},
-            'preservation intuition': { title: 'Strategic Preservation', desc: 'This approach protects capital by understanding broad market shifts and identifying resilient sectors based on experience.'},
-        };
+            const philosophyMatrix = {
+                'growth data': { title: 'Data-Led Growth', desc: 'This philosophy prioritizes high-growth opportunities, validated by rigorous quantitative analysis and financial modeling.'},
+                'growth intuition': { title: 'Intuitive Growth', desc: 'This approach seeks high-growth sectors, guided by market trends and strategic foresight.'},
+                'preservation data': { title: 'Quantitative Preservation', desc: 'This philosophy focuses on protecting capital through data-driven risk management and stable, proven assets.'},
+                'preservation intuition': { title: 'Strategic Preservation', desc: 'This approach protects capital by understanding broad market shifts and identifying resilient sectors.'},
+            };
 
-        let currentPhilosophy = '';
+            function updateOnDrag(event) {
+                if (!isDragging) return;
+                const rect = compassArea.getBoundingClientRect();
+                const x = (event.clientX || event.touches[0].clientX) - rect.left;
+                const y = (event.clientY || event.touches[0].clientY) - rect.top;
+                
+                const constrainedX = Math.max(0, Math.min(x, rect.width));
+                const constrainedY = Math.max(0, Math.min(y, rect.height));
 
-        function updatePosition(event) {
-            if (!isDragging) return;
+                handle.style.transform = `translate(${constrainedX - rect.width/2}px, ${constrainedY - rect.height/2}px)`;
 
-            const rect = compassArea.getBoundingClientRect();
-            let x = (event.clientX || event.touches[0].clientX) - rect.left;
-            let y = (event.clientY || event.touches[0].clientY) - rect.top;
+                const xChoice = (constrainedX / rect.width > 0.5) ? 'growth' : 'preservation';
+                const yChoice = (constrainedY / rect.height > 0.5) ? 'data' : 'intuition';
+                currentPhilosophy = `${xChoice} ${yChoice}`;
+                
+                resultText.textContent = philosophyMatrix[currentPhilosophy].title;
+                resultDesc.textContent = philosophyMatrix[currentPhilosophy].desc;
+                ctaBtn.classList.add('visible');
+            }
 
-            // Constrain to bounds
-            x = Math.max(0, Math.min(x, rect.width));
-            y = Math.max(0, Math.min(y, rect.height));
-
-            handle.style.transform = `translate(${x - rect.width/2}px, ${y - rect.height/2}px)`;
-
-            // Determine philosophy
-            const xPercent = x / rect.width;
-            const yPercent = y / rect.height;
-
-            let xChoice = (xPercent > 0.5) ? 'growth' : 'preservation';
-            let yChoice = (yPercent > 0.5) ? 'data' : 'intuition';
-
-            currentPhilosophy = `${xChoice} ${yChoice}`;
+            handle.addEventListener('mousedown', () => { isDragging = true; });
+            window.addEventListener('mouseup', () => { isDragging = false; });
+            window.addEventListener('mousemove', updateOnDrag);
+            handle.addEventListener('touchstart', (e) => { isDragging = true; e.preventDefault(); }, { passive: false });
+            window.addEventListener('touchend', () => { isDragging = false; });
+            window.addEventListener('touchmove', updateOnDrag);
             
-            resultText.textContent = philosophyMatrix[currentPhilosophy].title;
-            resultDesc.textContent = philosophyMatrix[currentPhilosophy].desc;
-            ctaBtn.classList.add('visible');
+            ctaBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                gridItems.forEach(item => {
+                    const itemPhilosophy = item.dataset.philosophy || '';
+                    if (itemPhilosophy === currentPhilosophy) {
+                        item.classList.remove('is-hidden');
+                    } else {
+                        item.classList.add('is-hidden');
+                    }
+                });
+                document.querySelector('#portfolio').scrollIntoView({ behavior: 'smooth' });
+            });
         }
-
-        handle.addEventListener('mousedown', () => { isDragging = true; handle.style.cursor = 'grabbing'; });
-        window.addEventListener('mouseup', () => { isDragging = false; handle.style.cursor = 'grab'; });
-        window.addEventListener('mousemove', updatePosition);
-        
-        handle.addEventListener('touchstart', (e) => { isDragging = true; updatePosition(e); }, {passive: false});
-        window.addEventListener('touchend', () => { isDragging = false; });
-        window.addEventListener('touchmove', updatePosition, {passive: false});
-
-        // --- Filtering Logic ---
-        const portfolioGrid = document.querySelector('#project-grid');
-        const insightsGrid = document.querySelector('#insights-grid');
-
-        // Initialize Isotope
-        const isoPortfolio = portfolioGrid ? new Isotope(portfolioGrid, { itemSelector: '.project-item-link', layoutMode: 'fitRows' }) : null;
-        const isoInsights = insightsGrid ? new Isotope(insightsGrid, { itemSelector: '.card-link-wrapper', layoutMode: 'fitRows' }) : null;
-
-        ctaBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            
-            const filterValue = currentPhilosophy.split(' ').join(''); // "growth data" -> "growthdata"
-            
-            if (isoPortfolio) {
-                isoPortfolio.filter( (itemElem) => {
-                    const philosophy = itemElem.dataset.philosophy || '';
-                    return philosophy.includes(filterValue.replace('data','').replace('intuition','')) || philosophy.includes(filterValue.replace('growth','').replace('preservation',''));
-                });
-            }
-            if (isoInsights) {
-                isoInsights.filter( (itemElem) => {
-                    const philosophy = itemElem.dataset.philosophy || '';
-                    return philosophy.includes(filterValue.replace('data','').replace('intuition','')) || philosophy.includes(filterValue.replace('growth','').replace('preservation',''));
-                });
-            }
-
-            document.querySelector('#portfolio').scrollIntoView({ behavior: 'smooth' });
-        });
     });
     </script>
 </body>
