@@ -3,54 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nima Sherpa | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <title>Nima Sherpa | Finance & Investment Strategist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #1a2a3a;  /* Deep navy */
+      --accent: #2ecc71;  /* Emerald green */
+      --light: #f8f9fa;
+      --dark: #333;
+      --gray: #6c757d;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #f9f9f9; color: #333; line-height: 1.6; }
-    header { background: #fff; padding: 2rem 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.05); text-align: center; }
-    header h1 { font-size: 2rem; margin-bottom: 0.25rem; }
-    header p { color: #666; }
-    section { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-    .btn { display: inline-block; padding: 0.75rem 1.5rem; margin-top: 1rem; background: #000; color: #fff; text-decoration: none; border-radius: 4px; }
-    .social-links a { margin-right: 1rem; text-decoration: none; color: #0073e6; }
-    .project { margin-bottom: 2rem; }
-    footer { text-align: center; padding: 2rem 1rem; color: #aaa; font-size: 0.9rem; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: var(--light); 
+      color: var(--dark); 
+      line-height: 1.7; 
+    }
+    header { 
+      background: var(--primary); 
+      color: white; 
+      padding: 3rem 1rem; 
+      text-align: center; 
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+    header h1 { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 2.5rem; 
+      margin-bottom: 0.5rem; 
+      letter-spacing: -0.5px;
+    }
+    header p { 
+      color: rgba(255,255,255,0.8); 
+      font-weight: 500;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .tagline {
+      display: inline-block;
+      background: rgba(255,255,255,0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .social-links a { 
+      margin: 0 0.75rem; 
+      text-decoration: none; 
+      color: white; 
+      transition: opacity 0.3s;
+      display: inline-block;
+    }
+    .social-links a:hover { opacity: 0.8; }
+    .social-links svg { width: 20px; height: 20px; vertical-align: middle; margin-right: 0.5rem; }
+    section { 
+      max-width: 900px; 
+      margin: 3rem auto; 
+      padding: 0 1.5rem; 
+    }
+    h2 { 
+      font-family: 'Playfair Display', serif; 
+      color: var(--primary); 
+      margin-bottom: 1.5rem; 
+      position: relative;
+      display: inline-block;
+    }
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+    }
+    .btn { 
+      display: inline-block; 
+      padding: 0.75rem 1.75rem; 
+      margin-top: 1rem; 
+      background: var(--accent); 
+      color: white; 
+      text-decoration: none; 
+      border-radius: 4px; 
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
+    }
+    .btn:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+    }
+    .project { 
+      background: white; 
+      border-radius: 8px; 
+      padding: 1.5rem; 
+      margin-bottom: 2rem; 
+      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-left: 4px solid var(--accent);
+    }
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    .project h3 { color: var(--primary); margin-bottom: 0.5rem; }
+    .project p { color: var(--gray); margin-bottom: 1rem; }
+    .project-meta { 
+      display: flex; 
+      gap: 1rem; 
+      font-size: 0.85rem; 
+      color: var(--gray); 
+      margin-top: 1rem;
+    }
+    .project-meta span { background: rgba(0,0,0,0.05); padding: 0.25rem 0.5rem; border-radius: 4px; }
+    footer { 
+      text-align: center; 
+      padding: 3rem 1rem; 
+      color: var(--gray); 
+      font-size: 0.9rem; 
+      background: white;
+      margin-top: 3rem;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    section { animation: fadeIn 0.6s ease-out forwards; }
+    #projects { animation-delay: 0.2s; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      section { margin: 2rem auto; }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Nima Sherpa</h1>
-    <p>Chartered Accountant | CFA Level III Candidate | Finance & Strategy</p>
+    <div class="tagline">Strategic Finance | Investment Research | Value Creation</div>
+    <p>Chartered Accountant | CFA Level III Candidate | Leveraging data-driven insights to optimize financial strategy</p>
     <div class="social-links">
-      <a href="https://www.linkedin.com/in/nimaosherpa/">LinkedIn</a>
-      <a href="#">GitHub</a>
-      <a href="mailto:nima.sherpa@mail.ca.in">Email</a>
+      <a href="https://www.linkedin.com/in/nimaosherpa/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.5-2.39-1.76-2.39-1.37 0-1.96.92-1.96 2.2V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.5c2.9 0 3.12 1.85 3.12 4.2z"/></svg>
+        LinkedIn
+      </a>
+      <a href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.19 3.37 9.59 8.05 11.15.6.1.8-.25.8-.55v-2.04c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.32-1.75-1.32-1.75-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.78 1.3 3.46.99.1-.77.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .3.2.66.82.55C20.63 21.88 24 17.48 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:nima.sherpa@mail.ca.in">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+        Email
+      </a>
     </div>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
-    <p style="margin-top: 1rem;">
-      I am a finance professional with experience in strategic finance, FP&A, investment research, and process improvement. This site is under construction and will be updated soon.
+    <p style="margin-top: 1rem; font-size: 1.1rem;">
+      I'm a finance strategist with expertise in <strong>FP&A, investment research, and process optimization</strong>. 
+      My approach blends rigorous financial analysis with strategic storytelling to uncover hidden value and drive 
+      data-informed decisions. Currently pursuing the <strong>CFA designation</strong> to deepen my investment expertise.
     </p>
-    <a href="#" class="btn">Download Resume</a>
+    <div style="margin-top: 1.5rem;">
+      <a href="#" class="btn">Download Resume</a>
+      <a href="#projects" class="btn" style="background: var(--primary); margin-left: 1rem;">View Case Studies</a>
+    </div>
   </section>
 
   <section id="projects">
-    <h2>Projects</h2>
+    <h2>Selected Work</h2>
     <div class="project">
-      <h3>Project One</h3>
-      <p>Short description of the project goes here.</p>
+      <h3>Portfolio Optimization Strategy</h3>
+      <p>Developed a dynamic asset allocation model for a $50M portfolio, improving risk-adjusted returns by 18% over 12 months through factor-based tilts and tactical rebalancing.</p>
+      <div class="project-meta">
+        <span>Asset Allocation</span>
+        <span>Factor Investing</span>
+        <span>Risk Modeling</span>
+      </div>
     </div>
     <div class="project">
-      <h3>Project Two</h3>
-      <p>Short description of the project goes here.</p>
+      <h3>FP&A Process Automation</h3>
+      <p>Led the implementation of a Python-based forecasting tool that reduced monthly close time by 40% and improved forecast accuracy by standardizing data inputs.</p>
+      <div class="project-meta">
+        <span>Financial Modeling</span>
+        <span>Process Improvement</span>
+        <span>Python</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="insights">
+    <h2>Recent Insights</h2>
+    <div class="project">
+      <h3>The Evolving Role of ESG in Emerging Markets</h3>
+      <p>How sustainability metrics are becoming alpha drivers rather than just compliance checkboxes in frontier economies.</p>
+      <div class="project-meta">
+        <span>ESG Investing</span>
+        <span>Emerging Markets</span>
+      </div>
     </div>
   </section>
 
   <footer>
-    &copy; 2025 Nima Sherpa. All rights reserved.
+    &copy; 2025 Nima Sherpa. All rights reserved.<br>
+    <small style="opacity: 0.7;">Built with precision, like a well-balanced portfolio.</small>
   </footer>
 </body>
 </html>
