@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nima Sherpa | Strategic Finance & Analysis Professional</title>
-    <meta name="description" content="Explore the professional journey of Nima Sherpa through an interactive, 3D showcase of his key achievements in FP&A and finance.">
+    <meta name="description" content="Explore the professional journey of Nima Sherpa through an interactive showcase of his key achievements in FP&A and finance.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -15,117 +15,132 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--light); line-height: 1.6; color: var(--dark); margin: 0; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 6rem 0; overflow-x: hidden; }
+        .section-bg-alt { background-color: var(--white); }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--primary); margin-bottom: 1rem; }
         .section-divider { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; }
-        /* ... Other standard styles like Header, Hero, Footer can remain ... */
+        .section-subheader { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
+        a { text-decoration: none; color: var(--accent); }
+        /* All other styles for Hero, Nav, Skills, etc. remain the same as the previous version. */
+        #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; transition: all 0.4s ease; }
+        #main-nav { background: rgba(10, 26, 47, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1.5rem 0; }
+        #main-nav.scrolled { padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-brand h1 { font-family: 'Playfair Display', serif; color: white; font-size: 1.5rem; }
+        #main-menu ul { display: flex; list-style: none; gap: 2rem; margin:0; }
+        #main-menu a { color: white; text-decoration: none; font-weight: 600; position: relative; padding: 0.5rem 0; }
+        #main-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+        #main-menu a:hover::after, #main-menu a.active::after { width: 100%; }
+        #hero { height: 100vh; display: flex; align-items: center; text-align: center; color: white; background: linear-gradient(rgba(10, 26, 47, 0.7), rgba(10, 26, 47, 0.7)), url('https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&q=80') center center/cover; }
+        #hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin: 0; }
+        #hero .hero-subtitle { font-size: 1.5rem; margin: 1rem 0 2rem; color: rgba(255,255,255,0.9); }
+        .hero-cta { background-color: var(--accent); color: var(--primary); padding: 1rem 2.5rem; border-radius: 4px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s; }
+        .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 224, 199, 0.3); }
 
-        /* === NEW: Focus Ring Navigator Styles === */
+        /* === NEW: Interactive Metro Map Styles === */
         #journey { background-color: var(--white); }
-        .journey-wrapper { max-width: 900px; margin: 0 auto; }
-
-        .focus-ring-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
+        .journey-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
         }
-        .ring-item {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--gray);
+        .journey-map-container { position: relative; height: 450px; }
+        .metro-line {
+            position: absolute;
+            background-color: #cbd5e1;
+            z-index: 1;
+        }
+        .line-audit { width: 40%; height: 5px; top: 30%; left: 10%; }
+        .line-transfer { width: 5px; height: 40%; top: 30%; left: 50%; }
+        .line-fpa { width: 40%; height: 5px; top: 70%; left: 50%; }
+        
+        .station {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            background-color: var(--gray);
             cursor: pointer;
-            position: relative;
-            padding: 0.5rem 0;
-            transition: color 0.3s ease;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 4px #cbd5e1;
         }
-        .ring-item::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 0; height: 3px;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
+        .station:hover { transform: scale(1.2); }
+        .station.active { background-color: var(--accent); box-shadow: 0 0 0 4px var(--accent); }
+        .station-label { position: absolute; transform: translateX(-50%); font-weight: 600; color: var(--gray); width: 150px; text-align: center; }
+        
+        #station1 { top: 30%; left: 10%; transform: translate(-50%, -50%); }
+        #station1 .station-label { top: -40px; left: 50%; }
+
+        #station2 { top: 30%; left: 50%; transform: translate(-50%, -50%); }
+        #station2 .station-label { top: -40px; left: 50%; }
+        
+        #station3 { top: 70%; left: 50%; transform: translate(-50%, -50%); }
+        #station3 .station-label { bottom: -50px; left: 50%; }
+
+        #station4 { top: 70%; left: 90%; transform: translate(-50%, -50%); }
+        #station4 .station-label { bottom: -50px; left: 50%; }
+        
+        .journey-details-panel { background: var(--light); padding: 2rem; border-radius: 8px; }
+        #details-content { opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; }
+        #details-content.visible { opacity: 1; transform: translateY(0); }
+        #details-content h3 { color: var(--primary); margin-top: 0; }
+        .process-flow { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .process-tag { background: rgba(0, 224, 199, 0.1); color: #007567; padding: 0.25rem 0.75rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; }
+        .growth-story { border-left: 4px solid var(--primary); padding-left: 1.5rem; margin-top: 1.5rem; }
+        .growth-story p { font-style: italic; margin: 0; }
+        .impact-statement { background-color: var(--primary); color: white; padding: 1rem; text-align: center; border-radius: 4px; margin-top: 1.5rem; }
+        .impact-statement strong { color: var(--accent); }
+
+        /* Styles for Skills, Testimonials, Contact, etc. are preserved from before */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .skill-category { background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); }
+        #testimonials { background: var(--primary); color: white; }
+        .contact-form { max-width: 700px; margin: 0 auto; }
+
+        @media (max-width: 900px) {
+            .journey-layout { grid-template-columns: 1fr; }
+            .journey-map-container { height: 250px; margin-bottom: 2rem; }
         }
-        .ring-item:hover, .ring-item.active { color: var(--primary); }
-        .ring-item.active::after { width: 100%; }
-        
-        .focus-content-container {
-            perspective: 1500px; /* This enables the 3D space */
-            min-height: 450px;
-        }
-        
-        #focus-card {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        #focus-card.is-flipped {
-            transform: rotateY(180deg);
-        }
-        
-        .card-face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden; /* Safari */
-            backface-visibility: hidden;
-            background: var(--light);
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-        .card-face.card-back {
-            transform: rotateY(180deg);
-        }
-        
-        /* Content inside the card faces */
-        .case-study-step { margin-bottom: 2rem; }
-        .case-study-step:last-child { margin-bottom: 0; }
-        .case-study-step h3 { color: var(--primary); margin: 0 0 0.5rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
-        
-        .process-flow { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-        .process-tag { background: #e2e8f0; color: var(--gray); padding: 0.25rem 0.75rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; }
-        
-        .impact-metric { background: var(--primary); color: white; padding: 1.5rem; border-radius: 8px; text-align: center; }
-        .impact-metric .impact-value { font-size: 2.5rem; font-weight: 700; color: var(--accent); display: block; }
-        
-        .growth-story p { font-style: italic; color: var(--gray); }
     </style>
 </head>
 <body>
 
-    <!-- Standard Header, Hero, Skills, Testimonials, Contact sections -->
+    <!-- All other sections (Header, Hero, Skills, etc.) are exactly the same as the previous satisfactory version -->
     <header id="main-header"> <!-- ... --> </header>
     <main>
         <section id="hero"> <!-- ... --> </section>
         
-        <!-- === The "Journey of Impact" with Focus Ring Navigator === -->
+        <!-- === NEW: The "Journey of Impact" with Interactive Metro Map === -->
         <section id="journey">
-            <div class="container journey-wrapper">
+            <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>The Journey of Impact</h2>
                     <div class="section-divider"></div>
-                    <p class="section-subheader">Select a role to see how challenges were transformed into measurable results.</p>
+                    <p class="section-subheader">A strategic career path connecting foundational auditing with high-impact FP&A. Select a station to explore a key achievement.</p>
                 </div>
 
-                <div class="focus-ring-nav" data-aos="fade-up" data-aos-delay="100">
-                    <div class="ring-item" data-target="cs1">Audit Officer</div>
-                    <div class="ring-item" data-target="cs2">Team Lead, Finance</div>
-                    <div class="ring-item active" data-target="cs3">Asst. Manager, Finance</div>
-                </div>
-
-                <div class="focus-content-container" data-aos="fade-up" data-aos-delay="200">
-                    <div id="focus-card">
-                        <div class="card-face card-front">
-                            <!-- Content will be injected by JS -->
-                        </div>
-                        <div class="card-face card-back">
-                            <!-- Content will be injected by JS -->
+                <div class="journey-layout" data-aos="fade-up" data-aos-delay="100">
+                    <div class="journey-map-container">
+                        <!-- Metro lines -->
+                        <div class="metro-line line-audit"></div>
+                        <div class="metro-line line-transfer"></div>
+                        <div class="metro-line line-fpa"></div>
+                        <!-- Metro stations -->
+                        <button class="station" id="station1" data-target="cs1"><div class="station-label">Audit Officer</div></button>
+                        <button class="station" id="station2" data-target="cs2"><div class="station-label">Transfer to FP&A</div></button>
+                        <button class="station" id="station3" data-target="cs3"><div class="station-label">Team Lead</div></button>
+                        <button class="station" id="station4" data-target="cs4"><div class="station-label">Asst. Manager</div></button>
+                    </div>
+                    <div class="journey-details-panel">
+                        <div id="details-content">
+                            <h3 id="details-title"></h3>
+                            <p id="details-problem"></p>
+                            <div class="impact-statement"><strong id="details-impact"></strong></div>
+                            <div class="process-flow" id="details-process"></div>
+                            <div class="growth-story"><p id="details-story"></p></div>
                         </div>
                     </div>
                 </div>
@@ -141,78 +156,85 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
+        // All other scripts (AOS Init, Nav, Testimonials) are the same as before
         AOS.init({ duration: 800, once: true, offset: 120 });
-        
-        // --- Focus Ring Navigator Logic ---
-        const ringItems = document.querySelectorAll('.ring-item');
-        const focusCard = document.getElementById('focus-card');
-        const cardFront = document.querySelector('.card-face.card-front');
-        const cardBack = document.querySelector('.card-face.card-back');
-        let isFlipped = false;
 
+        // --- Metro Map Journey Logic ---
+        const stations = document.querySelectorAll('.station');
+        const detailsContent = document.getElementById('details-content');
+        
         const caseStudyData = {
             cs1: {
-                title: "Audit Officer",
-                html: `
-                    <div class="case-study-step"><h3>The Problem: Unidentified Compliance Risks</h3><p>Financial regulations were constantly changing, exposing the organization to potential penalties of over $30K.</p></div>
-                    <div class="case-study-step"><h3>My Process: From Regulation to Rectification</h3><div class="process-flow"><span class="process-tag">Regulatory Monitoring</span><span class="process-tag">IFRS/NFRS Analysis</span><span class="process-tag">Control Weakness Identification</span></div></div>
-                    <div class="case-study-step growth-story"><h3>My Growth Story</h3><p>"This role was my foundation. It taught me that diligence and a deep understanding of compliance aren't just about avoiding penalties—they're about building a trustworthy, stable base for any future growth."</p></div>
-                `
+                title: 'Role: Audit Officer',
+                problem: 'The Challenge: Unidentified compliance risks due to constantly changing financial regulations.',
+                impact: 'Impact: Mitigated Potential Financial Penalties',
+                process: ['Regulatory Monitoring', 'IFRS Analysis', 'Control Weakness ID'],
+                story: "This role was my foundation. It taught me that diligence and a deep understanding of compliance aren't just about avoiding penalties—they're about building a trustworthy, stable base for any future growth."
             },
             cs2: {
-                title: "Team Lead, Finance",
-                html: `
-                    <div class="case-study-step"><h3>The Problem: Critical Financial Leakage</h3><p>A recurring, unidentified loss was impacting profitability, hidden within thousands of daily transactions.</p></div>
-                    <div class="case-study-step"><h3>My Process: From Data to Strategy</h3><div class="process-flow"><span class="process-tag">Python Data Analysis</span><span class="process-tag">Root Cause Identification</span><span class="process-tag">New Pricing Strategy</span></div></div>
-                    <div class="case-study-step impact-metric"><h3>The Impact</h3><span class="impact-value">10% Cost Savings</span></div>
-                `
+                title: 'Transition: From Audit to Analytics',
+                problem: 'The Challenge: To move beyond historical reporting and start using financial data to predict and solve business problems proactively.',
+                impact: 'Impact: Developed Advanced Data Analytics Capabilities',
+                process: ['Python for Data Science', 'SQL', 'Financial Analyst Track'],
+                story: "This was a pivotal self-driven transition. I pursued certifications to build the technical toolkit needed to turn my auditing background into a forward-looking analytical engine."
             },
             cs3: {
-                title: "Asst. Manager, Finance",
-                html: `
-                    <div class="case-study-step"><h3>The Problem: Inefficient Cash Flow Cycle</h3><p>High Days Sales Outstanding (DSO) was tying up critical working capital, limiting the company's ability to invest in growth.</p></div>
-                    <div class="case-study-step"><h3>My Process: From Analysis to Optimization</h3><div class="process-flow"><span class="process-tag">Working Capital Analysis</span><span class="process-tag">Cross-Functional Process Mapping</span><span class="process-tag">ERP & Automation</span></div></div>
-                    <div class="case-study-step impact-metric"><h3>The Impact</h3><span class="impact-value">$600K Unlocked</span></div>
-                `
+                title: 'Role: Team Lead, Finance',
+                problem: 'The Challenge: A recurring, unidentified financial leakage was impacting profitability, hidden within thousands of daily transactions.',
+                impact: 'Impact: Achieved Significant Cost Savings',
+                process: ['Python Data Analysis', 'Root Cause Identification', 'New Pricing Strategy'],
+                story: "This project earned me the 'Rising Star of the Year' award. It was the first major test of my new analytical skills, proving their power to create tangible business value and solidifying my path in strategic FP&A."
+            },
+            cs4: {
+                title: 'Role: Asst. Manager, Finance',
+                problem: 'The Challenge: An inefficient cash flow cycle was tying up critical working capital, limiting the company\'s ability to invest in growth.',
+                impact: 'Impact: Enhanced Working Capital & Cash Flow',
+                process: ['Working Capital Analysis', 'Cross-Functional Process Mapping', 'ERP & Automation'],
+                story: "Leading the finance for a $10M+ division taught me that my role wasn't just analysis, but leadership. By collaborating with other unit leaders, we created a financial impact that fueled the entire enterprise."
             }
         };
 
-        function updateCardContent(targetId) {
+        function updateDetailsPanel(targetId) {
             const data = caseStudyData[targetId];
             if (!data) return;
-            
-            // Determine which face is currently hidden and update it
-            if (isFlipped) {
-                cardFront.innerHTML = data.html;
-            } else {
-                cardBack.innerHTML = data.html;
-            }
 
-            // Trigger the flip
-            isFlipped = !isFlipped;
-            focusCard.classList.toggle('is-flipped');
+            // Hide content before updating
+            detailsContent.classList.remove('visible');
+
+            setTimeout(() => {
+                // Update the content
+                document.getElementById('details-title').textContent = data.title;
+                document.getElementById('details-problem').textContent = data.problem;
+                document.getElementById('details-impact').textContent = data.impact;
+                document.getElementById('details-story').textContent = data.story;
+
+                const processContainer = document.getElementById('details-process');
+                processContainer.innerHTML = '';
+                data.process.forEach(tagText => {
+                    const tag = document.createElement('span');
+                    tag.className = 'process-tag';
+                    tag.textContent = tagText;
+                    processContainer.appendChild(tag);
+                });
+
+                // Show content with animation
+                detailsContent.classList.add('visible');
+            }, 200); // Delay matches the fade-out time
         }
         
-        ringItems.forEach(item => {
-            item.addEventListener('click', () => {
-                // Prevent clicking if already active
-                if (item.classList.contains('active')) return;
-
-                // Update active state
-                ringItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-                
-                // Update content and flip card
-                const targetId = item.dataset.target;
-                updateCardContent(targetId);
+        stations.forEach(station => {
+            station.addEventListener('click', () => {
+                stations.forEach(s => s.classList.remove('active'));
+                station.classList.add('active');
+                const targetId = station.dataset.target;
+                updateDetailsPanel(targetId);
             });
         });
 
-        // Initialize with the default active content
-        const initialActiveItem = document.querySelector('.ring-item.active');
-        if (initialActiveItem) {
-            cardFront.innerHTML = caseStudyData[initialActiveItem.dataset.target].html;
-        }
+        // Initialize with a default station
+        const initialStation = document.getElementById('station4');
+        initialStation.classList.add('active');
+        updateDetailsPanel(initialStation.dataset.target);
 
     });
     </script>
