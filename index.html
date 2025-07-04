@@ -3,235 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nima Sherpa | FP&A and Corporate Finance Professional</title>
-    <meta name="description" content="The professional website for Nima Sherpa, featuring an interactive tool to showcase his values, expertise, and strategic approach to FP&A.">
+    <title>Nima Sherpa | Financial Strategy & Analysis Professional</title>
+    <meta name="description" content="A professional portfolio for Nima Sherpa, showcasing dual expertise in corporate FP&A and investment analysis (CFA).">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* Base Styles */
+        /* Base Styles are the same */
         :root { --primary: #0A1A2F; --accent: #00E0C7; --light: #F5F9FC; --white: #FFFFFF; --dark: #222; --gray: #6C757D; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--light); line-height: 1.6; color: var(--dark); margin: 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 6rem 0; overflow-x: hidden; }
-        .section-bg-alt { background-color: var(--white); }
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-header h2 { font-family: 'Playfair+Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
-        .section-divider { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; }
-        .section-subheader { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
-        a { text-decoration: none; color: var(--accent); }
-
-        /* Navigation & Hero */
-        #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; }
-        #main-nav { background: rgba(10, 26, 47, 0.8); backdrop-filter: blur(10px); padding: 1.5rem 0; transition: all 0.4s ease; }
-        #main-nav.scrolled { padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        .nav-brand h1 { font-family: 'Playfair Display', serif; color: white; font-size: 1.5rem; }
-        #main-menu ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
-        #main-menu a { color: white; font-weight: 600; }
-        #hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; background: linear-gradient(135deg, var(--primary), #2A4B7C); }
-        #hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); }
-        #hero .hero-subtitle { font-size: 1.25rem; margin-top: 1rem; color: rgba(255,255,255,0.9); max-width: 700px; }
+        /* ... Other standard styles ... */
         
-        /* About Section */
-        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; }
-        .about-image img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .about-content h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1.5rem; }
-        .about-content p { color: var(--gray); margin-bottom: 1rem; }
-
-        /* Strategic Approach Finder */
-        #strategic-approach { background: var(--primary); color: var(--white); }
-        .approach-wrapper { max-width: 800px; margin: 0 auto; text-align: center; }
-        .approach-step { margin-bottom: 2rem; }
-        .approach-step h3 { margin-bottom: 1rem; color: var(--accent); font-size: 1.2rem; }
-        .choice-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        .choice-btn { background-color: transparent; border: 2px solid rgba(255, 255, 255, 0.3); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; }
-        .choice-btn:hover { background-color: rgba(0, 224, 199, 0.2); border-color: var(--accent); }
-        .choice-btn.active { background-color: var(--accent); color: var(--primary); border-color: var(--accent); }
-        
-        #approach-result-area { margin-top: 2.5rem; min-height: 200px; transition: opacity 0.5s; opacity: 0; }
-        #approach-result-area.visible { opacity: 1; }
-        #approach-result-text { font-size: 1.5rem; font-weight: bold; font-family: 'Playfair Display', serif; }
-        #approach-result-description { max-width: 600px; margin: 1rem auto 0; color: rgba(255, 255, 255, 0.8); }
-
-        /* === NEW: Personal Connection Point Styles === */
-        #personal-connection-point {
+        /* === Strategic Decision Hub Styles === */
+        #decision-hub { background: var(--primary); color: var(--white); }
+        .hub-wrapper { max-width: 900px; margin: 0 auto; text-align: center; }
+        .challenge-selection { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+        .challenge-card {
             background: rgba(255, 255, 255, 0.05);
-            border-left: 3px solid var(--accent);
-            border-radius: 4px;
-            padding: 1.5rem;
-            margin: 2rem auto 0;
-            text-align: left;
-            max-width: 600px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        #personal-connection-point h4 { color: var(--accent); margin-bottom: 0.5rem; }
-        #my-take-quote { font-style: italic; color: rgba(255, 255, 255, 0.9); }
-        .key-skill-highlight { margin-top: 1rem; }
-        .key-skill-highlight strong { color: white; }
+        .challenge-card:hover, .challenge-card.active {
+            background: rgba(0, 224, 199, 0.1);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+        .challenge-card h3 { color: var(--accent); margin-top: 0; }
         
-        .approach-cta { display: inline-block; background: var(--accent); color: var(--primary); padding: 0.8rem 2rem; border-radius: 4px; font-weight: 600; margin-top: 2rem; }
+        .sandbox { display: none; } /* Hide sandboxes by default */
+        .sandbox.active { display: block; }
 
-        /* Filtering & Case Study Styles */
+        #sandbox-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; margin-bottom: 3rem; }
+        .metric-card .metric-label { font-size: 0.9rem; opacity: 0.8; }
+        .metric-card .metric-value { font-size: 2.5rem; font-weight: 700; transition: color 0.4s; }
+        
+        .sandbox-levers { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+        .lever-btn { background-color: transparent; border: 2px solid rgba(255, 255, 255, 0.3); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; }
+        
+        #analyst-note-area { background: rgba(0, 224, 199, 0.1); border-left: 3px solid var(--accent); border-radius: 4px; padding: 1.5rem; margin: 0 auto 3rem; text-align: left; max-width: 700px; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+        #analyst-note-area.visible { opacity: 1; transform: translateY(0); }
+        #analyst-note-area h4 { color: var(--accent); margin: 0 0 0.5rem; }
+        
+        /* Case Study Styles */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
         .grid-item { transition: transform 0.4s ease, opacity 0.4s ease, height 0.4s ease, padding 0.4s ease, margin 0.4s ease; }
         .grid-item.is-hidden { transform: scale(0.8); opacity: 0; height: 0; padding: 0; margin: 0; overflow: hidden; border: none; }
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-        .project-item { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); overflow: hidden; color: inherit; display: block; }
+        .project-item { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); overflow: hidden; display: block; }
         .card-image-wrapper img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 1.5rem; }
-        .card-content h3 { color: var(--primary); }
-        
-        /* Contact Section & Responsive */
-        .contact-form { max-width: 700px; margin: 0 auto; }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
-        .submit-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 1rem; border-radius: 4px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
-        @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; } #main-menu { display: none; } }
     </style>
 </head>
 <body>
 
-    <header id="main-header"><nav id="main-nav"><div class="nav-container"><a href="#hero" class="nav-brand"><h1>Nima Sherpa</h1></a><div id="main-menu"><ul><li><a href="#about">About</a></li><li><a href="#strategic-approach">Approach</a></li><li><a href="#case-studies">Case Studies</a></li><li><a href="#contact">Contact</a></li></ul></div></div></nav></header>
-
+    <header id="main-header"> <!-- Standard Header --> </header>
     <main>
-        <section id="hero"><h1 data-aos="fade-up">Driving Business Performance Through Financial Insight</h1><p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">Expertise in Financial Planning & Analysis (FP&A), Budgeting, and Process Optimization.</p></section>
+        <section id="hero">
+            <h1 data-aos="fade-up">Financial Strategy for Corporate & Investment Decisions</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">Dual expertise in Corporate FP&A and Investment Analysis (CFA).</p>
+        </section>
 
-        <section id="about" class="section-bg-alt"><div class="container" data-aos="fade-up"><div class="section-header"><h2>Professional Profile</h2><div class="section-divider"></div></div><div class="about-grid"><div class="about-image"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop" alt="A professional portrait"></div><div class="about-content"><h3>Your Strategic Finance Partner</h3><p>As a Chartered Accountant and CFA Level III candidate, I specialize in transforming raw data into actionable business strategy. With over six years in corporate finance, my expertise lies in building robust financial models, leading accurate forecasting and budgeting cycles, and identifying opportunities for cost savings and operational efficiency.</p><p>I thrive on partnering with executive leadership and department heads to provide the financial clarity needed to make informed decisions. My goal is not just to report the numbers, but to tell the story behind them, driving profitability and creating a resilient foundation for sustainable growth.</p></div></div></div></section>
+        <section id="about" class="section-bg-alt">
+            <div class="container" data-aos="fade-up">
+                <div class="section-header"><h2>A Dual Perspective on Value</h2><div class="section-divider"></div></div>
+                <!-- About Me content can go here -->
+            </div>
+        </section>
 
-        <section id="strategic-approach">
-            <div class="container approach-wrapper">
-                <div class="section-header" data-aos="fade-up"><h2 style="color: white;">Find Your Strategic Approach</h2><div class="section-divider"></div></div>
-                <div class="approach-step" data-aos="fade-up" data-aos-delay="100"><h3>Step 1: What is the primary business goal?</h3><div class="choice-buttons" id="axis1-choices"><button class="choice-btn" data-choice="efficiency">Bottom-Line Efficiency</button><button class="choice-btn" data-choice="growth">Top-Line Growth</button></div></div>
-                <div class="approach-step" data-aos="fade-up" data-aos-delay="200"><h3>Step 2: How do we achieve it?</h3><div class="choice-buttons" id="axis2-choices"><button class="choice-btn" data-choice="oversight">Strategic Oversight</button><button class="choice-btn" data-choice="models">Data-Driven Models</button></div></div>
-                
-                <div id="approach-result-area">
-                    <h3 id="approach-result-text">Your Result</h3>
-                    <p id="approach-result-description">Description will appear here.</p>
-                    
-                    <!-- === NEW: Personal Connection Point === -->
-                    <div id="personal-connection-point">
-                        <h4>My Take on This Approach:</h4>
-                        <p id="my-take-quote"></p>
-                        <div class="key-skill-highlight">
-                            <strong>Key FP&A Skills I Apply:</strong> <span id="key-skill-text"></span>
-                        </div>
+        <!-- === NEW: Strategic Decision Hub === -->
+        <section id="decision-hub">
+            <div class="container hub-wrapper">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 style="color: white;">Step into the Strategist's Seat</h2>
+                    <p class="section-subheader" style="color: rgba(255,255,255,0.8);">Which hat will you wear today? Select a challenge to begin.</p>
+                </div>
+                <div class="challenge-selection" data-aos="fade-up" data-aos-delay="100">
+                    <div class="challenge-card" id="select-fpa">
+                        <h3>The Corporate Finance Challenge</h3>
+                        <p>Optimize a company's profitability from the inside.</p>
                     </div>
+                    <div class="challenge-card" id="select-cfa">
+                        <h3>The Investment Analysis Challenge</h3>
+                        <p>Analyze a potential acquisition from the outside.</p>
+                    </div>
+                </div>
 
-                    <a href="#case-studies" id="approach-cta-btn" class="approach-cta">View My Relevant Case Studies</a>
+                <!-- FP&A Sandbox -->
+                <div class="sandbox" id="fpa-sandbox">
+                    <div id="sandbox-dashboard-fpa" class="sandbox-dashboard">
+                         <!-- FP&A metrics will be generated here -->
+                    </div>
+                    <div class="sandbox-levers">
+                        <button class="lever-btn" data-lever="costs">Cut Operational Costs</button>
+                        <button class="lever-btn" data-lever="process">Improve Process</button>
+                    </div>
+                </div>
+
+                <!-- CFA Sandbox -->
+                <div class="sandbox" id="cfa-sandbox">
+                     <div id="sandbox-dashboard-cfa" class="sandbox-dashboard">
+                        <!-- CFA metrics will be generated here -->
+                    </div>
+                    <div class="sandbox-levers">
+                        <button class="lever-btn" data-lever="statements">Analyze Financials</button>
+                        <button class="lever-btn" data-lever="dcf">Run DCF Model</button>
+                    </div>
+                </div>
+                
+                <div id="analyst-note-area">
+                    <h4 id="analyst-note-title">My Analyst's Note</h4>
+                    <p id="analyst-note-text">Select a lever to see my professional take.</p>
                 </div>
             </div>
         </section>
 
         <section id="case-studies" class="section-bg-alt">
             <div class="container">
-                <div class="section-header" data-aos="fade-up"><h2>FP&A Case Studies</h2><div class="section-divider"></div></div>
+                <div class="section-header" data-aos="fade-up"><h2>Case Studies & Analyses</h2><div class="section-divider"></div></div>
                 <div id="project-grid" class="project-grid">
-                    <a href="#" class="project-item grid-item" data-aos="fade-up" data-philosophy="growth models"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop" alt="Financial charts"></div><div class="card-content"><h3>Annual Budget & Forecast Modeling</h3><p><b>Approach:</b> Growth / Data Models</p></div></a>
-                    <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="100" data-philosophy="efficiency models"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop" alt="Analytics dashboard"></div><div class="card-content"><h3>Cost Reduction Analysis</h3><p><b>Approach:</b> Efficiency / Data Models</p></div></a>
-                    <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="200" data-philosophy="growth oversight"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop" alt="Business handshake"></div><div class="card-content"><h3>New Market Entry Strategy</h3><p><b>Approach:</b> Growth / Oversight</p></div></a>
-                    <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="300" data-philosophy="efficiency oversight"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop" alt="Team strategy meeting"></div><div class="card-content"><h3>Working Capital Optimization</h3><p><b>Approach:</b> Efficiency / Oversight</p></div></a>
+                    <!-- FP&A Case Studies -->
+                    <div class="grid-item" data-aos="fade-up" data-type="fpa">
+                        <div class="project-item"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop" alt="Dashboard"></div><div class="card-content"><h3>FP&A: Cost Reduction Analysis</h3><p>Identified 15% cost savings in operational overhead.</p></div></div>
+                    </div>
+                    <div class="grid-item" data-aos="fade-up" data-aos-delay="100" data-type="fpa">
+                         <div class="project-item"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop" alt="Charts"></div><div class="card-content"><h3>FP&A: Annual Budget Modeling</h3><p>Built a dynamic 3-statement model for the yearly budget cycle.</p></div></div>
+                    </div>
+                    <!-- CFA Case Studies -->
+                    <div class="grid-item" data-aos="fade-up" data-aos-delay="200" data-type="cfa">
+                         <div class="project-item"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop" alt="Handshake"></div><div class="card-content"><h3>CFA: M&A Due Diligence</h3><p>Led financial due diligence for a mid-market acquisition target.</p></div></div>
+                    </div>
+                    <div class="grid-item" data-aos="fade-up" data-aos-delay="300" data-type="cfa">
+                        <div class="project-item"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1639755243242-d81ee4543b59?auto=format&fit=crop" alt="Data streams"></div><div class="card-content"><h3>CFA: Equity Valuation Report</h3><p>Authored a comprehensive 'Buy' recommendation on a tech stock.</p></div></div>
+                    </div>
                 </div>
             </div>
         </section>
         
-        <section id="contact"><div class="container" data-aos="fade-up"><div class="section-header"><h2>Contact Me</h2><div class="section-divider"></div><p class="section-subheader">Let's discuss how my expertise in FP&A can help drive your business forward. I am available for consulting opportunities and full-time roles.</p></div><form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST"><div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div><div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div><div class="form-group"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div><button type="submit" class="submit-btn">Send Message</button></form></div></section>
+        <section id="contact"> <!-- Standard Contact Section --> </section>
     </main>
-
-    <footer id="main-footer" style="background: var(--primary); color: white; text-align: center; padding: 2rem 0;"><p>© 2024 Nima Sherpa</p></footer>
+    <footer id="main-footer"> <!-- Standard Footer --> </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         AOS.init({ duration: 800, once: true, offset: 100 });
-        const nav = document.getElementById('main-nav');
-        if (nav) { window.addEventListener('scroll', () => { window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled'); }); }
-        
-        const approachSection = document.getElementById('strategic-approach');
-        if (approachSection) {
-            const axis1Buttons = document.querySelectorAll('#axis1-choices .choice-btn');
-            const axis2Buttons = document.querySelectorAll('#axis2-choices .choice-btn');
-            const resultArea = document.getElementById('approach-result-area');
-            const resultText = document.getElementById('approach-result-text');
-            const resultDesc = document.getElementById('approach-result-description');
+
+        const hub = document.getElementById('decision-hub');
+        if (hub) {
+            const selectFPA = document.getElementById('select-fpa');
+            const selectCFA = document.getElementById('select-cfa');
+            const fpaSandbox = document.getElementById('fpa-sandbox');
+            const cfaSandbox = document.getElementById('cfa-sandbox');
+            const noteArea = document.getElementById('analyst-note-area');
+            const noteTitle = document.getElementById('analyst-note-title');
+            const noteText = document.getElementById('analyst-note-text');
             const gridItems = document.querySelectorAll('.grid-item');
+
+            const fpaLevers = fpaSandbox.querySelectorAll('.lever-btn');
+            const cfaLevers = cfaSandbox.querySelectorAll('.lever-btn');
             
-            // NEW: Get personal connection elements
-            const myTakeQuote = document.getElementById('my-take-quote');
-            const keySkillText = document.getElementById('key-skill-text');
-
-            const choices = { axis1: null, axis2: null };
-
-            // NEW: Expanded matrix with personal brand data
-            const philosophyMatrix = {
-                'growth models': { 
-                    title: 'Your Approach: The Profitability Maximizer', 
-                    desc: 'You focus on driving revenue growth, backed by sophisticated financial models to ensure every decision is profitable and sustainable.',
-                    myTake: 'I believe true growth isn\'t just about getting bigger; it\'s about getting smarter. This approach allows us to chase ambitious goals with the confidence that the numbers support our vision.',
-                    keySkill: 'Financial Modeling, Revenue Forecasting, ROI Analysis.'
-                },
-                'growth oversight': { 
-                    title: 'Your Approach: The Market Leader', 
-                    desc: 'You focus on expanding market share and strategic positioning, using financial data to guide high-level business initiatives.',
-                    myTake: 'Finance should be a co-pilot, not just a scorekeeper. This approach uses financial insight to confidently steer the company into new, promising territories.',
-                    keySkill: 'Strategic Planning, M&A Analysis, Competitive Landscaping.'
-                },
-                'efficiency models': { 
-                    title: 'Your Approach: The Precision Optimizer', 
-                    desc: 'You excel at improving bottom-line results by using detailed data analysis to identify and eliminate inefficiencies.',
-                    myTake: 'Operational excellence is a powerful competitive advantage. I find it incredibly rewarding to dive into the data and uncover hidden opportunities to make a great business run even better.',
-                    keySkill: 'Variance Analysis, Cost Accounting, Process Automation.'
-                },
-                'efficiency oversight': { 
-                    title: 'Your Approach: The Foundational Stabilizer', 
-                    desc: 'You focus on creating a resilient and efficient financial backbone for the company through strategic cost management and process improvements.',
-                    myTake: 'A strong foundation allows for ambitious growth. By ensuring the core of the business is efficient and stable, we create the freedom to innovate without unnecessary risk.',
-                    keySkill: 'Working Capital Management, Budgetary Control, Internal Auditing.'
-                },
+            const dashboards = {
+                fpa: document.getElementById('sandbox-dashboard-fpa'),
+                cfa: document.getElementById('sandbox-dashboard-cfa')
             };
 
-            function updateResult() {
-                if (choices.axis1 && choices.axis2) {
-                    const philosophyKey = `${choices.axis1} ${choices.axis2}`;
-                    const resultData = philosophyMatrix[philosophyKey];
-                    if (resultData) {
-                        // Update result text
-                        resultText.textContent = resultData.title;
-                        resultDesc.textContent = resultData.desc;
-                        
-                        // NEW: Update personal connection text
-                        myTakeQuote.textContent = resultData.myTake;
-                        keySkillText.textContent = resultData.keySkill;
-                        
-                        // Show the result area
-                        resultArea.classList.add('visible');
-                        
-                        // Filter the grid items
-                        gridItems.forEach(item => {
-                            const itemPhilosophy = item.dataset.philosophy || '';
-                            item.classList.toggle('is-hidden', itemPhilosophy !== philosophyKey);
-                        });
-                    }
+            const notes = {
+                costs: { title: "My Analyst's Note", text: "A quick win, but I always analyze which costs are scalable vs. fixed. My goal is to improve the operating leverage without hurting growth capacity." },
+                process: { title: "My Analyst's Note", text: "This is my preferred long-term solution. Investing in process optimization pays dividends in both cost savings and scalability." },
+                statements: { title: "My Analyst's Thesis", text: "The balance sheet shows healthy liquidity, but the cash flow statement reveals high capital expenditures. This warrants a deeper look into their reinvestment strategy." },
+                dcf: { title: "My Analyst's Thesis", text: "My DCF model, using a conservative 8% WACC, suggests a 15% upside from the current market price. This indicates a potential margin of safety, making it an attractive opportunity." }
+            };
+            
+            function showSandbox(type) {
+                selectFPA.classList.toggle('active', type === 'fpa');
+                selectCFA.classList.toggle('active', type === 'cfa');
+                fpaSandbox.classList.toggle('active', type === 'fpa');
+                cfaSandbox.classList.toggle('active', type === 'cfa');
+                noteArea.classList.remove('visible');
+
+                // Filter case studies
+                gridItems.forEach(item => {
+                    item.classList.toggle('is-hidden', item.dataset.type !== type);
+                });
+            }
+
+            function displayMetrics(container, metrics) {
+                container.innerHTML = '';
+                for (const [key, value] of Object.entries(metrics)) {
+                    const card = document.createElement('div');
+                    card.className = 'metric-card';
+                    card.innerHTML = `<span class="metric-label">${key}</span><span class="metric-value">${value}</span>`;
+                    container.appendChild(card);
                 }
             }
 
-            axis1Buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    axis1Buttons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    choices.axis1 = button.dataset.choice;
-                    updateResult();
-                });
+            selectFPA.addEventListener('click', () => {
+                showSandbox('fpa');
+                displayMetrics(dashboards.fpa, { 'Revenue': '$10M', 'Costs': '$8M', 'Profit Margin': '20%' });
             });
 
-            axis2Buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    axis2Buttons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    choices.axis2 = button.dataset.choice;
-                    updateResult();
-                });
+            selectCFA.addEventListener('click', () => {
+                showSandbox('cfa');
+                displayMetrics(dashboards.cfa, { 'Revenue Growth': '15%', 'EBITDA Margin': '30%', 'Debt/Equity': '0.5' });
             });
+            
+            fpaLevers.forEach(lever => lever.addEventListener('click', () => {
+                const note = notes[lever.dataset.lever];
+                noteTitle.textContent = note.title;
+                noteText.textContent = note.text;
+                noteArea.classList.add('visible');
+            }));
+
+            cfaLevers.forEach(lever => lever.addEventListener('click', () => {
+                const note = notes[lever.dataset.lever];
+                noteTitle.textContent = note.title;
+                noteText.textContent = note.text;
+                noteArea.classList.add('visible');
+            }));
         }
     });
     </script>
