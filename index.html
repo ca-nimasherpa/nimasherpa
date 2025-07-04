@@ -11,7 +11,7 @@
     
     <style>
         /* Base Styles */
-        :root { --primary: #0A1A2F; --accent: #00E0C7; --secondary: #2A4B7C; --light: #F5F9FC; --white: #FFFFFF; --dark: #222; --gray: #6C757D; }
+        :root { --primary: #0A1A2F; --accent: #00E0C7; --light: #F5F9FC; --white: #FFFFFF; --dark: #222; --gray: #6C757D; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--light); line-height: 1.6; color: var(--dark); margin: 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -21,42 +21,52 @@
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
         .section-divider { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; }
         .section-subheader { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
+        a { text-decoration: none; color: var(--accent); }
 
-        /* Navigation, Hero, About, Footer etc. are kept simple and correct from before */
-        #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; transition: all 0.4s ease; }
-        #main-nav { background: rgba(10, 26, 47, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1.5rem 0; transition: padding 0.4s ease, box-shadow 0.4s ease; }
+        /* Navigation & Hero (Simplified for clarity) */
+        #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; }
+        #main-nav { background: rgba(10, 26, 47, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1.5rem 0; transition: all 0.4s ease; }
         #main-nav.scrolled { padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         .nav-brand h1 { font-family: 'Playfair Display', serif; color: white; font-size: 1.5rem; }
         #main-menu ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; position: relative; padding: 0.5rem 0; font-weight: 600; }
-        #hero { height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; color: white; text-align: center; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+        #main-menu a { color: white; text-decoration: none; font-weight: 600; }
+        #hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; background: linear-gradient(135deg, var(--primary), #2A4B7C); }
+        #hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); }
 
-        /* === Philosophy Compass Styles === */
+        /* === Philosophy Compass [REBUILT & SIMPLIFIED] === */
         #philosophy-compass { background: var(--primary); color: var(--white); }
         .compass-wrapper { max-width: 800px; margin: 0 auto; text-align: center; }
-        #compass-interactive-area { background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 3rem 2rem; margin-top: 2rem; position: relative; min-height: 300px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .axis-label { position: absolute; font-weight: 600; opacity: 0.7; }
-        .axis-label.x-axis-1 { left: 2rem; top: 50%; transform: translateY(-50%); }
-        .axis-label.x-axis-2 { right: 2rem; top: 50%; transform: translateY(-50%); }
-        .axis-label.y-axis-1 { top: 1.5rem; left: 50%; transform: translateX(-50%); }
-        .axis-label.y-axis-2 { bottom: 1.5rem; left: 50%; transform: translateX(-50%); }
-        #compass-handle { width: 50px; height: 50px; background: var(--accent); border-radius: 50%; position: absolute; cursor: grab; z-index: 10; box-shadow: 0 0 20px rgba(0, 224, 199, 0.5); display: flex; align-items: center; justify-content: center; color: var(--primary); }
-        #compass-result-area { margin-top: 2.5rem; min-height: 120px; }
-        #compass-result-text { font-size: 1.5rem; font-weight: bold; font-family: 'Playfair Display', serif; transition: opacity 0.3s; }
-        #compass-result-description { max-width: 600px; margin: 1rem auto 0; color: rgba(255, 255, 255, 0.8); }
-        .compass-cta { display: inline-block; background: var(--accent); color: var(--primary); padding: 0.8rem 2rem; border: none; border-radius: 4px; font-weight: 600; text-decoration: none; margin-top: 1.5rem; opacity: 0; transform: translateY(10px); pointer-events: none; transition: all 0.4s ease; }
-        .compass-cta.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
-
-        /* === SAFER Filtering Styles === */
-        /* Items are visible by default. JS will add 'is-hidden' to hide them */
-        .grid-item { transition: transform 0.4s ease, opacity 0.4s ease; }
-        .grid-item.is-hidden { transform: scale(0.8); opacity: 0; z-index: -1; }
+        .compass-step { margin-bottom: 2rem; }
+        .compass-step h3 { margin-bottom: 1rem; color: var(--accent); font-size: 1.2rem; }
+        .choice-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .choice-btn {
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .choice-btn:hover { background-color: rgba(0, 224, 199, 0.2); border-color: var(--accent); }
+        .choice-btn.active { background-color: var(--accent); color: var(--primary); border-color: var(--accent); }
         
-        /* General Styles for Cards (Portfolio, Insights, etc.) */
-        .project-grid, .insights-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-        .project-item, .insight-card { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); overflow: hidden; text-decoration: none; color: inherit; display: block; }
-        .project-item:hover, .insight-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        #compass-result-area { margin-top: 2.5rem; min-height: 120px; transition: opacity 0.5s; opacity: 0; }
+        #compass-result-area.visible { opacity: 1; }
+        #compass-result-text { font-size: 1.5rem; font-weight: bold; font-family: 'Playfair Display', serif; }
+        #compass-result-description { max-width: 600px; margin: 1rem auto 1.5rem; color: rgba(255, 255, 255, 0.8); }
+        .compass-cta { display: inline-block; background: var(--accent); color: var(--primary); padding: 0.8rem 2rem; border-radius: 4px; font-weight: 600; }
+
+        /* === Filtering Styles === */
+        .grid-item { transition: transform 0.4s ease, opacity 0.4s ease, height 0.4s ease, padding 0.4s ease, margin 0.4s ease; }
+        .grid-item.is-hidden { transform: scale(0.8); opacity: 0; height: 0; padding: 0; margin: 0; overflow: hidden; border: none; }
+        
+        /* Portfolio Section Styles */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+        .project-item { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); overflow: hidden; text-decoration: none; color: inherit; display: block; }
         .card-image-wrapper img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 1.5rem; }
         .card-content h3 { color: var(--primary); }
@@ -69,7 +79,7 @@
             <div class="nav-container">
                 <a href="#hero" class="nav-brand"><h1>Nima Sherpa</h1></a>
                 <div id="main-menu">
-                    <ul class="nav-links">
+                    <ul>
                          <li><a href="#about">About</a></li>
                          <li><a href="#philosophy-compass">Philosophy</a></li>
                          <li><a href="#portfolio">Portfolio</a></li>
@@ -81,34 +91,51 @@
     </header>
 
     <main>
-        <section id="hero"><h1>Strategic Finance</h1></section>
-        <section id="about" class="section-bg-alt">
-             <div class="container section-header"><h2>About Me</h2></div>
+        <section id="hero">
+            <h1 data-aos="fade-up">Strategic Finance Solutions</h1>
         </section>
 
-        <!-- INVESTMENT PHILOSOPHY COMPASS -->
+        <section id="about" class="section-bg-alt">
+             <div class="container section-header" data-aos="fade-up">
+                <h2>About Me</h2>
+                <div class="section-divider"></div>
+                <p class="section-subheader">I combine rigorous financial analysis with innovative market insights to deliver exceptional results.</p>
+             </div>
+        </section>
+
+        <!-- === INVESTMENT PHILOSOPHY COMPASS (REBUILT) === -->
         <section id="philosophy-compass">
             <div class="container compass-wrapper">
                 <div class="section-header" data-aos="fade-up">
                     <h2 style="color: white;">Discover Your Investment Philosophy</h2>
                     <div class="section-divider"></div>
                 </div>
-                <div id="compass-interactive-area" data-aos="zoom-in" data-aos-delay="200">
-                    <span class="axis-label x-axis-1">Capital Preservation</span>
-                    <span class="axis-label x-axis-2">Aggressive Growth</span>
-                    <span class="axis-label y-axis-1">Market Intuition</span>
-                    <span class="axis-label y-axis-2">Data-Driven Analysis</span>
-                    <div id="compass-handle" role="slider" aria-label="Investment Philosophy Selector"><i class="fas fa-arrows-alt"></i></div>
+                
+                <div class="compass-step" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Step 1: Choose your primary focus</h3>
+                    <div class="choice-buttons" id="axis1-choices">
+                        <button class="choice-btn" data-choice="preservation">Capital Preservation</button>
+                        <button class="choice-btn" data-choice="growth">Aggressive Growth</button>
+                    </div>
                 </div>
+
+                <div class="compass-step" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Step 2: Choose your analysis style</h3>
+                     <div class="choice-buttons" id="axis2-choices">
+                        <button class="choice-btn" data-choice="intuition">Market Intuition</button>
+                        <button class="choice-btn" data-choice="data">Data-Driven Analysis</button>
+                    </div>
+                </div>
+
                 <div id="compass-result-area">
-                    <h3 id="compass-result-text">Drag the orb to begin...</h3>
-                    <p id="compass-result-description"></p>
-                    <a href="#portfolio" id="compass-cta-btn" class="compass-cta">View My Aligned Strategies</a>
+                    <h3 id="compass-result-text">Your Result</h3>
+                    <p id="compass-result-description">Description will appear here.</p>
+                    <a href="#portfolio" id="compass-cta-btn" class="compass-cta">View Aligned Strategies</a>
                 </div>
             </div>
         </section>
 
-        <!-- PORTFOLIO/CASE STUDIES -->
+        <!-- === PORTFOLIO SECTION === -->
         <section id="portfolio" class="section-bg-alt">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -116,29 +143,36 @@
                     <div class="section-divider"></div>
                 </div>
                 <div id="project-grid" class="project-grid">
-                    <!-- Added 'grid-item' class and clear data-philosophy tags -->
                     <a href="#" class="project-item grid-item" data-aos="fade-up" data-philosophy="growth data">
-                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop" alt=""></div>
-                        <div class="card-content"><h3>Portfolio Optimization (Growth/Data)</h3><p>A case study on dynamic asset allocation models.</p></div>
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop" alt="Financial charts on a screen"></div>
+                        <div class="card-content"><h3>Portfolio Optimization</h3><p><b>Philosophy:</b> Growth / Data-Driven</p></div>
                     </a>
                     <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="100" data-philosophy="preservation data">
-                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop" alt=""></div>
-                        <div class="card-content"><h3>FP&A Automation (Preservation/Data)</h3><p>Implementing Python-based forecasting tools.</p></div>
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop" alt="Dashboard analytics"></div>
+                        <div class="card-content"><h3>FP&A Automation</h3><p><b>Philosophy:</b> Preservation / Data-Driven</p></div>
                     </a>
                     <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="200" data-philosophy="growth intuition">
-                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop" alt=""></div>
-                        <div class="card-content"><h3>M&A Due Diligence (Growth/Intuition)</h3><p>Analysis for a high-value transaction.</p></div>
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop" alt="Business handshake"></div>
+                        <div class="card-content"><h3>M&A Due Diligence</h3><p><b>Philosophy:</b> Growth / Intuition</p></div>
+                    </a>
+                     <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="300" data-philosophy="preservation intuition">
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop" alt="Team strategy meeting"></div>
+                        <div class="card-content"><h3>Resilient Sector Strategy</h3><p><b>Philosophy:</b> Preservation / Intuition</p></div>
                     </a>
                 </div>
             </div>
         </section>
         
         <section id="contact">
-             <div class="container section-header"><h2>Contact Me</h2></div>
+             <div class="container section-header" data-aos="fade-up">
+                <h2>Contact Me</h2>
+                <div class="section-divider"></div>
+                <p class="section-subheader">Let's discuss how my expertise can help you achieve your financial goals.</p>
+             </div>
         </section>
     </main>
 
-    <footer id="main-footer"><p>© 2024 Nima Sherpa</p></footer>
+    <footer id="main-footer" style="background: var(--primary); color: white; text-align: center; padding: 2rem 0;"><p>© 2024 Nima Sherpa</p></footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -150,63 +184,62 @@
         const nav = document.getElementById('main-nav');
         if (nav) { window.addEventListener('scroll', () => { window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled'); }); }
         
-        // === Philosophy Compass Logic ===
-        const compassArea = document.getElementById('compass-interactive-area');
-        if (compassArea) {
-            const handle = document.getElementById('compass-handle');
+        // === Philosophy Compass [REBUILT & SIMPLIFIED] ===
+        const compassSection = document.getElementById('philosophy-compass');
+        if (compassSection) {
+            const axis1Buttons = document.querySelectorAll('#axis1-choices .choice-btn');
+            const axis2Buttons = document.querySelectorAll('#axis2-choices .choice-btn');
+            const resultArea = document.getElementById('compass-result-area');
             const resultText = document.getElementById('compass-result-text');
             const resultDesc = document.getElementById('compass-result-description');
-            const ctaBtn = document.getElementById('compass-cta-btn');
             const gridItems = document.querySelectorAll('.grid-item');
 
-            let isDragging = false;
-            let currentPhilosophy = '';
+            const choices = { axis1: null, axis2: null };
 
             const philosophyMatrix = {
-                'growth data': { title: 'Data-Led Growth', desc: 'This philosophy prioritizes high-growth opportunities, validated by rigorous quantitative analysis and financial modeling.'},
-                'growth intuition': { title: 'Intuitive Growth', desc: 'This approach seeks high-growth sectors, guided by market trends and strategic foresight.'},
-                'preservation data': { title: 'Quantitative Preservation', desc: 'This philosophy focuses on protecting capital through data-driven risk management and stable, proven assets.'},
-                'preservation intuition': { title: 'Strategic Preservation', desc: 'This approach protects capital by understanding broad market shifts and identifying resilient sectors.'},
+                'growth data': { title: 'Data-Led Growth', desc: 'You prioritize high-growth opportunities, validated by rigorous quantitative analysis and financial modeling.'},
+                'growth intuition': { title: 'Intuitive Growth', desc: 'You seek high-growth sectors, guided by market trends, emerging technologies, and strategic foresight.'},
+                'preservation data': { title: 'Quantitative Preservation', desc: 'You focus on protecting capital through data-driven risk management and investments in stable, proven assets.'},
+                'preservation intuition': { title: 'Strategic Preservation', desc: 'You protect capital by understanding broad market shifts and identifying resilient sectors based on experience.'},
             };
 
-            function updateOnDrag(event) {
-                if (!isDragging) return;
-                const rect = compassArea.getBoundingClientRect();
-                const x = (event.clientX || event.touches[0].clientX) - rect.left;
-                const y = (event.clientY || event.touches[0].clientY) - rect.top;
-                
-                const constrainedX = Math.max(0, Math.min(x, rect.width));
-                const constrainedY = Math.max(0, Math.min(y, rect.height));
-
-                handle.style.transform = `translate(${constrainedX - rect.width/2}px, ${constrainedY - rect.height/2}px)`;
-
-                const xChoice = (constrainedX / rect.width > 0.5) ? 'growth' : 'preservation';
-                const yChoice = (constrainedY / rect.height > 0.5) ? 'data' : 'intuition';
-                currentPhilosophy = `${xChoice} ${yChoice}`;
-                
-                resultText.textContent = philosophyMatrix[currentPhilosophy].title;
-                resultDesc.textContent = philosophyMatrix[currentPhilosophy].desc;
-                ctaBtn.classList.add('visible');
+            function updateResult() {
+                if (choices.axis1 && choices.axis2) {
+                    const philosophyKey = `${choices.axis1} ${choices.axis2}`;
+                    if (philosophyMatrix[philosophyKey]) {
+                        resultText.textContent = philosophyMatrix[philosophyKey].title;
+                        resultDesc.textContent = philosophyMatrix[philosophyKey].desc;
+                        resultArea.classList.add('visible');
+                        
+                        // Filter the grid items
+                        gridItems.forEach(item => {
+                            const itemPhilosophy = item.dataset.philosophy || '';
+                            if (itemPhilosophy === philosophyKey) {
+                                item.classList.remove('is-hidden');
+                            } else {
+                                item.classList.add('is-hidden');
+                            }
+                        });
+                    }
+                }
             }
 
-            handle.addEventListener('mousedown', () => { isDragging = true; });
-            window.addEventListener('mouseup', () => { isDragging = false; });
-            window.addEventListener('mousemove', updateOnDrag);
-            handle.addEventListener('touchstart', (e) => { isDragging = true; e.preventDefault(); }, { passive: false });
-            window.addEventListener('touchend', () => { isDragging = false; });
-            window.addEventListener('touchmove', updateOnDrag);
-            
-            ctaBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                gridItems.forEach(item => {
-                    const itemPhilosophy = item.dataset.philosophy || '';
-                    if (itemPhilosophy === currentPhilosophy) {
-                        item.classList.remove('is-hidden');
-                    } else {
-                        item.classList.add('is-hidden');
-                    }
+            axis1Buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    axis1Buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    choices.axis1 = button.dataset.choice;
+                    updateResult();
                 });
-                document.querySelector('#portfolio').scrollIntoView({ behavior: 'smooth' });
+            });
+
+            axis2Buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    axis2Buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    choices.axis2 = button.dataset.choice;
+                    updateResult();
+                });
             });
         }
     });
