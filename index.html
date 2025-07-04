@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nima Sherpa | Strategic Finance & Analysis Professional</title>
-    <meta name="description" content="Explore the professional journey of Nima Sherpa through an interactive showcase of his key achievements in FP&A and finance.">
+    <meta name="description" content="Explore the professional journey of Nima Sherpa through an interactive, scroll-based timeline of his key achievements in FP&A and finance.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -21,7 +21,8 @@
         .section-divider { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; }
         .section-subheader { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
         a { text-decoration: none; color: var(--accent); }
-        /* All other styles for Hero, Nav, Skills, etc. remain the same as the previous version. */
+
+        /* Navigation, Hero, Skills, etc. are restored from the last good version */
         #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; transition: all 0.4s ease; }
         #main-nav { background: rgba(10, 26, 47, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1.5rem 0; }
         #main-nav.scrolled { padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
@@ -36,206 +37,253 @@
         #hero .hero-subtitle { font-size: 1.5rem; margin: 1rem 0 2rem; color: rgba(255,255,255,0.9); }
         .hero-cta { background-color: var(--accent); color: var(--primary); padding: 1rem 2.5rem; border-radius: 4px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s; }
         .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 224, 199, 0.3); }
-
-        /* === NEW: Interactive Metro Map Styles === */
+        
+        /* === NEW: Vertical Ascension Timeline Styles === */
         #journey { background-color: var(--white); }
-        .journey-layout {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        .journey-map-container { position: relative; height: 450px; }
-        .metro-line {
+        .journey-wrapper { max-width: 900px; margin: 0 auto; position: relative; padding: 2rem 0; }
+        .journey-wrapper::before { /* The vertical line */
+            content: '';
             position: absolute;
-            background-color: #cbd5e1;
-            z-index: 1;
+            left: 20px;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: #e2e8f0;
         }
-        .line-audit { width: 40%; height: 5px; top: 30%; left: 10%; }
-        .line-transfer { width: 5px; height: 40%; top: 30%; left: 50%; }
-        .line-fpa { width: 40%; height: 5px; top: 70%; left: 50%; }
-        
-        .station {
+        .timeline-item { position: relative; margin-bottom: 50px; padding-left: 60px; }
+        .timeline-item::before { /* The circle on the line */
+            content: '';
             position: absolute;
-            width: 24px;
-            height: 24px;
+            left: 0;
+            top: 5px;
+            width: 44px; /* Diameter of circle + border */
+            height: 44px;
+            transform: translateX(-50%);
+            background: var(--white);
+            border: 4px solid #e2e8f0;
             border-radius: 50%;
-            border: 4px solid var(--white);
-            background-color: var(--gray);
-            cursor: pointer;
-            z-index: 2;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 0 4px #cbd5e1;
+            z-index: 1;
+            transition: border-color 0.5s;
         }
-        .station:hover { transform: scale(1.2); }
-        .station.active { background-color: var(--accent); box-shadow: 0 0 0 4px var(--accent); }
-        .station-label { position: absolute; transform: translateX(-50%); font-weight: 600; color: var(--gray); width: 150px; text-align: center; }
-        
-        #station1 { top: 30%; left: 10%; transform: translate(-50%, -50%); }
-        #station1 .station-label { top: -40px; left: 50%; }
-
-        #station2 { top: 30%; left: 50%; transform: translate(-50%, -50%); }
-        #station2 .station-label { top: -40px; left: 50%; }
-        
-        #station3 { top: 70%; left: 50%; transform: translate(-50%, -50%); }
-        #station3 .station-label { bottom: -50px; left: 50%; }
-
-        #station4 { top: 70%; left: 90%; transform: translate(-50%, -50%); }
-        #station4 .station-label { bottom: -50px; left: 50%; }
-        
-        .journey-details-panel { background: var(--light); padding: 2rem; border-radius: 8px; }
-        #details-content { opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease; }
-        #details-content.visible { opacity: 1; transform: translateY(0); }
-        #details-content h3 { color: var(--primary); margin-top: 0; }
-        .process-flow { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
-        .process-tag { background: rgba(0, 224, 199, 0.1); color: #007567; padding: 0.25rem 0.75rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; }
-        .growth-story { border-left: 4px solid var(--primary); padding-left: 1.5rem; margin-top: 1.5rem; }
-        .growth-story p { font-style: italic; margin: 0; }
+        .timeline-item[data-aos="fade-up"].aos-animate::before {
+             border-color: var(--accent); /* Change color when item is visible */
+        }
+        .timeline-content {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+        .timeline-content .role-title { font-family: 'Playfair Display', serif; color: var(--primary); font-size: 1.8rem; margin: 0 0 1.5rem; }
+        .timeline-content h4 { color: var(--dark); margin: 0 0 0.5rem; border-left: 3px solid var(--accent); padding-left: 1rem; }
+        .timeline-content p { margin: 0 0 1.5rem; }
         .impact-statement { background-color: var(--primary); color: white; padding: 1rem; text-align: center; border-radius: 4px; margin-top: 1.5rem; }
-        .impact-statement strong { color: var(--accent); }
+        .impact-statement strong { color: var(--accent); font-weight: 600; font-size: 1.1rem; }
 
-        /* Styles for Skills, Testimonials, Contact, etc. are preserved from before */
+        /* Skills, Testimonials, Contact styles are restored */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .skill-category { background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); }
         #testimonials { background: var(--primary); color: white; }
+        #testimonials h2 { color: white; }
+        .testimonial-carousel { max-width: 800px; margin: 0 auto; position: relative; }
+        .testimonial-slide { display: none; text-align: center; }
+        .testimonial-slide.active { display: block; }
+        .testimonial-slide p { font-size: 1.25rem; font-style: italic; margin-bottom: 1rem; }
+        .testimonial-slide .author { font-weight: bold; color: var(--accent); }
+        .carousel-dots { text-align: center; margin-top: 2rem; }
+        .dot { height: 12px; width: 12px; margin: 0 5px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; cursor: pointer; transition: background-color 0.3s ease; }
+        .dot.active, .dot:hover { background-color: var(--accent); }
         .contact-form { max-width: 700px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
+        .submit-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 1rem; border-radius: 4px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
 
-        @media (max-width: 900px) {
-            .journey-layout { grid-template-columns: 1fr; }
-            .journey-map-container { height: 250px; margin-bottom: 2rem; }
-        }
     </style>
 </head>
 <body>
 
-    <!-- All other sections (Header, Hero, Skills, etc.) are exactly the same as the previous satisfactory version -->
-    <header id="main-header"> <!-- ... --> </header>
+    <header id="main-header">
+        <nav id="main-nav">
+            <div class="container nav-container">
+                <a href="#hero" class="nav-brand"><h1>Nima Sherpa</h1></a>
+                <div id="main-menu">
+                    <ul>
+                         <li><a href="#journey" class="nav-link">My Journey</a></li>
+                         <li><a href="#skills" class="nav-link">Skills</a></li>
+                         <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                         <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <main>
-        <section id="hero"> <!-- ... --> </section>
-        
-        <!-- === NEW: The "Journey of Impact" with Interactive Metro Map === -->
+        <section id="hero">
+            <div class="container">
+                <h1 data-aos="fade-down">Driving Business Performance Through Strategic Finance & Analysis</h1>
+                <p class="hero-subtitle" data-aos="fade-down" data-aos-delay="100">From data-driven insights to measurable profitability and growth.</p>
+                <a href="#journey" class="hero-cta" data-aos="fade-up" data-aos-delay="200">Explore My Journey</a>
+            </div>
+        </section>
+
+        <!-- === NEW: The "Journey of Impact" with Vertical Ascension Timeline === -->
         <section id="journey">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>The Journey of Impact</h2>
                     <div class="section-divider"></div>
-                    <p class="section-subheader">A strategic career path connecting foundational auditing with high-impact FP&A. Select a station to explore a key achievement.</p>
+                    <p class="section-subheader">A story of progressive challenges, evolving skills, and measurable results.</p>
                 </div>
-
-                <div class="journey-layout" data-aos="fade-up" data-aos-delay="100">
-                    <div class="journey-map-container">
-                        <!-- Metro lines -->
-                        <div class="metro-line line-audit"></div>
-                        <div class="metro-line line-transfer"></div>
-                        <div class="metro-line line-fpa"></div>
-                        <!-- Metro stations -->
-                        <button class="station" id="station1" data-target="cs1"><div class="station-label">Audit Officer</div></button>
-                        <button class="station" id="station2" data-target="cs2"><div class="station-label">Transfer to FP&A</div></button>
-                        <button class="station" id="station3" data-target="cs3"><div class="station-label">Team Lead</div></button>
-                        <button class="station" id="station4" data-target="cs4"><div class="station-label">Asst. Manager</div></button>
+                <div class="journey-wrapper">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-content">
+                            <h3 class="role-title">Asst. Manager, Finance (2023-Present)</h3>
+                            <h4>The Challenge: Inefficient Cash Flow Cycle</h4>
+                            <p>High Days Sales Outstanding (DSO) was tying up critical working capital, limiting the company's ability to invest in growth initiatives.</p>
+                            <div class="impact-statement">
+                                <strong>The Impact: Enhanced Working Capital & Unlocked Cash Flow</strong>
+                            </div>
+                        </div>
                     </div>
-                    <div class="journey-details-panel">
-                        <div id="details-content">
-                            <h3 id="details-title"></h3>
-                            <p id="details-problem"></p>
-                            <div class="impact-statement"><strong id="details-impact"></strong></div>
-                            <div class="process-flow" id="details-process"></div>
-                            <div class="growth-story"><p id="details-story"></p></div>
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-content">
+                            <h3 class="role-title">Team Lead, Finance (2022-2023)</h3>
+                            <h4>The Challenge: Critical & Unidentified Financial Leakage</h4>
+                            <p>A recurring loss was impacting profitability, hidden within thousands of daily transactions. My task was to find the source without disrupting operations.</p>
+                             <div class="impact-statement">
+                                <strong>The Impact: Achieved Significant Cost Savings & Boosted Gross Margins</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-content">
+                            <h3 class="role-title">Audit Officer (2021-2022)</h3>
+                            <h4>The Challenge: Navigating Complex Regulatory Changes</h4>
+                            <p>New financial regulations posed a significant compliance risk. We needed to interpret the standards and implement new controls quickly to avoid potential penalties.</p>
+                             <div class="impact-statement">
+                                <strong>The Impact: Mitigated Compliance Risks & Strengthened Internal Controls</strong>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="section-bg-alt"> <!-- ... --> </section>
-        <section id="testimonials"> <!-- ... --> </section>
-        <section id="contact" class="section-bg-alt"> <!-- ... --> </section>
+        <section id="skills" class="section-bg-alt">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up"><h2>Core Competencies</h2><div class="section-divider"></div></div>
+                <div class="skills-grid">
+                    <div class="skill-category" data-aos="fade-up">
+                        <i class="fas fa-chart-line"></i><h3>Financial Analysis & Planning</h3>
+                        <ul><li>Financial Modeling & Valuation</li><li>Budgeting & Forecasting (FP&A)</li><li>Due Diligence & M&A Support</li><li>Working Capital Optimization</li></ul>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-cogs"></i><h3>Technical Tools & Data</h3>
+                        <ul><li>Advanced Excel (Macros, Pivot)</li><li>Power BI & Data Visualization</li><li>SQL for Data Extraction</li><li>Python (Pandas, NumPy)</li></ul>
+                    </div>
+                    <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-briefcase"></i><h3>Business Acumen</h3>
+                        <ul><li>Process Improvement & Automation</li><li>IFRS & US GAAP Compliance</li><li>Strategic Planning & Decision Support</li><li>Vendor & Contract Management</li></ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up"><h2 style="color:white;">What Leadership Says</h2><div class="section-divider"></div></div>
+                <div class="testimonial-carousel" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-slide">
+                        <p>"Awarded 'Rising Star of the Year' for leveraging data analytics to resolve critical financial leakage, significantly boosting strategic planning and profitability."</p>
+                        <span class="author">Genese Solution Pvt. Ltd. Leadership</span>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p>"Received formal appreciation for visionary guidance and exemplary performance leading the $10M+ enterprise division's finance department, driving key financial initiatives."</p>
+                        <span class="author">Worldlink Communications Ltd. Management</span>
+                    </div>
+                </div>
+                <div class="carousel-dots"></div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-bg-alt">
+             <div class="container" data-aos="fade-up">
+                <div class="section-header"><h2>Contact</h2><div class="section-divider"></div><p class="section-subheader">I am open to relocation and actively seeking challenging FP&A roles where I can drive measurable results. Let's connect.</p></div>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                    <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                    <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
+                    <div class="form-group"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+             </div>
+        </section>
     </main>
+
     <footer style="background: var(--primary); color: white; text-align: center; padding: 2rem 0;"><p>© 2024 Nima Sherpa</p></footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // All other scripts (AOS Init, Nav, Testimonials) are the same as before
         AOS.init({ duration: 800, once: true, offset: 120 });
 
-        // --- Metro Map Journey Logic ---
-        const stations = document.querySelectorAll('.station');
-        const detailsContent = document.getElementById('details-content');
-        
-        const caseStudyData = {
-            cs1: {
-                title: 'Role: Audit Officer',
-                problem: 'The Challenge: Unidentified compliance risks due to constantly changing financial regulations.',
-                impact: 'Impact: Mitigated Potential Financial Penalties',
-                process: ['Regulatory Monitoring', 'IFRS Analysis', 'Control Weakness ID'],
-                story: "This role was my foundation. It taught me that diligence and a deep understanding of compliance aren't just about avoiding penalties—they're about building a trustworthy, stable base for any future growth."
-            },
-            cs2: {
-                title: 'Transition: From Audit to Analytics',
-                problem: 'The Challenge: To move beyond historical reporting and start using financial data to predict and solve business problems proactively.',
-                impact: 'Impact: Developed Advanced Data Analytics Capabilities',
-                process: ['Python for Data Science', 'SQL', 'Financial Analyst Track'],
-                story: "This was a pivotal self-driven transition. I pursued certifications to build the technical toolkit needed to turn my auditing background into a forward-looking analytical engine."
-            },
-            cs3: {
-                title: 'Role: Team Lead, Finance',
-                problem: 'The Challenge: A recurring, unidentified financial leakage was impacting profitability, hidden within thousands of daily transactions.',
-                impact: 'Impact: Achieved Significant Cost Savings',
-                process: ['Python Data Analysis', 'Root Cause Identification', 'New Pricing Strategy'],
-                story: "This project earned me the 'Rising Star of the Year' award. It was the first major test of my new analytical skills, proving their power to create tangible business value and solidifying my path in strategic FP&A."
-            },
-            cs4: {
-                title: 'Role: Asst. Manager, Finance',
-                problem: 'The Challenge: An inefficient cash flow cycle was tying up critical working capital, limiting the company\'s ability to invest in growth.',
-                impact: 'Impact: Enhanced Working Capital & Cash Flow',
-                process: ['Working Capital Analysis', 'Cross-Functional Process Mapping', 'ERP & Automation'],
-                story: "Leading the finance for a $10M+ division taught me that my role wasn't just analysis, but leadership. By collaborating with other unit leaders, we created a financial impact that fueled the entire enterprise."
-            }
-        };
+        // --- Sticky Nav & Active Link Highlighting ---
+        const nav = document.getElementById('main-nav');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('main section');
 
-        function updateDetailsPanel(targetId) {
-            const data = caseStudyData[targetId];
-            if (!data) return;
-
-            // Hide content before updating
-            detailsContent.classList.remove('visible');
-
-            setTimeout(() => {
-                // Update the content
-                document.getElementById('details-title').textContent = data.title;
-                document.getElementById('details-problem').textContent = data.problem;
-                document.getElementById('details-impact').textContent = data.impact;
-                document.getElementById('details-story').textContent = data.story;
-
-                const processContainer = document.getElementById('details-process');
-                processContainer.innerHTML = '';
-                data.process.forEach(tagText => {
-                    const tag = document.createElement('span');
-                    tag.className = 'process-tag';
-                    tag.textContent = tagText;
-                    processContainer.appendChild(tag);
-                });
-
-                // Show content with animation
-                detailsContent.classList.add('visible');
-            }, 200); // Delay matches the fade-out time
-        }
-        
-        stations.forEach(station => {
-            station.addEventListener('click', () => {
-                stations.forEach(s => s.classList.remove('active'));
-                station.classList.add('active');
-                const targetId = station.dataset.target;
-                updateDetailsPanel(targetId);
+        window.addEventListener('scroll', () => {
+            // Sticky Nav
+            if (nav) { window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled'); }
+            
+            // Active Link
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) { // adjusted offset for better accuracy
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
             });
         });
 
-        // Initialize with a default station
-        const initialStation = document.getElementById('station4');
-        initialStation.classList.add('active');
-        updateDetailsPanel(initialStation.dataset.target);
+        // --- Testimonial Carousel Logic ---
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dotsContainer = document.querySelector('.carousel-dots');
+        let currentSlide = 0;
+        
+        if (slides.length > 0) {
+            slides.forEach((slide, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.dataset.slide = index;
+                dotsContainer.appendChild(dot);
+            });
 
+            const dots = document.querySelectorAll('.dot');
+            
+            function showSlide(n) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                currentSlide = (n + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => showSlide(parseInt(dot.dataset.slide)));
+            });
+
+            setInterval(() => showSlide(currentSlide + 1), 5000);
+            showSlide(0);
+        }
     });
     </script>
 </body>
