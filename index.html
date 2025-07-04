@@ -5,150 +5,770 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nima Sherpa | Strategic Finance & Analysis Professional</title>
     <meta name="description" content="Explore the professional journey of Nima Sherpa through an interactive, scroll-based timeline of his key achievements in FP&A and finance.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        :root { --primary: #0A1A2F; --accent: #00E0C7; --light: #F5F9FC; --white: #FFFFFF; --dark: #222; --gray: #6C757D; }
+        :root {
+            --primary: #0A1A2F;
+            --accent: #00E0C7;
+            --light: #F5F9FC;
+            --white: #FFFFFF;
+            --dark: #222;
+            --gray: #6C757D;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--light); line-height: 1.6; color: var(--dark); margin: 0; 
-            /* Subtle Background Texture */
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e2e8f0' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            line-height: 1.6;
+            color: var(--dark);
+            margin: 0;
+            overflow-x: hidden;
         }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 6rem 0; overflow: hidden; }
+        section { padding: 6rem 0; position: relative; }
         .section-bg-alt { background-color: var(--white); }
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--primary); margin-bottom: 1rem; }
-        .section-divider { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; }
-        .section-subheader { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
-        a { text-decoration: none; color: var(--accent); }
-
-        /* Navigation & Hero */
-        #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; }
-        #main-nav { background: rgba(10, 26, 47, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1.5rem 0; transition: all 0.4s ease; }
-        #main-nav.scrolled { padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand h1 { font-family: 'Playfair Display', serif; color: white; font-size: 1.5rem; }
-        #main-menu ul { display: flex; list-style: none; gap: 2rem; margin:0; }
-        #main-menu a { color: white; text-decoration: none; font-weight: 600; position: relative; padding: 0.5rem 0; }
-        #main-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
-        #main-menu a:hover::after, #main-menu a.active::after { width: 100%; }
-
-        #hero { height: 100vh; display: flex; align-items: center; text-align: center; color: white; background: linear-gradient(rgba(10, 26, 47, 0.7), rgba(10, 26, 47, 0.7)), url('https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&q=80') center center/cover; }
-        #hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 4.5rem); line-height: 1.1; margin: 0; }
-        .headline-word { display: inline-block; transform: translateY(100%); opacity: 0; transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.2, 1, 0.3, 1); }
-        #hero .hero-subtitle { font-size: 1.5rem; margin: 1rem 0 2rem; color: rgba(255,255,255,0.9); }
-        .hero-cta { background-color: var(--accent); color: var(--primary); padding: 1rem 2.5rem; border-radius: 4px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s; }
-        
-        /* === NEW: Interactive Metro Map Styles === */
-        #journey { position: relative; }
-        .journey-layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; position: sticky; top: 120px; }
-        .journey-map-container { position: relative; height: 500px; }
-        .metro-line { position: absolute; background-color: #e2e8f0; z-index: 1; }
-        .metro-line-progress { background-color: var(--accent); z-index: 2; transition: height 0.5s ease; }
-        .line-vertical { width: 4px; height: 100%; top: 0; left: 50%; transform: translateX(-50%); }
-        .station {
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2::after {
+            content: '';
             position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #e2e8f0;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 3;
-            transition: background-color 0.5s ease;
+            width: 50%;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px;
         }
-        .station-label { position: absolute; left: 40px; top: 50%; transform: translateY(-50%); font-weight: 600; color: var(--gray); width: 200px; transition: color 0.5s ease; }
-        .station.active { background-color: var(--accent); }
-        .station.active .station-label { color: var(--primary); }
-        #station1 { top: 10%; }
-        #station2 { top: 40%; }
-        #station3 { top: 70%; }
-        
-        .journey-case-study { margin-bottom: 100vh; /* This creates the scroll trigger points */ }
-        .case-study-content { background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .case-study-content h3 { font-family: 'Playfair Display', serif; color: var(--primary); margin: 0 0 1.5rem; font-size: 2rem; }
-        .case-study-content h4 { color: var(--dark); margin: 0 0 0.5rem; border-left: 3px solid var(--accent); padding-left: 1rem; }
-        .impact-statement { background-color: var(--light); border-radius: 4px; padding: 1rem; text-align: center; margin-top: 1.5rem; }
-        .impact-statement strong { color: var(--primary); font-weight: 600; font-size: 1.1rem; }
+        .section-subheader {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+        }
+        a { text-decoration: none; color: var(--accent); transition: var(--transition); }
 
-        /* Skills, Testimonials, Contact styles are restored */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .skill-category { background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); transition: all 0.3s ease; }
-        .skill-category:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .skill-category .icon-wrapper { background-color: rgba(0, 224, 199, 0.1); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
-        .skill-category svg { width: 28px; height: 28px; color: var(--accent); }
-        .skill-category h3 { margin-bottom: 1rem; }
-        .skill-category ul { list-style: none; padding: 0; margin: 0; }
-        #testimonials { background: var(--primary); color: white; }
+        /* Enhanced Navigation */
+        #main-header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        #main-nav {
+            background: rgba(10, 26, 47, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0, 224, 199, 0.1);
+        }
+        #main-nav.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand h1 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+            position: relative;
+        }
+        .nav-brand h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        .nav-brand:hover h1::after {
+            width: 100%;
+        }
+        #main-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+        #main-menu a {
+            color: white;
+            font-weight: 600;
+            position: relative;
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+        #main-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        #main-menu a:hover::after,
+        #main-menu a.active::after {
+            width: 100%;
+        }
+        #main-menu a:hover {
+            color: var(--accent);
+        }
+
+        /* Enhanced Hero Section */
+        #hero {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(10, 26, 47, 0.9), rgba(10, 26, 47, 0.9));
+        }
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&q=80') center center/cover;
+            z-index: -1;
+            animation: zoomEffect 20s infinite alternate;
+        }
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+        #hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.2;
+            margin: 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 2.5rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+        }
+        .hero-cta {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 224, 199, 0.4);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        /* Enhanced Journey Timeline */
+        #journey {
+            background-color: var(--white);
+            position: relative;
+        }
+        #journey::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.5;
+            z-index: 0;
+        }
+        .journey-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+            z-index: 1;
+        }
+        .journey-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--accent), #e2e8f0);
+            transform: scaleY(0);
+            transform-origin: top;
+            animation: lineGrow 1.5s 0.5s forwards cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+        @keyframes lineGrow {
+            to { transform: scaleY(1); }
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            padding-left: 80px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 60px;
+            height: 60px;
+            transform: translateX(-50%);
+            background: var(--white);
+            border: 4px solid #e2e8f0;
+            border-radius: 50%;
+            z-index: 2;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .timeline-item:hover::before {
+            border-color: var(--accent);
+            transform: translateX(-50%) scale(1.1);
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 25px;
+            width: 30px;
+            height: 30px;
+            transform: translateX(-50%);
+            background: var(--accent);
+            border-radius: 50%;
+            z-index: 1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .timeline-item:hover::after {
+            opacity: 0.2;
+            transform: translateX(-50%) scale(1.8);
+        }
+        .timeline-content {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            position: relative;
+            transition: var(--transition);
+            border-left: 4px solid transparent;
+        }
+        .timeline-item:hover .timeline-content {
+            transform: translateX(10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-left-color: var(--accent);
+        }
+        .timeline-content .role-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin: 0 0 1.5rem;
+            position: relative;
+        }
+        .timeline-content .role-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+        .timeline-content h4 {
+            color: var(--dark);
+            margin: 0 0 1rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            font-size: 1.2rem;
+        }
+        .timeline-content p {
+            margin: 0 0 1.5rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+        .impact-statement {
+            background-color: var(--primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .impact-statement::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+        .impact-statement strong {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .company-logo {
+            position: absolute;
+            right: 2rem;
+            top: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            opacity: 0.9;
+        }
+        .company-logo img {
+            max-width: 80%;
+            max-height: 80%;
+        }
+
+        /* Enhanced Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .skill-category {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid transparent;
+        }
+        .skill-category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-top-color: var(--accent);
+        }
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), rgba(0, 224, 199, 0.3));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .skill-category:hover::before {
+            opacity: 1;
+        }
+        .skill-category i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: var(--transition);
+        }
+        .skill-category:hover i {
+            transform: scale(1.1);
+        }
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin: 0 0 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        .skill-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        .skill-category:hover h3::after {
+            width: 80px;
+        }
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skill-category li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--dark);
+        }
+        .skill-category li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Enhanced Testimonials Section */
+        #testimonials {
+            background: linear-gradient(135deg, var(--primary), #0c213f);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        #testimonials::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 224, 199, 0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+        #testimonials::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 224, 199, 0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
         #testimonials h2 { color: white; }
-        .contact-form { max-width: 700px; margin: 0 auto; }
+        .testimonial-carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .testimonial-slide {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+            position: absolute;
+            width: 100%;
+        }
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            position: relative;
+        }
+        .testimonial-slide p {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            position: relative;
+        }
+        .testimonial-slide p::before,
+        .testimonial-slide p::after {
+            content: '"';
+            font-size: 3rem;
+            color: rgba(0, 224, 199, 0.3);
+            position: absolute;
+            font-family: Georgia, serif;
+        }
+        .testimonial-slide p::before {
+            top: -20px;
+            left: -20px;
+        }
+        .testimonial-slide p::after {
+            bottom: -40px;
+            right: -20px;
+        }
+        .testimonial-slide .author {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.1rem;
+            display: block;
+            margin-top: 1.5rem;
+        }
+        .carousel-dots {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 8px;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .dot.active, .dot:hover {
+            background-color: var(--accent);
+            transform: scale(1.2);
+        }
 
-        @media (max-width: 900px) {
-            .journey-layout { grid-template-columns: 1fr; position: static; }
-            .journey-map-container { display: none; }
-            .journey-case-study { margin-bottom: 3rem; }
+        /* Enhanced Contact Section */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--light);
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 224, 199, 0.2);
+        }
+        .submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .submit-btn:hover {
+            background: #0c213f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(10, 26, 47, 0.2);
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0, 224, 199, 0.5), transparent);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            section { padding: 4rem 0; }
+            .section-header h2 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .journey-wrapper::before { left: 15px; }
+            .timeline-item { padding-left: 60px; }
+            .timeline-item::before { width: 40px; height: 40px; }
+            .company-logo { width: 40px; height: 40px; right: 1rem; top: 1rem; }
+            .contact-form { padding: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <header id="main-header"><!-- ... Content is the same ... --></header>
+    <header id="main-header">
+        <nav id="main-nav">
+            <div class="container nav-container">
+                <a href="#hero" class="nav-brand"><h1>Nima Sherpa</h1></a>
+                <div id="main-menu">
+                    <ul>
+                        <li><a href="#journey" class="nav-link">My Journey</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
+                        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <main>
         <section id="hero">
-            <div class="container">
-                <h1 data-aos="fade-up">
-                    <span class="headline-wrapper"><span class="headline-word">Driving</span></span> 
-                    <span class="headline-wrapper"><span class="headline-word">Business</span></span> 
-                    <span class="headline-wrapper"><span class="headline-word">Performance</span></span> 
-                </h1>
-                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">From data-driven insights to measurable profitability and growth.</p>
-                <a href="#journey" class="hero-cta" data-aos="fade-up" data-aos-delay="400">Explore My Journey</a>
+            <div class="container hero-content" data-aos="fade-up">
+                <h1>Driving Business Performance Through Strategic Finance & Analysis</h1>
+                <p class="hero-subtitle">From data-driven insights to measurable profitability and growth.</p>
+                <a href="#journey" class="hero-cta">Explore My Journey</a>
+            </div>
+            <div class="scroll-down" onclick="document.querySelector('#journey').scrollIntoView({ behavior: 'smooth' })">
+                <i class="fas fa-chevron-down"></i>
             </div>
         </section>
 
-        <!-- === NEW: The "Journey of Impact" with Vertical Ascension Timeline === -->
         <section id="journey">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>The Journey of Impact</h2>
-                    <div class="section-divider"></div>
-                    <p class="section-subheader">A strategic career path connecting foundational auditing with high-impact FP&A.</p>
+                    <p class="section-subheader">A story of progressive challenges, evolving skills, and measurable results.</p>
                 </div>
-                <div class="journey-layout">
-                    <!-- Left Side: The Sticky Metro Map -->
-                    <div class="journey-map-container">
-                        <div class="metro-line line-vertical"></div>
-                        <div class="metro-line line-vertical line-progress" id="timeline-progress"></div>
-                        <div class="station" id="station1"><div class="station-label">Audit Officer</div></div>
-                        <div class="station" id="station2"><div class="station-label">Team Lead, Finance</div></div>
-                        <div class="station" id="station3"><div class="station-label">Asst. Manager</div></div>
+                <div class="journey-wrapper">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-content">
+                            <div class="company-logo">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3 class="role-title">Asst. Manager, Finance (2023-Present)</h3>
+                            <h4>The Challenge: Inefficient Cash Flow Cycle</h4>
+                            <p>High Days Sales Outstanding was tying up critical working capital, limiting the company's ability to invest in growth initiatives.</p>
+                            <div class="impact-statement">
+                                <strong>The Impact</strong>
+                                Enhanced working capital and unlocked cash flow through strategic improvements in the accounts receivable process.
+                            </div>
+                        </div>
                     </div>
-                    <!-- Right Side: The Scrolling Case Studies -->
-                    <div class="journey-details-column">
-                        <div class="journey-case-study" id="cs1">
-                            <div class="case-study-content">
-                                <h3>Foundational Diligence</h3>
-                                <h4>The Challenge: Navigating Complex Regulatory Changes</h4>
-                                <p>New financial regulations posed a significant compliance risk. The task was to interpret the standards and implement new controls quickly to protect the firm.</p>
-                                <div class="impact-statement"><strong>Impact: Mitigated Compliance Risks & Strengthened Internal Controls</strong></div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-content">
+                            <div class="company-logo">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="role-title">Team Lead, Finance (2022-2023)</h3>
+                            <h4>The Challenge: Critical & Unidentified Financial Leakage</h4>
+                            <p>A recurring loss was impacting profitability, hidden within thousands of daily transactions. My task was to find the source without disrupting operations.</p>
+                            <div class="impact-statement">
+                                <strong>The Impact</strong>
+                                Achieved significant cost savings and boosted gross margins through comprehensive financial analysis and process optimization.
                             </div>
                         </div>
-                        <div class="journey-case-study" id="cs2">
-                             <div class="case-study-content">
-                                <h3>Strategic Problem-Solving</h3>
-                                <h4>The Challenge: Critical & Unidentified Financial Leakage</h4>
-                                <p>A recurring loss was impacting profitability, hidden within thousands of daily transactions. This required moving beyond standard audits to proactive, data-driven investigation.</p>
-                                <div class="impact-statement"><strong>Impact: Achieved Significant Cost Savings & Boosted Gross Margins</strong></div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-content">
+                            <div class="company-logo">
+                                <i class="fas fa-file-invoice-dollar"></i>
                             </div>
-                        </div>
-                        <div class="journey-case-study" id="cs3">
-                            <div class="case-study-content">
-                                <h3>Executive-Level Leadership</h3>
-                                <h4>The Challenge: Inefficient Cash Flow Cycle</h4>
-                                <p>High Days Sales Outstanding (DSO) was tying up critical working capital, limiting the company's ability to invest in growth initiatives. This required cross-functional leadership.</p>
-                                <div class="impact-statement"><strong>Impact: Enhanced Working Capital & Unlocked Cash Flow</strong></div>
+                            <h3 class="role-title">Audit Officer (2021-2022)</h3>
+                            <h4>The Challenge: Navigating Complex Regulatory Changes</h4>
+                            <p>New financial regulations posed a significant compliance risk. We needed to interpret the standards and implement new controls quickly to avoid potential penalties.</p>
+                            <div class="impact-statement">
+                                <strong>The Impact</strong>
+                                Mitigated compliance risks and strengthened internal controls through thorough audit procedures and policy implementation.
                             </div>
                         </div>
                     </div>
@@ -158,76 +778,180 @@
 
         <section id="skills" class="section-bg-alt">
             <div class="container">
-                <div class="section-header" data-aos="fade-up"><h2>Core Competencies</h2><div class="section-divider"></div></div>
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Core Competencies</h2>
+                    <p class="section-subheader">Combining financial expertise with technical acumen to drive business performance</p>
+                </div>
                 <div class="skills-grid">
                     <div class="skill-category" data-aos="fade-up">
-                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 1.5m1-1.5l1 1.5m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.5-1.5l-1-1.5m1 1.5l1-1.5M6 16.5h9.5l-1-1.5" /></svg></div>
-                        <h3>Financial Analysis & Planning</h3><ul><li>Financial Modeling & Valuation</li><li>Budgeting & Forecasting (FP&A)</li><li>Due Diligence & M&A Support</li><li>Working Capital Optimization</li></ul>
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Financial Analysis & Planning</h3>
+                        <ul>
+                            <li>Financial Modeling & Valuation</li>
+                            <li>Budgeting & Forecasting (FP&A)</li>
+                            <li>Due Diligence & M&A Support</li>
+                            <li>Working Capital Optimization</li>
+                        </ul>
                     </div>
                     <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-5.571 3m-5.571 0l5.571 3m0 0l5.571-3m0 0l4.179-2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3" /></svg></div>
-                        <h3>Technical Tools & Data</h3><ul><li>Advanced Excel (Macros, Pivot)</li><li>Power BI & Data Visualization</li><li>SQL for Data Extraction</li><li>Python (Pandas, NumPy)</li></ul>
+                        <i class="fas fa-cogs"></i>
+                        <h3>Technical Tools & Data</h3>
+                        <ul>
+                            <li>Advanced Excel (Macros, Pivot)</li>
+                            <li>Power BI & Data Visualization</li>
+                            <li>SQL for Data Extraction</li>
+                            <li>Python (Pandas, NumPy)</li>
+                        </ul>
                     </div>
                     <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon-wrapper"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" /></svg></div>
-                        <h3>Business Acumen</h3><ul><li>Process Improvement & Automation</li><li>IFRS & US GAAP Compliance</li><li>Strategic Planning & Decision Support</li><li>Vendor & Contract Management</li></ul>
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Business Acumen</h3>
+                        <ul>
+                            <li>Process Improvement & Automation</li>
+                            <li>IFRS & US GAAP Compliance</li>
+                            <li>Strategic Planning & Decision Support</li>
+                            <li>Vendor & Contract Management</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="testimonials"><!-- ... Testimonials content is the same ... --></section>
-        <section id="contact" class="section-bg-alt"><!-- ... Contact content is the same ... --></section>
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>What Leadership Says</h2>
+                    <p class="section-subheader">Recognition from colleagues and supervisors</p>
+                </div>
+                <div class="testimonial-carousel">
+                    <div class="testimonial-slide active">
+                        <p>Awarded Rising Star of the Year for leveraging data analytics to resolve critical financial leakage, significantly boosting strategic planning and profitability.</p>
+                        <span class="author">Genese Solution Pvt. Ltd. Leadership</span>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p>Received formal appreciation for visionary guidance and exemplary performance leading the enterprise division's finance department, driving key financial initiatives.</p>
+                        <span class="author">Worldlink Communications Ltd. Management</span>
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-bg-alt">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Get In Touch</h2>
+                    <p class="section-subheader">I am open to relocation and actively seeking challenging FP&A roles where I can drive measurable results. Let's connect.</p>
+                </div>
+                <form class="contact-form" action="#" method="POST" data-aos="fade-up" data-aos-delay="100">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+                <div class="social-links" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="#" aria-label="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer style="background: var(--primary); color: white; text-align: center; padding: 2rem 0;"><p>© 2024 Nima Sherpa</p></footer>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="year"></span> Nima Sherpa. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        AOS.init({ duration: 600, once: true, offset: 120 });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                easing: 'ease-out-quart'
+            });
 
-        // --- Animated Headline ---
-        const words = document.querySelectorAll('.headline-word');
-        words.forEach((word, index) => {
-            setTimeout(() => {
-                word.style.transform = 'translateY(0)';
-                word.style.opacity = '1';
-            }, 100 + (index * 100));
-        });
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
 
-        // --- Sticky Nav & Active Link Highlighting (No changes) ---
-        
-        // --- NEW: Vertical Ascension Journey Logic ---
-        const journeyLayout = document.querySelector('.journey-layout');
-        if (journeyLayout) {
-            const stations = document.querySelectorAll('.station');
-            const caseStudies = document.querySelectorAll('.journey-case-study');
-            const progressLine = document.getElementById('timeline-progress');
+            // Sticky navigation
+            const nav = document.getElementById('main-nav');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
 
-            const observer = new IntersectionObserver(entries => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Testimonial carousel
+            let slideIndex = 0;
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            function showSlides() {
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1; }
+                
+                slides[slideIndex-1].classList.add('active');
+                dots[slideIndex-1].classList.add('active');
+                
+                setTimeout(showSlides, 5000); // Change slide every 5 seconds
+            }
+            
+            function currentSlide(n) {
+                slideIndex = n;
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                slides[n].classList.add('active');
+                dots[n].classList.add('active');
+            }
+            
+            showSlides(); // Start the carousel
+
+            // Timeline item animation on scroll
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const timelineObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const targetId = entry.target.id; // e.g., "cs1"
-                        const correspondingStation = document.getElementById(targetId.replace('cs', 'station'));
-                        
-                        stations.forEach(s => s.classList.remove('active'));
-                        if (correspondingStation) {
-                            correspondingStation.classList.add('active');
-                            // Update progress line height
-                            const stationRect = correspondingStation.getBoundingClientRect();
-                            const containerRect = correspondingStation.parentElement.getBoundingClientRect();
-                            const progressHeight = stationRect.top - containerRect.top + (stationRect.height / 2);
-                            progressLine.style.height = `${progressHeight}px`;
-                        }
+                        entry.target.classList.add('visible');
                     }
                 });
-            }, { rootMargin: "-50% 0px -50% 0px" }); // Triggers when the element is in the vertical center of the viewport
-
-            caseStudies.forEach(cs => observer.observe(cs));
-        }
-
-        // --- Testimonial Carousel Logic (No changes) ---
-    });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                timelineObserver.observe(item);
+            });
+        });
     </script>
 </body>
 </html>
