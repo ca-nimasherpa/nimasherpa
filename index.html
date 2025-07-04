@@ -3,903 +3,893 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nima Sherpa | Chartered Accountant & CFA Candidate</title>
+  <title>Nima Sherpa | Finance & Investment Strategist</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #0A1A2F;  /* Deep navy */
-      --accent: #00E0C7;   /* Teal */
-      --secondary: #2A4B7C; /* Medium blue */
+      --primary: #0A1A2F;
+      --accent: #00E0C7;
+      --secondary: #2A4B7C;
       --light: #F5F9FC;
       --dark: #222;
       --gray: #6C757D;
     }
-    
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    
+
     body {
       font-family: 'Inter', sans-serif;
       color: var(--dark);
-      line-height: 1.7;
       background-color: var(--light);
+      line-height: 1.6;
     }
-    /* ===== NEW ANIMATIONS ===== */
-/* 3D Title Effect */
-h2 {
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-h2:hover {
-  transform: perspective(500px) rotateX(10deg);
-  text-shadow: 0 5px 15px rgba(10, 26, 47, 0.2);
-}
 
-/* Timeline Animation */
-.timeline-item {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-.timeline-item.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.timeline-item:hover::after {
-  transform: scale(1.2);
-  box-shadow: 0 0 0 4px rgba(0, 224, 199, 0.3);
-}
+    /* ===== HEADER & NAVIGATION ===== */
+    #main-header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.4s ease;
+    }
 
-/* Card Hover Effects */
-.highlight-card, .education-card, .skill-category {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-}
-.highlight-card:hover, .education-card:hover, .skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
-}
+    #main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem;
+      background: rgba(10, 26, 47, 0.9);
+      backdrop-filter: blur(10px);
+    }
 
-/* Skill Tags Animation */
-.skill-tag {
-  transition: all 0.3s ease;
-}
-.skill-tag:hover {
-  background: var(--accent);
-  color: white;
-  transform: translateY(-2px);
-}
+    #main-nav.scrolled {
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
 
-/* Summary Card Underline */
-.summary-card {
-  position: relative;
-}
-.summary-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--accent);
-  transform: scaleX(0);
-  transition: transform 0.6s ease;
-}
-.summary-card:hover::after {
-  transform: scaleX(1);
-}
-    /* Header Styles */
-    header {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    .nav-brand h1 {
+      font-family: 'Playfair Display', serif;
       color: white;
-      padding: 3rem 1.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      font-size: 1.5rem;
     }
-    
-    header::after {
-      content: "";
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), transparent);
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
     }
-    
-    .header-content {
-      max-width: 900px;
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--primary);
+      padding: 0.5rem 1.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    #mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    /* ===== HERO SECTION ===== */
+    #hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+
+    .hero-background-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      z-index: -1;
+    }
+
+    #hero-content {
+      text-align: center;
+      max-width: 800px;
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s 0.3s forwards;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .accent-text {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 3rem;
+    }
+
+    .hero-metrics {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .metric-item {
+      color: white;
+    }
+
+    .metric-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .metric-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--primary);
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 224, 199, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 224, 199, 0.4);
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    #about {
+      padding: 6rem 2rem;
+      max-width: 1200px;
       margin: 0 auto;
     }
-    
-    h1 {
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.5px;
-    }
-    
-    .tagline {
+      color: var(--primary);
+      margin-bottom: 1rem;
       display: inline-block;
-      background: rgba(255,255,255,0.1);
-      padding: 0.5rem 1.25rem;
-      border-radius: 50px;
-      margin: 1rem 0;
-      font-size: 0.95rem;
-      font-weight: 500;
     }
-    
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin: 1.5rem 0;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-    
-    .social-links a {
-      color: white;
-      font-size: 1.25rem;
-      transition: transform 0.3s;
-    }
-    
-    .social-links a:hover {
-      transform: translateY(-3px);
-      color: var(--accent);
-    }
-    
-    /* Main Content Styles */
-    .container {
-      max-width: 1000px;
+
+    .section-divider {
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
       margin: 0 auto;
-      padding: 0 1.5rem;
     }
-    
-    section {
-      margin: 3rem 0;
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
     }
-    
-    h2 {
-      font-family: 'Playfair Display', serif;
+
+    .about-content h3 {
+      font-size: 1.8rem;
       color: var(--primary);
       margin-bottom: 1.5rem;
-      position: relative;
-      display: inline-block;
     }
-    
-    h2::after {
-      content: "";
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 50px;
-      height: 3px;
-      background: var(--accent);
-    }
-    
-    .section-intro {
+
+    .about-content p {
+      margin-bottom: 1.5rem;
       font-size: 1.1rem;
-      margin-bottom: 2rem;
-      color: var(--dark);
+      line-height: 1.8;
     }
-    
-    /* Professional Summary */
-    .summary-card {
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      margin-bottom: 2rem;
-      border-left: 4px solid var(--accent);
-    }
-    
-    /* Career Highlights */
-    .highlights-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .highlight-card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    
-    .highlight-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    }
-    
-    .highlight-card h3 {
-      color: var(--primary);
-      margin-bottom: 0.75rem;
+
+    .skill-cloud {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-    
-    .highlight-card h3 i {
-      color: var(--accent);
+
+    .skill-tag {
+      background: rgba(0, 224, 199, 0.1);
+      color: var(--primary);
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 224, 199, 0.3);
     }
-    
-    /* Experience Section */
-    .timeline {
-      position: relative;
+
+    .skill-tag:hover {
+      background: var(--accent);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0, 224, 199, 0.2);
+    }
+
+    /* ===== EXPERIENCE SECTION ===== */
+    #experience {
+      padding: 6rem 2rem;
+      background: white;
+    }
+
+    .timeline-container {
       max-width: 900px;
-      margin: 3rem auto;
+      margin: 0 auto;
+      position: relative;
     }
-    
-    .timeline::after {
+
+    .timeline-container::before {
       content: '';
       position: absolute;
-      width: 2px;
-      background-color: var(--accent);
       top: 0;
       bottom: 0;
       left: 50%;
-      margin-left: -1px;
+      width: 2px;
+      background: var(--accent);
+      transform: translateX(-50%);
     }
-    
+
     .timeline-item {
-      padding: 10px 40px;
       position: relative;
-      width: 50%;
-      box-sizing: border-box;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
     }
-    
-    .timeline-item::after {
-      content: '';
+
+    .timeline-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-marker {
       position: absolute;
       width: 20px;
       height: 20px;
-      background-color: white;
+      background: white;
       border: 3px solid var(--accent);
       border-radius: 50%;
       top: 15px;
-      z-index: 1;
-    }
-    
-    .left {
-      left: 0;
-    }
-    
-    .right {
       left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      transition: all 0.3s ease;
     }
-    
-    .left::after {
-      right: -10px;
-    }
-    
-    .right::after {
-      left: -10px;
-    }
-    
+
     .timeline-content {
+      width: calc(50% - 40px);
       padding: 1.5rem;
-      background-color: white;
+      background: white;
       border-radius: 8px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
     }
-    
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      margin-right: auto;
+    }
+
     .timeline-content h3 {
       color: var(--primary);
       margin-bottom: 0.5rem;
     }
-    
-    .timeline-date {
-      color: var(--accent);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    
+
     .timeline-company {
-      color: var(--secondary);
+      color: var(--accent);
       font-weight: 600;
       margin-bottom: 1rem;
       display: block;
     }
-    
+
     .timeline-achievements {
       list-style-type: none;
     }
-    
+
     .timeline-achievements li {
-      margin-bottom: 0.5rem;
       position: relative;
       padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
     }
-    
+
     .timeline-achievements li::before {
       content: "▹";
       position: absolute;
       left: 0;
       color: var(--accent);
     }
-    
-    /* Education & Certifications */
-    .education-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
+
+    /* ===== PORTFOLIO SECTION ===== */
+    #portfolio {
+      padding: 6rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
-    
-    .education-card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-    
-    .education-card h3 {
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-    
-    .education-meta {
-      color: var(--gray);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    /* Skills Section */
-    .skills-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    
-    .skill-category {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    }
-    
-    .skill-category h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
+
+    .portfolio-filter {
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
     }
-    
-    .skill-category h3 i {
-      color: var(--accent);
-    }
-    
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .skill-tag {
-      background: rgba(0, 224, 199, 0.1);
-      color: var(--primary);
-      padding: 0.35rem 0.75rem;
+
+    .portfolio-filter button {
+      background: none;
+      border: none;
+      padding: 0.5rem 1.5rem;
       border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    
-    /* Enhanced Contact Section Styles */
-    .confirmation-message {
-      display: none;
+
+    .portfolio-filter button.active {
+      background: var(--accent);
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-item {
       background: white;
       border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+      transition: all 0.5s ease;
+      position: relative;
+      height: 300px;
+    }
+
+    .project-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .project-image {
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(10, 26, 47, 0.9), transparent);
+      color: white;
       padding: 2rem;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      margin-top: 2rem;
-      animation: fadeIn 0.6s ease-out;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
     }
-    
-    .confirmation-message i {
-      font-size: 3rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      animation: bounce 1s infinite alternate;
+
+    .project-item:hover .project-overlay {
+      transform: translateY(0);
     }
-    
-    .confirmation-message h3 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
-    
-    .confirmation-message p {
-      color: var(--dark);
-      margin-bottom: 1.5rem;
-    }
-    
-    .confirmation-message .btn {
+
+    .project-link {
+      color: white;
+      text-decoration: none;
+      display: inline-block;
       margin-top: 1rem;
+      border-bottom: 2px solid var(--accent);
     }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    /* ===== CONTACT SECTION ===== */
+    #contact {
+      padding: 6rem 2rem;
+      background: white;
     }
-    
-    @keyframes bounce {
-      from { transform: translateY(0); }
-      to { transform: translateY(-10px); }
+
+    .contact-container {
+      max-width: 600px;
+      margin: 0 auto;
     }
-    
-    .form-group .error {
-      color: #e74c3c;
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-group label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: var(--gray);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .form-group input:focus + label,
+    .form-group textarea:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group textarea:not(:placeholder-shown) + label {
+      top: -0.5rem;
+      left: 0.8rem;
       font-size: 0.8rem;
-      margin-top: 0.25rem;
-      display: none;
+      background: white;
+      padding: 0 0.2rem;
+      color: var(--accent);
     }
-    
-    .form-group.error input,
-    .form-group.error textarea {
-      border-color: #e74c3c;
+
+    .submit-btn {
+      background: var(--accent);
+      color: var(--primary);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
-    
-    /* Loading spinner */
-    .spinner {
-      display: none;
+
+    .submit-spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 20px;
       height: 20px;
       border: 3px solid rgba(255,255,255,0.3);
-      border-radius: 50%;
       border-top-color: white;
-      animation: spin 1s ease-in-out infinite;
-      margin-left: 10px;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      opacity: 0;
     }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+
+    .submit-success {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
     }
-    
-    .submit-btn .btn-text {
-      display: inline-block;
-    }
-    
+
     .submit-btn.sending .btn-text {
-      display: none;
+      opacity: 0;
     }
-    
-    .submit-btn.sending .spinner {
-      display: inline-block;
+
+    .submit-btn.sending .submit-spinner {
+      opacity: 1;
+    }
+
+    .submit-btn.success .submit-spinner {
+      opacity: 0;
+    }
+
+    .submit-btn.success .submit-success {
+      opacity: 1;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      #mobile-toggle {
+        display: block;
+      }
+
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-container::before {
+        left: 30px;
+      }
+
+      .timeline-item {
+        padding-left: 70px;
+      }
+
+      .timeline-content {
+        width: 100%;
+      }
+
+      .timeline-marker {
+        left: 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <h1>Nima Sherpa</h1>
-      <div class="tagline">Chartered Accountant | CFA Level III Candidate | Financial Strategist</div>
-      
-      <!--<div class="contact-info">
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <span>Fairfield, IA (Open to relocation)</span>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-phone"></i>
-          <span>+1 (641) 233-9702</span>
-        </div>
-      </div> -->
-      
-      <div class="social-links">
-        <a href="https://www.linkedin.com/in/nimaosherpa/" target="_blank" aria-label="LinkedIn">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="#" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="#" aria-label="Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
+  <!-- Header -->
+  <header id="main-header">
+    <nav id="main-nav" aria-label="Main navigation">
+      <div class="nav-brand">
+        <h1>Nima Sherpa</h1>
       </div>
-    </div>
+      <button id="mobile-toggle" aria-expanded="false" aria-label="Menu">
+        <span class="hamburger"></span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+    </nav>
   </header>
-  
-  <main class="container">
-    <!-- Professional Summary -->
-    <section id="summary">
-      <h2>Professional Summary</h2>
-      <div class="summary-card">
-        <p>Dynamic Chartered Accountant (US CPA Equivalent) and CFA® Level III candidate with over 6 years of progressive experience in Corporate finance, Financial Planning & Analysis (FP&A), and process optimization. Proven expertise in directing complex due diligence and delivering data-driven insights that drive growth and profitability. Successfully managed financial operations for $10M+ divisions, achieving a 30% faster month-end close and unlocking $600K in working capital.</p>
-        <p>Seeking to leverage advanced analytical capabilities, financial modeling expertise, and strategic insights to drive measurable results in a challenging FP&A role.</p>
-      </div>
-    </section>
-    
-    <!-- Career Highlights -->
-    <section id="highlights">
-      <h2>Career Highlights</h2>
-      <div class="highlights-container">
-        <div class="highlight-card">
-          <h3><i class="fas fa-trophy"></i> Rising Star Award</h3>
-          <p>Awarded "Rising Star of the Year" at Genese Solution Pvt. Ltd. within 8 months for leveraging data analytics to resolve critical financial leakage, significantly boosting strategic planning and profitability.</p>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="hero-background-layer"></div>
+    <div id="hero-content">
+      <h1 class="hero-title">Strategic <span class="accent-text">Finance</span> Solutions</h1>
+      <p class="hero-subtitle">Data-driven investment strategies for sustainable growth</p>
+      
+      <div class="hero-metrics">
+        <div class="metric-item" data-value="6" data-suffix="+">
+          <span class="metric-number">0</span>
+          <span class="metric-label">Years Experience</span>
         </div>
-        <div class="highlight-card">
-          <h3><i class="fas fa-award"></i> Executive Recognition</h3>
-          <p>Received formal appreciation from Worldlink Communications Ltd. for visionary guidance and exemplary performance leading the $10M+ enterprise division's finance and logistic department.</p>
+        <div class="metric-item" data-value="10" data-suffix="M+">
+          <span class="metric-number">0</span>
+          <span class="metric-label">Assets Managed</span>
         </div>
       </div>
-    </section>
-    
-    <!-- Professional Experience -->
-    <section id="experience">
-      <h2>Professional Experience</h2>
-      <div class="timeline">
-        <!-- Worldlink -->
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <span class="timeline-date">Nov 2023 - Jan 2025</span>
-            <span class="timeline-company">Worldlink Communications Ltd.</span>
-            <h3>Assistant Manager - Finance</h3>
-            <ul class="timeline-achievements">
-              <li>Spearheaded cross-functional process implementation across customer acquisition, billing, and collections</li>
-              <li>Developed annual operating plans, budgeting, and forecasting for $10M enterprise division</li>
-              <li>Optimized working capital, decreasing Days Sales Outstanding by 15% and increasing cash flow by $600K</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- Genese -->
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <span class="timeline-date">Aug 2022 - Nov 2023</span>
-            <span class="timeline-company">Genese Solution Pvt. Ltd.</span>
-            <h3>Team Lead - Finance</h3>
-            <ul class="timeline-achievements">
-              <li>Managed product licensing and vendor contracts, achieving 10% cost savings</li>
-              <li>Led strategic financial planning for $5M business guiding capital allocation</li>
-              <li>Strengthened internal controls, improving financial statement accuracy</li>
-            </ul>
-          </div>
-        </div>
-        
-        <!-- B&A Associates -->
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <span class="timeline-date">Sep 2021 - Aug 2022</span>
-            <span class="timeline-company">B. & A. Associates Chartered Accountants</span>
-            <h3>Audit Officer</h3>
-            <ul class="timeline-achievements">
-              <li>Directed financial due diligence on new projects and investments</li>
-              <li>Executed audits using IFRS and data analytics, identifying 20+ control weaknesses</li>
-              <li>Supported executive management with budget and variance analysis</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Education -->
-    <section id="education">
-      <h2>Education & Certifications</h2>
-      <div class="education-container">
-        <div class="education-card">
-          <h3>MBA (ERP & Business Analytics)</h3>
-          <div class="education-meta">Maharishi International University | Expected 2027</div>
-        </div>
-        <div class="education-card">
-          <h3>Chartered Financial Analyst®</h3>
-          <div class="education-meta">CFA Institute | Level III Candidate</div>
-        </div>
-        <div class="education-card">
-          <h3>Chartered Accountant (CA)</h3>
-          <div class="education-meta">Institute of Chartered Accountant of India | 2017-2021</div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-container">
-        <div class="skill-category">
-          <h3><i class="fas fa-chart-line"></i> Financial Analysis</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Financial Modeling</span>
-            <span class="skill-tag">Budgeting & Forecasting</span>
-            <span class="skill-tag">Valuation (DCF)</span>
-            <span class="skill-tag">Due Diligence</span>
-            <span class="skill-tag">Working Capital Optimization</span>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <h3><i class="fas fa-laptop-code"></i> Technical Tools</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">Advanced Excel</span>
-            <span class="skill-tag">Power BI</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">ERP Systems</span>
-          </div>
-        </div>
-        
-        <div class="skill-category">
-          <h3><i class="fas fa-balance-scale"></i> Accounting & Compliance</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">IFRS</span>
-            <span class="skill-tag">US GAAP</span>
-            <span class="skill-tag">Financial Reporting</span>
-            <span class="skill-tag">Audit</span>
-            <span class="skill-tag">Risk Management</span>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <!-- Contact Us Section -->
-<section id="contact">
-  <h2>Contact Me</h2>
-  <div class="contact-section">
-    <p>Interested in discussing opportunities or learning more about my experience? Feel free to reach out:</p>
-    
-    <form id="contactForm" action="https://formspree.io/f/xvgryjvz" method="POST">
-      <div class="contact-form">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-          <div class="error">Please enter your name</div>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-          <div class="error">Please enter a valid email</div>
-        </div>
-        
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" required>
-          <div class="error">Please enter a subject</div>
-        </div>
-        
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
-          <div class="error">Please enter your message</div>
-        </div>
-        
-        <div class="form-group" style="text-align: right;">
-          <button type="submit" class="submit-btn">
-            <span class="btn-text">Send Message</span>
-            <span class="spinner"></span>
-          </button>
-        </div>
-      </div>
-    </form>
-    
-    <div id="confirmationMessage" class="confirmation-message">
-      <i class="fas fa-check-circle"></i>
-      <h3>Thank You!</h3>
-      <p>Your message has been sent successfully. I'll get back to you soon.</p>
-      <a href="#" class="btn" onclick="resetForm()">Send Another Message</a>
+      
+      <a href="#contact" class="cta-button">Schedule Consultation</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<style>
-  /* Contact Form Styles */
-  .contact-section {
-    background: white;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  }
-  
-  .contact-form {
-    display: grid;
-    gap: 1.5rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--primary);
-  }
-  
-  input, textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: 'Inter', sans-serif;
-  }
-  
-  textarea {
-    min-height: 120px;
-  }
-  
-  /* Confirmation Message */
-  .confirmation-message {
-    display: none;
-    text-align: center;
-    padding: 2rem;
-  }
-  
-  .confirmation-message i {
-    font-size: 3rem;
-    color: var(--accent);
-    margin-bottom: 1rem;
-  }
-  
-  .confirmation-message h3 {
-    color: var(--primary);
-    margin-bottom: 1rem;
-  }
-  
-  /* Submit Button */
-  .submit-btn {
-    background: var(--accent);
-    color: var(--primary);
-    border: none;
-    padding: 0.75rem 1.75rem;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  
-  /* Loading Spinner */
-  .spinner {
-    display: none;
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(255,255,255,0.3);
-    border-radius: 50%;
-    border-top-color: white;
-    animation: spin 1s ease-in-out infinite;
-    margin-left: 10px;
-  }
-  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  .submit-btn .btn-text {
-    display: inline-block;
-  }
-  
-  .submit-btn.sending .btn-text {
-    display: none;
-  }
-  
-  .submit-btn.sending .spinner {
-    display: inline-block;
-  }
-</style>
+  <!-- About Section -->
+  <section id="about" class="scroll-section">
+    <div class="section-header">
+      <h2>Professional Profile</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="about-grid">
+      <div class="about-content">
+        <h3>Strategic Approach</h3>
+        <p>As a Chartered Accountant and CFA Level III candidate with over 6 years of experience, I combine rigorous financial analysis with innovative market insights to deliver exceptional results.</p>
+        <p>My expertise spans corporate finance, FP&A, and process optimization, with a proven track record of improving financial operations and driving profitability.</p>
+      </div>
+      
+      <div class="about-visual">
+        <div class="skill-cloud">
+          <span class="skill-tag">Financial Modeling</span>
+          <span class="skill-tag">Portfolio Optimization</span>
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">Process Improvement</span>
+          <span class="skill-tag">Risk Management</span>
+          <span class="skill-tag">Strategic Planning</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+  <!-- Experience Section -->
+  <section id="experience" class="scroll-section">
+    <div class="section-header">
+      <h2>Career Journey</h2>
+      <div class="section-divider"></div>
+    </div>
     
-    // Validate form
-    if (!validateForm()) {
-      return;
-    }
-    
-    // Show loading state
-    const submitBtn = document.querySelector('.submit-btn');
-    submitBtn.classList.add('sending');
-    submitBtn.disabled = true;
-    
-    // Simulate form submission
-    setTimeout(() => {
-      // Hide form, show confirmation
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('confirmationMessage').style.display = 'block';
+    <div class="timeline-container">
+      <div class="timeline-item" data-year="2023">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Assistant Manager - Finance</h3>
+          <div class="timeline-company">Worldlink Communications Ltd.</div>
+          <ul class="timeline-achievements">
+            <li>Spearheaded cross-functional process implementation</li>
+            <li>Developed annual operating plans for $10M enterprise division</li>
+            <li>Optimized working capital, increasing cash flow by $600K</li>
+          </ul>
+        </div>
+      </div>
       
-      // Reset button state
-      submitBtn.classList.remove('sending');
-      submitBtn.disabled = false;
-      
-      // In production, you would actually submit the form here:
-      // e.target.submit();
-    }, 1500);
-  });
-  
-  function validateForm() {
-    let isValid = true;
-    const formGroups = document.querySelectorAll('.form-group');
+      <div class="timeline-item" data-year="2022">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <h3>Team Lead - Finance</h3>
+          <div class="timeline-company">Genese Solution Pvt. Ltd.</div>
+          <ul class="timeline-achievements">
+            <li>Managed product licensing and vendor contracts</li>
+            <li>Led strategic financial planning for $5M business</li>
+            <li>Achieved 10% cost savings through pricing strategies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="scroll-section">
+    <div class="section-header">
+      <h2>Selected Projects</h2>
+      <div class="section-divider"></div>
+    </div>
     
-    formGroups.forEach(group => {
-      const input = group.querySelector('input, textarea');
-      const error = group.querySelector('.error');
+    <div class="portfolio-filter">
+      <button data-filter="all" class="active">All</button>
+      <button data-filter="financial-analysis">Financial Analysis</button>
+      <button data-filter="process-improvement">Process Improvement</button>
+    </div>
+    
+    <div class="project-grid" id="project-grid">
+      <article class="project-item" data-category="financial-analysis">
+        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+        <div class="project-overlay">
+          <h3>Portfolio Optimization Strategy</h3>
+          <p>Developed dynamic asset allocation model improving risk-adjusted returns by 18%</p>
+          <a href="#" class="project-link">View Case Study</a>
+        </div>
+      </article>
       
-      if (!input.value.trim()) {
-        group.classList.add('error');
-        error.style.display = 'block';
-        isValid = false;
-      } else if (input.type === 'email' && !validateEmail(input.value)) {
-        group.classList.add('error');
-        error.textContent = 'Please enter a valid email';
-        error.style.display = 'block';
-        isValid = false;
+      <article class="project-item" data-category="process-improvement">
+        <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')"></div>
+        <div class="project-overlay">
+          <h3>FP&A Process Automation</h3>
+          <p>Implemented Python-based forecasting tool reducing monthly close time by 40%</p>
+          <a href="#" class="project-link">View Case Study</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="scroll-section">
+    <div class="section-header">
+      <h2>Get In Touch</h2>
+      <div class="section-divider"></div>
+    </div>
+    
+    <div class="contact-container">
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder=" " required>
+          <label for="name">Name</label>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder=" " required>
+          <label for="email">Email</label>
+        </div>
+        
+        <div class="form-group">
+          <input type="text" id="subject" name="subject" placeholder=" " required>
+          <label for="subject">Subject</label>
+        </div>
+        
+        <div class="form-group">
+          <textarea id="message" name="message" placeholder=" " required></textarea>
+          <label for="message">Message</label>
+        </div>
+        
+        <button type="submit" class="submit-btn">
+          <span class="btn-text">Send Message</span>
+          <span class="submit-spinner"></span>
+          <span class="submit-success">
+            <i class="fas fa-check"></i>
+          </span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    // Sticky Navigation
+    const header = document.getElementById('main-header');
+    const nav = document.getElementById('main-nav');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
       } else {
-        group.classList.remove('error');
-        error.style.display = 'none';
+        nav.classList.remove('scrolled');
       }
     });
+
+    // Mobile Menu Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navLinks = document.querySelector('.nav-links');
     
-    return isValid;
-  }
-  
-  function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  }
-  
-  function resetForm() {
-    document.getElementById('contactForm').reset();
-    document.getElementById('contactForm').style.display = 'block';
-    document.getElementById('confirmationMessage').style.display = 'none';
-    
-    // Remove any error states
-    document.querySelectorAll('.form-group').forEach(group => {
-      group.classList.remove('error');
-      group.querySelector('.error').style.display = 'none';
+    mobileToggle.addEventListener('click', () => {
+      const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', !isExpanded);
+      navLinks.style.display = isExpanded ? 'none' : 'flex';
     });
+
+    // Scroll Animations
+    const animateOnScroll = () => {
+      const elements = document.querySelectorAll('.scroll-section, .timeline-item');
+      
+      elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          element.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+
+    // Project Filtering
+    const filterButtons = document.querySelectorAll('.portfolio-filter button');
+    const projectItems = document.querySelectorAll('.project-item');
     
-    return false;
-  }
-</script>
-<script>
-// Scroll Animations
-function checkVisibility() {
-  document.querySelectorAll('.timeline-item, .highlight-card, .education-card').forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      el.classList.add('visible');
-    }
-  });
-}
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filterValue = button.getAttribute('data-filter');
+        
+        projectItems.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
 
-// Initialize
-window.addEventListener('load', checkVisibility);
-window.addEventListener('scroll', checkVisibility);
+    // Metric Counters
+    const metricItems = document.querySelectorAll('.metric-item');
+    
+    metricItems.forEach(item => {
+      const target = +item.getAttribute('data-value');
+      const suffix = item.getAttribute('data-suffix') || '';
+      const duration = 2000; // Animation duration in ms
+      const start = 0;
+      const increment = target / (duration / 16); // 60fps
+      let current = start;
+      
+      const metricNumber = item.querySelector('.metric-number');
+      
+      const animate = () => {
+        current += increment;
+        if (current < target) {
+          metricNumber.textContent = Math.floor(current) + suffix;
+          requestAnimationFrame(animate);
+        } else {
+          metricNumber.textContent = target + suffix;
+        }
+      };
+      
+      // Start animation when metric is in view
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          animate();
+          observer.unobserve(item);
+        }
+      });
+      
+      observer.observe(item);
+    });
 
-// 3D Card Tilt (Optional)
-document.querySelectorAll('.highlight-card, .education-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-    card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translateY(-5px)`;
-  });
-  
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = 'rotateY(0) rotateX(0)';
-  });
-});
-</script>
+    // Form Submission
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.querySelector('.submit-btn');
+    
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Show loading state
+      submitBtn.classList.add('sending');
+      
+      // Simulate form submission (replace with actual fetch in production)
+      setTimeout(() => {
+        submitBtn.classList.remove('sending');
+        submitBtn.classList.add('success');
+        
+        // Reset form
+        setTimeout(() => {
+          contactForm.reset();
+          submitBtn.classList.remove('success');
+        }, 2000);
+      }, 1500);
+    });
+  </script>
 </body>
 </html>
