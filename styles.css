@@ -1,0 +1,181 @@
+/* Basic Setup & Variables */
+:root {
+    --primary: #0A1A2F;
+    --accent: #00E0C7;
+    --secondary: #2A4B7C;
+    --light: #F5F9FC;
+    --dark: #222;
+    --gray: #6C757D;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif; /* You'll need to link Google Fonts in your HTML */
+    color: var(--dark);
+    background-color: var(--light);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Section Styling */
+section {
+    padding: 6rem 0;
+}
+.section-bg-alt { background-color: white; }
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+.section-header h2 {
+    font-family: 'Playfair Display', serif; /* Link this font too */
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+.section-divider {
+    width: 80px;
+    height: 4px;
+    background: var(--accent);
+    margin: 0 auto;
+}
+
+/* Header & Nav */
+#main-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.4s ease;
+}
+#main-nav {
+    background: rgba(10, 26, 47, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
+}
+#main-nav.scrolled {
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+.nav-brand h1 {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 1.5rem;
+}
+#main-menu ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    align-items: center;
+}
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem 0;
+}
+a[data-animation="underline-reveal"]::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+a[data-animation="underline-reveal"]:hover::after { width: 100%; }
+.nav-cta {
+    background: var(--accent);
+    color: var(--primary) !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+.nav-cta:hover { transform: translateY(-2px); }
+#mobile-nav-toggle { display: none; } /* Add styles for mobile later */
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+.accent-text { color: var(--accent); }
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero-metrics {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+.metric-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: block;
+}
+.metric-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+.cta-button {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--primary);
+    padding: 1rem 2.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 224, 199, 0.3);
+}
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 224, 199, 0.4);
+}
+
+/* Add more styles for About, Portfolio, Contact etc. as needed */
+/* Basic AOS animation styles */
+[data-aos="fade-up"] {
+    transform: translateY(20px);
+    opacity: 0;
+    transition-property: transform, opacity;
+}
+[data-aos="fade-up"].aos-animate {
+    transform: translateY(0);
+    opacity: 1;
+}
