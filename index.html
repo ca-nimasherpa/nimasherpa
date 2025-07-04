@@ -3,40 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title is crucial for credibility -->
     <title>Nima Sherpa | Finance & Investment Strategist</title>
     
-    <!-- NOTE: CSS and JS would be in external files for production. Styles/scripts from original are assumed to be loaded. -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Accessibility & SEO: Added a meaningful description -->
+    <!-- Meta Description for SEO -->
     <meta name="description" content="Nima Sherpa, a Chartered Accountant and finance professional specializing in data-driven investment strategies, portfolio optimization, and corporate finance for sustainable growth.">
+
+    <!-- External Libraries: Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- External Library: Animate on Scroll (AOS) Stylesheet -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- === EMBEDDED CSS === -->
+    <!-- Normally, this would be in a separate 'styles.css' file -->
+    <style>
+        /* Basic Setup & Variables */
+        :root {
+            --primary: #0A1A2F;
+            --accent: #00E0C7;
+            --secondary: #2A4B7C;
+            --light: #F5F9FC;
+            --dark: #222;
+            --gray: #6C757D;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+            overflow: hidden; /* Prevents horizontal scroll from animations */
+        }
+        .section-bg-alt { background-color: white; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 0 auto;
+        }
+
+        /* Header & Nav */
+        #main-header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+        #main-nav {
+            background: rgba(10, 26, 47, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            padding: 1.5rem 0;
+            transition: padding 0.4s ease, box-shadow 0.4s ease;
+        }
+        #main-nav.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .nav-brand { text-decoration: none; }
+        .nav-brand h1 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+            font-size: 1.5rem;
+        }
+        #main-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            font-weight: 600;
+        }
+        a[data-animation="underline-reveal"]::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        a[data-animation="underline-reveal"]:hover::after { width: 100%; }
+        .nav-cta {
+            background: var(--accent);
+            color: var(--primary) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        .nav-cta:hover { transform: translateY(-2px); }
+        #mobile-nav-toggle { display: none; }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding-top: 80px; /* Offset for fixed header */
+        }
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .accent-text { color: var(--accent); }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .hero-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            color: var(--accent);
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary);
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 224, 199, 0.3);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 224, 199, 0.4);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        #professional-headshot img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .about-narrative h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .about-narrative p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+        .skill-set { margin-top: 2rem; }
+        .skill-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .skill-tag {
+            background: rgba(0, 224, 199, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 224, 199, 0.3);
+            cursor: pointer;
+        }
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 224, 199, 0.2);
+        }
+        
+        /* Portfolio Section */
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .project-item-link {
+            text-decoration: none;
+            color: inherit;
+            display: block; /* Important for grid layout */
+        }
+        .project-item {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+            transition: all 0.4s ease;
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+        .project-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .project-image-wrapper {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .project-image-wrapper img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .project-item:hover .project-image-wrapper img {
+            transform: scale(1.05);
+        }
+        .project-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(10, 26, 47, 0.95), transparent);
+            color: white;
+            transform: translateY(30%);
+            transition: transform 0.4s ease;
+        }
+        .project-item:hover .project-overlay {
+            transform: translateY(0);
+        }
+        .project-overlay h3 { margin-bottom: 0.5rem; }
+        .project-metric {
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            margin-bottom: 1rem;
+        }
+        .project-item:hover .project-metric {
+            opacity: 1;
+        }
+        .metric-value { font-weight: 700; color: var(--accent); }
+        .project-cta {
+            font-weight: 600;
+            color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: inline-block;
+        }
+        .project-item:hover .project-cta {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact-form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        .form-group label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            color: var(--gray);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .form-group input:focus + label,
+        .form-group textarea:focus + label,
+        .form-group input:not(:placeholder-shown) + label,
+        .form-group textarea:not(:placeholder-shown) + label {
+            top: -0.6rem;
+            left: 0.8rem;
+            font-size: 0.8rem;
+            background: white;
+            padding: 0 0.4rem;
+            color: var(--accent);
+        }
+        .submit-btn {
+            width: 100%;
+            background: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            background: #00c7b1;
+        }
+
+        /* Footer */
+        #main-footer {
+            background: var(--primary);
+            color: rgba(255,255,255,0.7);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Visually Hidden class for accessibility */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #main-menu { display: none; } /* Hide desktop menu */
+            #mobile-nav-toggle { display: block; } /* Show hamburger icon */
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            #professional-headshot {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            .contact-form-wrapper { padding: 1.5rem; }
+        }
+    </style>
 </head>
 <body>
 
     <!-- =================================================================
-    STEP 1: HEADER & NAVIGATION - The First Impression Refined
+    HEADER & NAVIGATION
     ================================================================== -->
     <header id="main-header">
         <nav id="main-nav" aria-label="Main navigation">
             <div class="nav-container">
                 <a href="#hero" class="nav-brand" aria-label="Nima Sherpa, Home">
-                    <!-- Unique ID for load-in animation -->
                     <h1 id="brand-logo">Nima Sherpa</h1>
                 </a>
 
-                <!-- Mobile Navigation Toggle: Enhanced with ARIA for accessibility -->
-                <button id="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-menu">
+                <button id="mobile-nav-toggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-menu" class="visually-hidden">
                     <span class="hamburger-icon"></span>
                 </button>
 
-                <!-- Main Menu: Structured for desktop and mobile slide-out -->
                 <div id="main-menu">
                     <ul class="nav-links">
                         <li><a href="#about" data-animation="underline-reveal">About</a></li>
                         <li><a href="#experience" data-animation="underline-reveal">Experience</a></li>
                         <li><a href="#portfolio" data-animation="underline-reveal">Portfolio</a></li>
-                        <li><a href="#insights" data-animation="underline-reveal">Insights</a></li>
                         <li><a href="#contact" class="nav-cta" data-animation="button-grow">Contact</a></li>
                     </ul>
                 </div>
@@ -47,45 +466,36 @@
     <main>
 
         <!-- =================================================================
-        STEP 2: HERO SECTION - The Grand Entrance
+        HERO SECTION
         ================================================================== -->
         <section id="hero">
-            <!-- Multi-layered background structure for parallax/animation -->
-            <div class="hero-background">
-                <div class="hero-background-layer-1" id="hero-gradient-bg"></div>
-                <div class="hero-background-layer-2" id="hero-particles"></div> <!-- For particle.js or similar -->
-                <div class="hero-background-layer-3" id="hero-vignette"></div>
-            </div>
-
             <div id="hero-content" class="container">
-                <!-- Wrapper for staggered text animation -->
-                <div class="hero-text-animate">
+                <div class="hero-text-animate" data-aos="fade-up">
                     <h1 class="hero-title">Strategic Finance & <span class="accent-text">Investment</span> Solutions</h1>
                     <p class="hero-subtitle">Driving sustainable growth through data-driven insights and meticulous analysis.</p>
                 </div>
                 
-                <!-- Animated key metrics display -->
-                <div class="hero-metrics">
-                    <div class="metric-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="hero-metrics" data-aos="fade-up" data-aos-delay="200">
+                    <div class="metric-item">
                         <span class="metric-number" data-target="6" data-suffix="+">0</span>
                         <span class="metric-label">Years of Experience</span>
                     </div>
-                    <div class="metric-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="metric-item">
                         <span class="metric-number" data-target="10" data-suffix="M+">0</span>
                         <span class="metric-label">Assets Managed</span>
                     </div>
-                    <div class="metric-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="metric-item">
                         <span class="metric-number" data-target="18" data-suffix="%">0</span>
                         <span class="metric-label">Avg. Portfolio Growth</span>
                     </div>
                 </div>
 
-                <a href="#contact" id="hero-cta" class="cta-button">Schedule a Consultation</a>
+                <a href="#contact" id="hero-cta" class="cta-button" data-aos="fade-up" data-aos-delay="400">Schedule a Consultation</a>
             </div>
         </section>
 
         <!-- =================================================================
-        STEP 3: ABOUT ME/BIO - The Story Unfolds
+        ABOUT ME/BIO
         ================================================================== -->
         <section id="about">
             <div class="container">
@@ -95,28 +505,24 @@
                 </div>
 
                 <div class="about-grid">
-                    <!-- Professional Headshot with animated reveal container -->
-                    <figure id="professional-headshot" data-aos="fade-right">
-                        <img src="https://via.placeholder.com/500x600" alt="Professional headshot of Nima Sherpa" loading="lazy">
-                        <div class="image-mask"></div>
+                    <figure id="professional-headshot" data-aos="fade-right" data-aos-duration="1000">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1887&auto=format&fit=crop" alt="Professional headshot of Nima Sherpa" loading="lazy">
                     </figure>
 
-                    <!-- Narrative broken into digestible, animatable blocks -->
-                    <article class="about-narrative" data-aos="fade-left" data-aos-delay="200">
+                    <article class="about-narrative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                         <h3>Combining Rigor with Innovation</h3>
                         <p>As a Chartered Accountant and CFA Level III candidate, I bring over six years of experience in synthesizing rigorous financial analysis with innovative market insights. My approach is rooted in a deep understanding of corporate finance, FP&A, and process optimization.</p>
                         <p>I have a proven track record of transforming financial operations, driving profitability, and delivering exceptional, data-backed results for my clients and partners.</p>
                         
-                        <!-- Interactive Skill Set -->
                         <div class="skill-set">
                             <h4>Core Competencies:</h4>
                             <div class="skill-cloud">
-                                <span class="skill-tag" data-skill="Financial Modeling"><span class="skill-name">Financial Modeling</span><span class="skill-overlay"></span></span>
-                                <span class="skill-tag" data-skill="Portfolio Optimization"><span class="skill-name">Portfolio Optimization</span><span class="skill-overlay"></span></span>
-                                <span class="skill-tag" data-skill="Data Analysis"><span class="skill-name">Data Analysis</span><span class="skill-overlay"></span></span>
-                                <span class="skill-tag" data-skill="Process Improvement"><span class="skill-name">Process Improvement</span><span class="skill-overlay"></span></span>
-                                <span class="skill-tag" data-skill="Risk Management"><span class="skill-name">Risk Management</span><span class="skill-overlay"></span></span>
-                                <span class="skill-tag" data-skill="Strategic Planning"><span class="skill-name">Strategic Planning</span><span class="skill-overlay"></span></span>
+                                <span class="skill-tag">Financial Modeling</span>
+                                <span class="skill-tag">Portfolio Optimization</span>
+                                <span class="skill-tag">Data Analysis</span>
+                                <span class="skill-tag">Process Improvement</span>
+                                <span class="skill-tag">Risk Management</span>
+                                <span class="skill-tag">Strategic Planning</span>
                             </div>
                         </div>
                     </article>
@@ -125,166 +531,80 @@
         </section>
 
         <!-- =================================================================
-        STEP 4: EXPERIENCE - Interactive Demonstration (Timeline)
+        PORTFOLIO/CASE STUDIES
         ================================================================== -->
-        <section id="experience" class="section-bg-alt">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <h2>Career Journey</h2>
-                    <div class="section-divider"></div>
-                </div>
-
-                <div class="timeline-container">
-                    <!-- Timeline items with data attributes for animation on scroll -->
-                    <div class="timeline-item" data-aos="fade-up">
-                        <div class="timeline-marker" data-year="2023"></div>
-                        <div class="timeline-content">
-                            <h3>Assistant Manager - Finance</h3>
-                            <span class="timeline-company">Worldlink Communications Ltd.</span>
-                            <ul class="timeline-achievements">
-                                <li>Spearheaded cross-functional process implementation.</li>
-                                <li>Developed annual operating plans for a $10M enterprise division.</li>
-                                <li>Optimized working capital, increasing cash flow by over $600K.</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item" data-aos="fade-up">
-                        <div class="timeline-marker" data-year="2022"></div>
-                        <div class="timeline-content">
-                            <h3>Team Lead - Finance</h3>
-                            <span class="timeline-company">Genese Solution Pvt. Ltd.</span>
-                            <ul class="timeline-achievements">
-                                <li>Managed product licensing and vendor contracts for a $5M portfolio.</li>
-                                <li>Achieved 10% cost savings through strategic pricing analysis.</li>
-                                <li>Led the financial planning and forecasting cycle.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- =================================================================
-        STEP 4.5: PORTFOLIO/CASE STUDIES - Interactive Demonstration
-        ================================================================== -->
-        <section id="portfolio">
+        <section id="portfolio" class="section-bg-alt">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>Selected Case Studies</h2>
                     <div class="section-divider"></div>
                 </div>
                 
-                <!-- Filter controls for JS-driven animated filtering -->
-                <div id="portfolio-filters" class="portfolio-filter" data-aos="fade-up">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="analysis">Financial Analysis</button>
-                    <button class="filter-btn" data-filter="process">Process Improvement</button>
-                    <button class="filter-btn" data-filter="strategy">Strategy</button>
-                </div>
-
                 <div id="project-grid" class="project-grid">
-                    <!-- Project item structured for modal/page link and hover effects -->
-                    <a href="#project-modal-1" class="project-item-link" aria-label="View Case Study: Portfolio Optimization Strategy">
-                        <article class="project-item" data-category="strategy" data-aos="fade-up">
+                    <a href="#" class="project-item-link" aria-label="View Case Study: Portfolio Optimization Strategy">
+                        <article class="project-item" data-aos="fade-up">
                             <div class="project-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80" alt="Abstract chart showing portfolio data" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" alt="Abstract chart showing portfolio data" loading="lazy">
                             </div>
                             <div class="project-overlay">
-                                <span class="project-category">Strategy</span>
                                 <h3>Portfolio Optimization</h3>
                                 <div class="project-metric">
                                     <span class="metric-value">+18%</span>
-                                    <span>Risk-Adjusted Return</span>
+                                    <span> Risk-Adjusted Return</span>
                                 </div>
                                 <span class="project-cta">View Case Study <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </article>
                     </a>
                     
-                    <a href="#project-modal-2" class="project-item-link" aria-label="View Case Study: FP&A Process Automation">
-                        <article class="project-item" data-category="process" data-aos="fade-up" data-aos-delay="100">
+                    <a href="#" class="project-item-link" aria-label="View Case Study: FP&A Process Automation">
+                        <article class="project-item" data-aos="fade-up" data-aos-delay="100">
                              <div class="project-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80" alt="Dashboard with financial graphs and charts" loading="lazy">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop" alt="Dashboard with financial graphs and charts" loading="lazy">
                             </div>
                             <div class="project-overlay">
-                                <span class="project-category">Process Improvement</span>
                                 <h3>FP&A Automation</h3>
                                  <div class="project-metric">
                                     <span class="metric-value">-40%</span>
-                                    <span>Reduction in Close Time</span>
+                                    <span> Reduction in Close Time</span>
                                 </div>
                                 <span class="project-cta">View Case Study <i class="fas fa-arrow-right"></i></span>
                             </div>
                         </article>
                     </a>
-                    <!-- Add more project items as needed -->
+
+                    <a href="#" class="project-item-link" aria-label="View Case Study: M&A Due Diligence">
+                        <article class="project-item" data-aos="fade-up" data-aos-delay="200">
+                             <div class="project-image-wrapper">
+                                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop" alt="Two business professionals shaking hands over a deal" loading="lazy">
+                            </div>
+                            <div class="project-overlay">
+                                <h3>M&A Due Diligence</h3>
+                                 <div class="project-metric">
+                                    <span class="metric-value">$50M</span>
+                                    <span> Transaction Value Analyzed</span>
+                                </div>
+                                <span class="project-cta">View Case Study <i class="fas fa-arrow-right"></i></span>
+                            </div>
+                        </article>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- =================================================================
-        STEP 5: INSIGHTS/BLOG - Dynamic Content Delivery
-        ================================================================== -->
-        <section id="insights" class="section-bg-alt">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <h2>Market Insights</h2>
-                    <div class="section-divider"></div>
-                </div>
-
-                <div class="insights-grid">
-                    <!-- Insight Card: Structured for hover animations and readability -->
-                    <article class="insight-card" data-aos="fade-up">
-                        <a href="/blog/post-1" class="card-link-wrapper" aria-label="Read article: The Future of ESG Investing">
-                            <figure class="card-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1611242320536-f12d3541249b?auto=format&fit=crop&q=80" alt="Wind turbines in a green field, representing sustainable energy." loading="lazy">
-                            </figure>
-                            <div class="card-content">
-                                <span class="card-category">Investing</span>
-                                <h3>The Future of ESG: Beyond the Hype</h3>
-                                <p class="card-excerpt">A critical look at how to identify true value in environmental, social, and governance-focused funds.</p>
-                                <footer class="card-meta">
-                                    <span>October 26, 2023</span>
-                                    <span class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></span>
-                                </footer>
-                            </div>
-                        </a>
-                    </article>
-
-                    <article class="insight-card" data-aos="fade-up" data-aos-delay="150">
-                        <a href="/blog/post-2" class="card-link-wrapper" aria-label="Read article: Navigating Volatility with Quantitative Models">
-                            <figure class="card-image-wrapper">
-                                <img src="https://images.unsplash.com/photo-1639755243242-d81ee4543b59?auto=format&fit=crop&q=80" alt="Abstract digital data streams and graphs." loading="lazy">
-                            </figure>
-                            <div class="card-content">
-                                <span class="card-category">Analysis</span>
-                                <h3>Navigating Volatility with Quantitative Models</h3>
-                                <p class="card-excerpt">How robust financial modeling can mitigate risk in unpredictable market conditions.</p>
-                                <footer class="card-meta">
-                                    <span>September 15, 2023</span>
-                                    <span class="read-more">Read More <i class="fas fa-long-arrow-alt-right"></i></span>
-                                </footer>
-                            </div>
-                        </a>
-                    </article>
-                    <!-- Add more insight cards -->
-                </div>
-            </div>
-        </section>
-        
-        <!-- =================================================================
-        STEP 6: CONTACT/CALL-TO-ACTION - Actionable Connection
+        CONTACT/CALL-TO-ACTION
         ================================================================== -->
         <section id="contact">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>Let's Connect</h2>
-                    <p class="section-subheader">Open to discussing new opportunities and strategic collaborations.</p>
-                    <div class="section-divider"></div>
+                    <p class="section-subheader" style="color: var(--gray); max-width: 600px; margin: 1rem auto 0;">Open to discussing new opportunities and strategic collaborations.</p>
                 </div>
 
-                <div class="contact-form-wrapper" data-aos="fade-up">
-                    <form id="contact-form" action="YOUR_FORM_ENDPOINT" method="POST">
+                <div class="contact-form-wrapper" data-aos="fade-up" data-aos-delay="200">
+                    <!-- You must replace this action URL with your own from a service like Formspree.io -->
+                    <form id="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
                         <div class="form-group">
                             <input type="text" id="name" name="name" placeholder=" " required>
                             <label for="name">Your Name</label>
@@ -299,22 +619,9 @@
                         </div>
                         <button type="submit" id="contact-submit-btn" class="submit-btn">
                             <span class="btn-text">Send Message</span>
-                            <!-- Spans for animated states -->
-                            <span class="btn-loader"></span>
-                            <span class="btn-success-icon"><i class="fas fa-check"></i></span>
                         </button>
                     </form>
-                    <!-- Live region for screen readers to announce form status -->
                     <div id="form-status" role="status" aria-live="polite" class="visually-hidden"></div>
-                </div>
-
-                <div id="social-connect" class="social-links" data-aos="fade-up" data-aos-delay="200">
-                    <h4>Connect on Professional Networks</h4>
-                    <ul>
-                        <li><a href="#" class="social-icon" aria-label="Connect on LinkedIn"><i class="fab fa-linkedin-in"></i></a></li>
-                        <li><a href="#" class="social-icon" aria-label="Follow on Twitter"><i class="fab fa-twitter"></i></a></li>
-                        <!-- Add other relevant professional networks -->
-                    </ul>
                 </div>
             </div>
         </section>
@@ -322,22 +629,83 @@
     </main>
 
     <!-- =================================================================
-    GLOBAL FOOTER - Final Touchpoint
+    GLOBAL FOOTER
     ================================================================== -->
     <footer id="main-footer">
         <div class="container">
-            <div class="footer-content">
-                <p>© <span id="current-year">2024</span> Nima Sherpa. All Rights Reserved.</p>
-                <ul class="footer-links">
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
+            <p>© 2024 Nima Sherpa. All Rights Reserved.</p>
         </div>
     </footer>
     
-    <!-- NOTE: The 'data-aos' attributes are placeholders for a library like "Animate On Scroll" to hook into. -->
-    <script src="scripts.js"></script>
+    <!-- === EMBEDDED JAVASCRIPT === -->
+    
+    <!-- External Library: Animate on Scroll (AOS) JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Your custom scripts -->
+    <!-- Normally, this would be in a separate 'scripts.js' file -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Sticky Navigation ---
+            const header = document.getElementById('main-header');
+            if (header) {
+                const nav = header.querySelector('nav');
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        nav.classList.add('scrolled');
+                    } else {
+                        nav.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // --- Animated Metric Counters ---
+            const animateCounters = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const duration = 2000; // Animation duration in ms
+                
+                let start = 0;
+                const stepTime = 20; // ms per step
+                const totalSteps = duration / stepTime;
+                const increment = target / totalSteps;
+
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        clearInterval(timer);
+                        counter.innerText = target + suffix;
+                    } else {
+                        counter.innerText = Math.ceil(start) + suffix;
+                    }
+                }, stepTime);
+            };
+
+            // Use Intersection Observer to trigger counter animation only when visible
+            const counters = document.querySelectorAll('.metric-number');
+            const counterObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters(entry.target);
+                        observer.unobserve(entry.target); // Stop observing after it's animated
+                    }
+                });
+            }, { threshold: 0.7 });
+
+            counters.forEach(counter => {
+                counterObserver.observe(counter);
+            });
+            
+            // --- Initialize AOS (Animate On Scroll) Library ---
+            AOS.init({
+                duration: 800,      // animation duration in ms
+                once: true,         // whether animation should happen only once
+                offset: 120,        // offset (in px) from the original trigger point
+                easing: 'ease-in-out',
+            });
+        });
+    </script>
     
 </body>
 </html>
