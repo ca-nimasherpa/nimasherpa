@@ -3,229 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nima Sherpa | Financial Strategy & Analysis Professional</title>
-    <meta name="description" content="A professional portfolio for Nima Sherpa, showcasing dual expertise in corporate FP&A and investment analysis (CFA).">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <title>Nima Sherpa | Financial Strategy & Analysis</title>
+    <meta name="description" content="An interactive professional website for Nima Sherpa, featuring the Dynamic Deal Room experience to showcase FP&A and CFA expertise.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        /* Base Styles are the same */
         :root { --primary: #0A1A2F; --accent: #00E0C7; --light: #F5F9FC; --white: #FFFFFF; --dark: #222; --gray: #6C757D; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background-color: var(--light); line-height: 1.6; color: var(--dark); margin: 0; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 6rem 0; overflow-x: hidden; }
-        /* ... Other standard styles ... */
         
-        /* === Strategic Decision Hub Styles === */
-        #decision-hub { background: var(--primary); color: var(--white); }
-        .hub-wrapper { max-width: 900px; margin: 0 auto; text-align: center; }
-        .challenge-selection { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
-        .challenge-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            padding: 2rem;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        /* === Dynamic Deal Room Styles === */
+        #deal-room-section { background: var(--primary); color: var(--white); text-align: center; }
+        .deal-room-intro h2 { color: white; }
+        #enter-deal-room-btn {
+            background-color: var(--accent); color: var(--primary); padding: 1rem 2.5rem; border: none;
+            border-radius: 4px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s;
         }
-        .challenge-card:hover, .challenge-card.active {
-            background: rgba(0, 224, 199, 0.1);
-            border-color: var(--accent);
-            transform: translateY(-5px);
-        }
-        .challenge-card h3 { color: var(--accent); margin-top: 0; }
-        
-        .sandbox { display: none; } /* Hide sandboxes by default */
-        .sandbox.active { display: block; }
+        #enter-deal-room-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 224, 199, 0.3); }
 
-        #sandbox-dashboard { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; margin-bottom: 3rem; }
-        .metric-card .metric-label { font-size: 0.9rem; opacity: 0.8; }
-        .metric-card .metric-value { font-size: 2.5rem; font-weight: 700; transition: color 0.4s; }
+        #deal-room-environment {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 26, 47, 0.95);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.5s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #deal-room-environment.active { opacity: 1; pointer-events: all; }
         
-        .sandbox-levers { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
-        .lever-btn { background-color: transparent; border: 2px solid rgba(255, 255, 255, 0.3); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; }
+        .deal-room-content { max-width: 900px; width: 100%; text-align: center; }
+        .deal-room-header { margin-bottom: 3rem; }
+        .deal-room-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 3rem; }
         
-        #analyst-note-area { background: rgba(0, 224, 199, 0.1); border-left: 3px solid var(--accent); border-radius: 4px; padding: 1.5rem; margin: 0 auto 3rem; text-align: left; max-width: 700px; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
-        #analyst-note-area.visible { opacity: 1; transform: translateY(0); }
-        #analyst-note-area h4 { color: var(--accent); margin: 0 0 0.5rem; }
+        .deal-item {
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1.5rem; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;
+        }
+        .deal-item:hover { background: rgba(0, 224, 199, 0.1); border-color: var(--accent); }
+        .deal-item h4 { margin: 0; color: var(--accent); }
+        .deal-item.explored { border-color: var(--accent); }
+
+        .deal-decision-buttons button { padding: 0.8rem 2rem; font-size: 1rem; font-weight: 600; border-radius: 4px; border: none; cursor: pointer; transition: transform 0.2s; }
+        .deal-decision-buttons button:hover { transform: scale(1.05); }
+        #approve-btn { background: var(--accent); color: var(--primary); }
+        #reject-btn { background: #475569; color: white; margin-left: 1rem; }
+        .deal-decision-buttons { opacity: 0; pointer-events: none; transition: opacity 0.5s 0.5s; }
+        .deal-decision-buttons.visible { opacity: 1; pointer-events: all; }
+
+        /* Modal Styles */
+        .deal-modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 2001;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        .deal-modal.active { opacity: 1; pointer-events: all; }
+        .modal-content {
+            background: var(--light); color: var(--dark); padding: 2rem; border-radius: 8px;
+            max-width: 600px; width: 90%; transform: scale(0.95); transition: transform 0.3s;
+        }
+        .deal-modal.active .modal-content { transform: scale(1); }
+        .modal-content h3 { color: var(--primary); margin-top: 0; }
         
-        /* Case Study Styles */
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-        .grid-item { transition: transform 0.4s ease, opacity 0.4s ease, height 0.4s ease, padding 0.4s ease, margin 0.4s ease; }
-        .grid-item.is-hidden { transform: scale(0.8); opacity: 0; height: 0; padding: 0; margin: 0; overflow: hidden; border: none; }
-        .project-item { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); overflow: hidden; display: block; }
-        .card-image-wrapper img { width: 100%; height: 200px; object-fit: cover; }
-        .card-content { padding: 1.5rem; }
+        /* Specific Modal Content Styles */
+        #dcf-model .dcf-output { font-size: 2rem; font-weight: bold; color: var(--primary); margin: 1rem 0; }
+        #team-chat-content { height: 250px; overflow-y: auto; background: #e2e8f0; padding: 1rem; border-radius: 4px; text-align: left; }
+        .chat-message { margin-bottom: 1rem; }
+        .chat-message strong { color: var(--primary); }
+        .chat-message.nima strong { color: #059669; }
+
+        #investment-memo { text-align: left; }
     </style>
 </head>
 <body>
 
-    <header id="main-header"> <!-- Standard Header --> </header>
     <main>
-        <section id="hero">
-            <h1 data-aos="fade-up">Financial Strategy for Corporate & Investment Decisions</h1>
-            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">Dual expertise in Corporate FP&A and Investment Analysis (CFA).</p>
-        </section>
+        <!-- Standard Header, Hero, About sections can be placed here -->
+        <section id="hero-placeholder" style="height: 100vh; display:flex; align-items:center; justify-content:center; text-align:center;"><div><h1>Nima Sherpa<br><span style="font-size: 1.5rem; font-family: Inter;">Financial Strategy & Analysis</span></h1></div></section>
 
-        <section id="about" class="section-bg-alt">
-            <div class="container" data-aos="fade-up">
-                <div class="section-header"><h2>A Dual Perspective on Value</h2><div class="section-divider"></div></div>
-                <!-- About Me content can go here -->
-            </div>
-        </section>
-
-        <!-- === NEW: Strategic Decision Hub === -->
-        <section id="decision-hub">
-            <div class="container hub-wrapper">
+        <!-- === The Dynamic Deal Room Section === -->
+        <section id="deal-room-section">
+            <div class="container deal-room-intro">
                 <div class="section-header" data-aos="fade-up">
-                    <h2 style="color: white;">Step into the Strategist's Seat</h2>
-                    <p class="section-subheader" style="color: rgba(255,255,255,0.8);">Which hat will you wear today? Select a challenge to begin.</p>
+                    <h2 style="color: white;">A $100M Acquisition is on the Table.</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subheader" style="color: rgba(255,255,255,0.8);">I've done the initial work, but I need your input on the final decision.</p>
                 </div>
-                <div class="challenge-selection" data-aos="fade-up" data-aos-delay="100">
-                    <div class="challenge-card" id="select-fpa">
-                        <h3>The Corporate Finance Challenge</h3>
-                        <p>Optimize a company's profitability from the inside.</p>
-                    </div>
-                    <div class="challenge-card" id="select-cfa">
-                        <h3>The Investment Analysis Challenge</h3>
-                        <p>Analyze a potential acquisition from the outside.</p>
-                    </div>
-                </div>
-
-                <!-- FP&A Sandbox -->
-                <div class="sandbox" id="fpa-sandbox">
-                    <div id="sandbox-dashboard-fpa" class="sandbox-dashboard">
-                         <!-- FP&A metrics will be generated here -->
-                    </div>
-                    <div class="sandbox-levers">
-                        <button class="lever-btn" data-lever="costs">Cut Operational Costs</button>
-                        <button class="lever-btn" data-lever="process">Improve Process</button>
-                    </div>
-                </div>
-
-                <!-- CFA Sandbox -->
-                <div class="sandbox" id="cfa-sandbox">
-                     <div id="sandbox-dashboard-cfa" class="sandbox-dashboard">
-                        <!-- CFA metrics will be generated here -->
-                    </div>
-                    <div class="sandbox-levers">
-                        <button class="lever-btn" data-lever="statements">Analyze Financials</button>
-                        <button class="lever-btn" data-lever="dcf">Run DCF Model</button>
-                    </div>
-                </div>
-                
-                <div id="analyst-note-area">
-                    <h4 id="analyst-note-title">My Analyst's Note</h4>
-                    <p id="analyst-note-text">Select a lever to see my professional take.</p>
-                </div>
+                <button id="enter-deal-room-btn" data-aos="fade-up" data-aos-delay="100">Enter the Deal Room</button>
             </div>
         </section>
 
-        <section id="case-studies" class="section-bg-alt">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up"><h2>Case Studies & Analyses</h2><div class="section-divider"></div></div>
-                <div id="project-grid" class="project-grid">
-                    <!-- FP&A Case Studies -->
-                    <div class="grid-item" data-aos="fade-up" data-type="fpa">
-                        <div class="project-item"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop" alt="Dashboard"></div><div class="card-content"><h3>FP&A: Cost Reduction Analysis</h3><p>Identified 15% cost savings in operational overhead.</p></div></div>
-                    </div>
-                    <div class="grid-item" data-aos="fade-up" data-aos-delay="100" data-type="fpa">
-                         <div class="project-item"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop" alt="Charts"></div><div class="card-content"><h3>FP&A: Annual Budget Modeling</h3><p>Built a dynamic 3-statement model for the yearly budget cycle.</p></div></div>
-                    </div>
-                    <!-- CFA Case Studies -->
-                    <div class="grid-item" data-aos="fade-up" data-aos-delay="200" data-type="cfa">
-                         <div class="project-item"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop" alt="Handshake"></div><div class="card-content"><h3>CFA: M&A Due Diligence</h3><p>Led financial due diligence for a mid-market acquisition target.</p></div></div>
-                    </div>
-                    <div class="grid-item" data-aos="fade-up" data-aos-delay="300" data-type="cfa">
-                        <div class="project-item"><div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1639755243242-d81ee4543b59?auto=format&fit=crop" alt="Data streams"></div><div class="card-content"><h3>CFA: Equity Valuation Report</h3><p>Authored a comprehensive 'Buy' recommendation on a tech stock.</p></div></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contact"> <!-- Standard Contact Section --> </section>
+        <!-- The rest of your site (case studies, contact) can go here -->
     </main>
-    <footer id="main-footer"> <!-- Standard Footer --> </footer>
+    
+    <!-- === Deal Room Environment (Hidden by default) === -->
+    <div id="deal-room-environment">
+        <div class="deal-room-content">
+            <div class="deal-room-header">
+                <h2>DEAL ROOM: Project Momentum</h2>
+                <p>Explore the available intelligence, then make your recommendation.</p>
+            </div>
+            <div class="deal-room-grid">
+                <div class="deal-item" id="open-dossier"><h4>Target Dossier</h4></div>
+                <div class="deal-item" id="open-dcf"><h4>DCF Valuation</h4></div>
+                <div class="deal-item" id="open-chat"><h4>Team Chat</h4></div>
+            </div>
+            <div class="deal-decision-buttons" id="decision-buttons">
+                <button id="reject-btn">REJECT DEAL</button>
+                <button id="approve-btn">APPROVE DEAL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- === Modals for Deal Room Items (Hidden by default) === -->
+    <div class="deal-modal" id="dossier-modal">
+        <div class="modal-content"><h3>Target: Momentum Corp.</h3><p>A mid-cap SaaS company specializing in logistics software. Strong revenue growth but facing new, well-funded competitors.</p><button class="close-modal">Close</button></div>
+    </div>
+
+    <div class="deal-modal" id="dcf-modal">
+        <div class="modal-content"><h3>Dynamic DCF Model</h3><p>Adjust the key assumption below to see its impact on the valuation.</p><div id="dcf-model"><label for="growth-rate">Perpetual Growth Rate:</label><input type="range" id="growth-rate" min="1.5" max="3.5" value="2.5" step="0.1"><div class="dcf-output" id="dcf-value">$87.5M</div></div><button class="close-modal">Close</button></div>
+    </div>
+    
+    <div class="deal-modal" id="chat-modal">
+        <div class="modal-content"><h3>Project Momentum - Team Sync</h3><div id="team-chat-content"></div><button class="close-modal">Close</button></div>
+    </div>
+    
+    <div class="deal-modal" id="memo-modal">
+        <div class="modal-content" id="investment-memo"><h3>Final Investment Memo</h3><p>Thank you for your input. After weighing the aggressive growth potential against the significant market and valuation risks, my final recommendation is to...</p><h2 style="color:var(--primary); text-align:center;">REJECT AT CURRENT PRICE.</h2><p>However, I recommend re-opening negotiations with a target offer of $85M, which provides a sufficient margin of safety. My full analysis is available in the case studies below.</p><button class="close-modal" id="exit-deal-room">Exit Deal Room</button></div>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         AOS.init({ duration: 800, once: true, offset: 100 });
 
-        const hub = document.getElementById('decision-hub');
-        if (hub) {
-            const selectFPA = document.getElementById('select-fpa');
-            const selectCFA = document.getElementById('select-cfa');
-            const fpaSandbox = document.getElementById('fpa-sandbox');
-            const cfaSandbox = document.getElementById('cfa-sandbox');
-            const noteArea = document.getElementById('analyst-note-area');
-            const noteTitle = document.getElementById('analyst-note-title');
-            const noteText = document.getElementById('analyst-note-text');
-            const gridItems = document.querySelectorAll('.grid-item');
+        // --- Deal Room Logic ---
+        const enterBtn = document.getElementById('enter-deal-room-btn');
+        const dealRoomEnv = document.getElementById('deal-room-environment');
+        
+        const modals = {
+            dossier: document.getElementById('dossier-modal'),
+            dcf: document.getElementById('dcf-modal'),
+            chat: document.getElementById('chat-modal'),
+            memo: document.getElementById('memo-modal')
+        };
+        
+        const openTriggers = {
+            dossier: document.getElementById('open-dossier'),
+            dcf: document.getElementById('open-dcf'),
+            chat: document.getElementById('open-chat')
+        };
 
-            const fpaLevers = fpaSandbox.querySelectorAll('.lever-btn');
-            const cfaLevers = cfaSandbox.querySelectorAll('.lever-btn');
-            
-            const dashboards = {
-                fpa: document.getElementById('sandbox-dashboard-fpa'),
-                cfa: document.getElementById('sandbox-dashboard-cfa')
-            };
+        const decisionButtons = document.getElementById('decision-buttons');
+        const approveBtn = document.getElementById('approve-btn');
+        const rejectBtn = document.getElementById('reject-btn');
+        const exitBtn = document.getElementById('exit-deal-room');
 
-            const notes = {
-                costs: { title: "My Analyst's Note", text: "A quick win, but I always analyze which costs are scalable vs. fixed. My goal is to improve the operating leverage without hurting growth capacity." },
-                process: { title: "My Analyst's Note", text: "This is my preferred long-term solution. Investing in process optimization pays dividends in both cost savings and scalability." },
-                statements: { title: "My Analyst's Thesis", text: "The balance sheet shows healthy liquidity, but the cash flow statement reveals high capital expenditures. This warrants a deeper look into their reinvestment strategy." },
-                dcf: { title: "My Analyst's Thesis", text: "My DCF model, using a conservative 8% WACC, suggests a 15% upside from the current market price. This indicates a potential margin of safety, making it an attractive opportunity." }
-            };
-            
-            function showSandbox(type) {
-                selectFPA.classList.toggle('active', type === 'fpa');
-                selectCFA.classList.toggle('active', type === 'cfa');
-                fpaSandbox.classList.toggle('active', type === 'fpa');
-                cfaSandbox.classList.toggle('active', type === 'cfa');
-                noteArea.classList.remove('visible');
+        let exploredItems = new Set();
 
-                // Filter case studies
-                gridItems.forEach(item => {
-                    item.classList.toggle('is-hidden', item.dataset.type !== type);
-                });
-            }
-
-            function displayMetrics(container, metrics) {
-                container.innerHTML = '';
-                for (const [key, value] of Object.entries(metrics)) {
-                    const card = document.createElement('div');
-                    card.className = 'metric-card';
-                    card.innerHTML = `<span class="metric-label">${key}</span><span class="metric-value">${value}</span>`;
-                    container.appendChild(card);
-                }
-            }
-
-            selectFPA.addEventListener('click', () => {
-                showSandbox('fpa');
-                displayMetrics(dashboards.fpa, { 'Revenue': '$10M', 'Costs': '$8M', 'Profit Margin': '20%' });
-            });
-
-            selectCFA.addEventListener('click', () => {
-                showSandbox('cfa');
-                displayMetrics(dashboards.cfa, { 'Revenue Growth': '15%', 'EBITDA Margin': '30%', 'Debt/Equity': '0.5' });
-            });
-            
-            fpaLevers.forEach(lever => lever.addEventListener('click', () => {
-                const note = notes[lever.dataset.lever];
-                noteTitle.textContent = note.title;
-                noteText.textContent = note.text;
-                noteArea.classList.add('visible');
-            }));
-
-            cfaLevers.forEach(lever => lever.addEventListener('click', () => {
-                const note = notes[lever.dataset.lever];
-                noteTitle.textContent = note.title;
-                noteText.textContent = note.text;
-                noteArea.classList.add('visible');
-            }));
+        function openModal(modal) {
+            modal.classList.add('active');
         }
+
+        function closeModal(modal) {
+            modal.classList.remove('active');
+        }
+
+        function checkExploration() {
+            if (exploredItems.size >= 2) {
+                decisionButtons.classList.add('visible');
+            }
+        }
+
+        // Main entry point
+        enterBtn.addEventListener('click', () => {
+            dealRoomEnv.classList.add('active');
+        });
+
+        // Open modal triggers
+        for (const key in openTriggers) {
+            openTriggers[key].addEventListener('click', () => {
+                openModal(modals[key]);
+                openTriggers[key].classList.add('explored');
+                exploredItems.add(key);
+                checkExploration();
+            });
+        }
+        
+        // Close modal triggers
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', () => {
+                closeModal(btn.closest('.deal-modal'));
+            });
+        });
+
+        exitBtn.addEventListener('click', () => {
+            dealRoomEnv.classList.remove('active');
+        });
+
+        // Decision button triggers
+        approveBtn.addEventListener('click', () => openModal(modals.memo));
+        rejectBtn.addEventListener('click', () => openModal(modals.memo));
+
+        // --- Interactive DCF Model ---
+        const growthRateSlider = document.getElementById('growth-rate');
+        const dcfValueEl = document.getElementById('dcf-value');
+        growthRateSlider.addEventListener('input', (e) => {
+            const rate = parseFloat(e.target.value);
+            // Simplified valuation formula for demonstration
+            const valuation = 50 + ((rate - 1.5) * 25);
+            dcfValueEl.textContent = `$${valuation.toFixed(1)}M`;
+        });
+        
+        // --- Simulated Team Chat ---
+        const chatContent = document.getElementById('team-chat-content');
+        const chatMessages = [
+            { user: "CEO", text: "Momentum Corp looks like a rocket ship! We need to move fast on this." },
+            { user: "Head of Sales", text: "Their client list is top-tier. I can see major cross-sell opportunities. My team can 2x their revenue in a year." },
+            { user: "N. Sherpa", text: "Agreed on the potential, but their sales growth is heavily reliant on one client (45% of ARR). We need to factor in concentration risk." },
+            { user: "N. Sherpa", text: "Also, their R&D spend has been flat for 2 years. Are we buying innovation or a maintenance-mode product?" }
+        ];
+        
+        openTriggers.chat.addEventListener('click', () => {
+            chatContent.innerHTML = '';
+            let delay = 0;
+            chatMessages.forEach(msg => {
+                setTimeout(() => {
+                    const msgEl = document.createElement('div');
+                    msgEl.className = `chat-message ${msg.user === 'N. Sherpa' ? 'nima' : ''}`;
+                    msgEl.innerHTML = `<strong>${msg.user}:</strong><p>${msg.text}</p>`;
+                    chatContent.appendChild(msgEl);
+                    chatContent.scrollTop = chatContent.scrollHeight;
+                }, delay);
+                delay += 1200;
+            });
+        });
     });
     </script>
 </body>
