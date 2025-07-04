@@ -593,171 +593,223 @@
     </section>
     
     <!-- Contact Us Section -->
-    <section id="contact">
-    <h2>Contact Me</h2>
-    <div class="contact-section">
-      <p>Interested in discussing opportunities or learning more about my experience? Feel free to reach out:</p>
-      
-      <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-        <div class="contact-form">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-            <div class="error">Please enter your name</div>
-          </div>
-          
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <div class="error">Please enter a valid email</div>
-          </div>
-          
-          <div class="form-group full-width">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" required>
-            <div class="error">Please enter a subject</div>
-          </div>
-          
-          <div class="form-group full-width">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" required></textarea>
-            <div class="error">Please enter your message</div>
-          </div>
-          
-          <div class="form-group full-width" style="text-align: right;">
-            <button type="submit" class="submit-btn">
-              <span class="btn-text">Send Message</span>
-              <span class="spinner"></span>
-            </button>
-          </div>
+<section id="contact">
+  <h2>Contact Me</h2>
+  <div class="contact-section">
+    <p>Interested in discussing opportunities or learning more about my experience? Feel free to reach out:</p>
+    
+    <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+      <div class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+          <div class="error">Please enter your name</div>
         </div>
-      </form>
-      
-      <div id="confirmationMessage" class="confirmation-message">
-        <i class="fas fa-paper-plane"></i>
-        <h3>Message Received!</h3>
-        <p>Thank you for reaching out. I've received your message and will get back to you soon.</p>
-        <div class="confetti-container" id="confetti"></div>
-        <a href="#" class="btn" onclick="resetForm()">Send Another Message</a>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          <div class="error">Please enter a valid email</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required>
+          <div class="error">Please enter a subject</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+          <div class="error">Please enter your message</div>
+        </div>
+        
+        <div class="form-group" style="text-align: right;">
+          <button type="submit" class="submit-btn">
+            <span class="btn-text">Send Message</span>
+            <span class="spinner"></span>
+          </button>
+        </div>
       </div>
+    </form>
+    
+    <div id="confirmationMessage" class="confirmation-message">
+      <i class="fas fa-check-circle"></i>
+      <h3>Thank You!</h3>
+      <p>Your message has been sent successfully. I'll get back to you soon.</p>
+      <a href="#" class="btn" onclick="resetForm()">Send Another Message</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+<style>
+  /* Contact Form Styles */
+  .contact-section {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  }
+  
+  .contact-form {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  
+  input, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  textarea {
+    min-height: 120px;
+  }
+  
+  /* Confirmation Message */
+  .confirmation-message {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .confirmation-message i {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  
+  .confirmation-message h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 0.75rem 1.75rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  /* Loading Spinner */
+  .spinner {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    margin-left: 10px;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  .submit-btn .btn-text {
+    display: inline-block;
+  }
+  
+  .submit-btn.sending .btn-text {
+    display: none;
+  }
+  
+  .submit-btn.sending .spinner {
+    display: inline-block;
+  }
+</style>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+    
+    // Show loading state
+    const submitBtn = document.querySelector('.submit-btn');
+    submitBtn.classList.add('sending');
+    submitBtn.disabled = true;
+    
+    // Simulate form submission
+    setTimeout(() => {
+      // Hide form, show confirmation
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('confirmationMessage').style.display = 'block';
       
-      // Validate form
-      if (!validateForm()) {
-        return;
+      // Reset button state
+      submitBtn.classList.remove('sending');
+      submitBtn.disabled = false;
+      
+      // In production, you would actually submit the form here:
+      // e.target.submit();
+    }, 1500);
+  });
+  
+  function validateForm() {
+    let isValid = true;
+    const formGroups = document.querySelectorAll('.form-group');
+    
+    formGroups.forEach(group => {
+      const input = group.querySelector('input, textarea');
+      const error = group.querySelector('.error');
+      
+      if (!input.value.trim()) {
+        group.classList.add('error');
+        error.style.display = 'block';
+        isValid = false;
+      } else if (input.type === 'email' && !validateEmail(input.value)) {
+        group.classList.add('error');
+        error.textContent = 'Please enter a valid email';
+        error.style.display = 'block';
+        isValid = false;
+      } else {
+        group.classList.remove('error');
+        error.style.display = 'none';
       }
-      
-      // Show loading state
-      const submitBtn = document.querySelector('.submit-btn');
-      submitBtn.classList.add('sending');
-      submitBtn.disabled = true;
-      
-      // Simulate form submission (in production, this would be real)
-      setTimeout(() => {
-        // Hide form, show confirmation
-        document.getElementById('contactForm').style.display = 'none';
-        document.getElementById('confirmationMessage').style.display = 'block';
-        
-        // Create confetti effect
-        createConfetti();
-        
-        // Reset button state
-        submitBtn.classList.remove('sending');
-        submitBtn.disabled = false;
-        
-        // In production, you would actually submit the form here:
-        // e.target.submit();
-      }, 1500);
     });
     
-    function validateForm() {
-      let isValid = true;
-      const formGroups = document.querySelectorAll('.form-group');
-      
-      formGroups.forEach(group => {
-        const input = group.querySelector('input, textarea');
-        const error = group.querySelector('.error');
-        
-        if (!input.value.trim()) {
-          group.classList.add('error');
-          error.style.display = 'block';
-          isValid = false;
-        } else if (input.type === 'email' && !validateEmail(input.value)) {
-          group.classList.add('error');
-          error.textContent = 'Please enter a valid email';
-          error.style.display = 'block';
-          isValid = false;
-        } else {
-          group.classList.remove('error');
-          error.style.display = 'none';
-        }
-      });
-      
-      return isValid;
-    }
+    return isValid;
+  }
+  
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  }
+  
+  function resetForm() {
+    document.getElementById('contactForm').reset();
+    document.getElementById('contactForm').style.display = 'block';
+    document.getElementById('confirmationMessage').style.display = 'none';
     
-    function validateEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
-    }
+    // Remove any error states
+    document.querySelectorAll('.form-group').forEach(group => {
+      group.classList.remove('error');
+      group.querySelector('.error').style.display = 'none';
+    });
     
-    function resetForm() {
-      document.getElementById('contactForm').reset();
-      document.getElementById('contactForm').style.display = 'block';
-      document.getElementById('confirmationMessage').style.display = 'none';
-      
-      // Remove any error states
-      document.querySelectorAll('.form-group').forEach(group => {
-        group.classList.remove('error');
-        group.querySelector('.error').style.display = 'none';
-      });
-      
-      return false;
-    }
-    
-    function createConfetti() {
-      const confettiContainer = document.getElementById('confetti');
-      confettiContainer.innerHTML = '';
-      
-      // Create 50 confetti pieces
-      for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.style.position = 'absolute';
-        confetti.style.width = '10px';
-        confetti.style.height = '10px';
-        confetti.style.backgroundColor = getRandomColor();
-        confetti.style.borderRadius = '50%';
-        confetti.style.left = Math.random() * 100 + '%';
-        confetti.style.top = '-10px';
-        confetti.style.opacity = '0';
-        
-        // Animation
-        confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear ${Math.random() * 0.5}s forwards`;
-        
-        confettiContainer.appendChild(confetti);
-      }
-      
-      // Add CSS for animation
-      const style = document.createElement('style');
-      style.textContent = `
-        @keyframes fall {
-          0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-          10% { opacity: 1; }
-          100% { transform: translateY(300px) rotate(360deg); opacity: 0; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-    
-    function getRandomColor() {
-      const colors = ['#00E0C7', '#0A1A2F', '#2A4B7C', '#FF6B6B', '#FFD166'];
-      return colors[Math.floor(Math.random() * colors.length)];
-    }
-  </script>
+    return false;
+  }
+</script>
 </body>
 </html>
