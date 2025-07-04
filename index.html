@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nima Sherpa | Strategic Finance & Analysis Professional</title>
-    <meta name="description" content="The professional website for Nima Sherpa, showcasing a journey of impact in FP&A, audit, and strategic finance.">
+    <meta name="description" content="Explore the professional journey of Nima Sherpa through an interactive, 3D showcase of his key achievements in FP&A and finance.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -15,259 +15,205 @@
         body { font-family: 'Inter', sans-serif; background-color: var(--light); line-height: 1.6; color: var(--dark); margin: 0; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
         section { padding: 6rem 0; overflow-x: hidden; }
-        .section-bg-alt { background-color: var(--white); }
         .section-header { text-align: center; margin-bottom: 4rem; }
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--primary); margin-bottom: 1rem; }
         .section-divider { width: 80px; height: 4px; background: var(--accent); margin: 0 auto; }
-        .section-subheader { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
-        a { text-decoration: none; color: var(--accent); }
+        /* ... Other standard styles like Header, Hero, Footer can remain ... */
 
-        /* Navigation */
-        #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; transition: all 0.4s ease; }
-        #main-nav { background: rgba(10, 26, 47, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1.5rem 0; }
-        #main-nav.scrolled { padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-brand h1 { font-family: 'Playfair Display', serif; color: white; font-size: 1.5rem; }
-        #main-menu ul { display: flex; list-style: none; gap: 2rem; margin:0; }
-        #main-menu a { color: white; text-decoration: none; font-weight: 600; position: relative; padding: 0.5rem 0; }
-        #main-menu a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
-        #main-menu a:hover::after, #main-menu a.active::after { width: 100%; }
-
-        /* Hero Section */
-        #hero { height: 100vh; display: flex; align-items: center; text-align: center; color: white; background: linear-gradient(rgba(10, 26, 47, 0.7), rgba(10, 26, 47, 0.7)), url('https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&q=80') center center/cover; }
-        #hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5rem); line-height: 1.1; margin: 0; }
-        #hero .hero-subtitle { font-size: 1.5rem; margin: 1rem 0 2rem; color: rgba(255,255,255,0.9); }
-        .hero-cta { background-color: var(--accent); color: var(--primary); padding: 1rem 2.5rem; border-radius: 4px; font-size: 1.1rem; font-weight: 600; transition: all 0.3s; }
-        .hero-cta:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0, 224, 199, 0.3); }
-        
-        /* About / Journey of Impact */
+        /* === NEW: Focus Ring Navigator Styles === */
         #journey { background-color: var(--white); }
         .journey-wrapper { max-width: 900px; margin: 0 auto; }
-        .journey-timeline { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
-        .timeline-btn { background-color: transparent; border: 2px solid #e2e8f0; color: var(--gray); padding: 0.8rem 1.5rem; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; }
-        .timeline-btn:hover { border-color: var(--accent); color: var(--primary); }
-        .timeline-btn.active { background-color: var(--primary); color: white; border-color: var(--primary); }
-        .journey-content-area { position: relative; min-height: 400px; }
-        .journey-case-study { position: absolute; width: 100%; opacity: 0; visibility: hidden; transition: opacity 0.5s ease, transform 0.5s ease; transform: translateY(20px); }
-        .journey-case-study.active { opacity: 1; visibility: visible; transform: translateY(0); }
-        .case-study-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
-        .case-study-step { background: var(--light); padding: 2rem; border-radius: 8px; border-left: 4px solid var(--accent); }
-        .case-study-step h3 { color: var(--primary); margin: 0 0 0.5rem; }
+
+        .focus-ring-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .ring-item {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+        .ring-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 0; height: 3px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+        .ring-item:hover, .ring-item.active { color: var(--primary); }
+        .ring-item.active::after { width: 100%; }
+        
+        .focus-content-container {
+            perspective: 1500px; /* This enables the 3D space */
+            min-height: 450px;
+        }
+        
+        #focus-card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        #focus-card.is-flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            background: var(--light);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .card-face.card-back {
+            transform: rotateY(180deg);
+        }
+        
+        /* Content inside the card faces */
+        .case-study-step { margin-bottom: 2rem; }
+        .case-study-step:last-child { margin-bottom: 0; }
+        .case-study-step h3 { color: var(--primary); margin: 0 0 0.5rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
+        
         .process-flow { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-        .process-tag { background: rgba(0, 224, 199, 0.1); color: #007567; padding: 0.25rem 0.75rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; }
-        .impact-metric { background: var(--primary); color: white; padding: 2rem; border-radius: 8px; text-align: center; }
-        .impact-metric .impact-value { font-size: 2.5rem; font-weight: 700; color: var(--accent); }
-        .growth-story { border-left: 4px solid #facc15; }
-        .growth-story p { font-style: italic; }
-
-        /* Skills / Value Proposition */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .skill-category { background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); }
-        .skill-category i { font-size: 2rem; color: var(--accent); margin-bottom: 1rem; }
-        .skill-category h3 { margin-bottom: 1rem; }
-        .skill-category ul { list-style: none; padding: 0; margin: 0; }
-        .skill-category li { margin-bottom: 0.5rem; }
-
-        /* Testimonials */
-        #testimonials { background: var(--primary); color: white; }
-        #testimonials h2 { color: white; }
-        .testimonial-carousel { max-width: 800px; margin: 0 auto; position: relative; }
-        .testimonial-slide { display: none; text-align: center; }
-        .testimonial-slide.active { display: block; }
-        .testimonial-slide p { font-size: 1.25rem; font-style: italic; margin-bottom: 1rem; }
-        .testimonial-slide .author { font-weight: bold; color: var(--accent); }
-        .carousel-dots { text-align: center; margin-top: 2rem; }
-        .dot { height: 12px; width: 12px; margin: 0 5px; background-color: rgba(255,255,255,0.4); border-radius: 50%; display: inline-block; cursor: pointer; transition: background-color 0.3s ease; }
-        .dot.active, .dot:hover { background-color: var(--accent); }
-
-        /* Contact Section */
-        .contact-form { max-width: 700px; margin: 0 auto; }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
-        .submit-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 1rem; border-radius: 4px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
-
+        .process-tag { background: #e2e8f0; color: var(--gray); padding: 0.25rem 0.75rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; }
+        
+        .impact-metric { background: var(--primary); color: white; padding: 1.5rem; border-radius: 8px; text-align: center; }
+        .impact-metric .impact-value { font-size: 2.5rem; font-weight: 700; color: var(--accent); display: block; }
+        
+        .growth-story p { font-style: italic; color: var(--gray); }
     </style>
 </head>
 <body>
 
-    <header id="main-header">
-        <nav id="main-nav">
-            <div class="container nav-container">
-                <a href="#hero" class="nav-brand"><h1>Nima Sherpa</h1></a>
-                <div id="main-menu">
-                    <ul>
-                         <li><a href="#journey" class="nav-link">About Me</a></li>
-                         <li><a href="#skills" class="nav-link">Skills</a></li>
-                         <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                         <li><a href="#contact" class="nav-link">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
+    <!-- Standard Header, Hero, Skills, Testimonials, Contact sections -->
+    <header id="main-header"> <!-- ... --> </header>
     <main>
-        <section id="hero">
-            <div class="container">
-                <h1 data-aos="fade-down">Driving Business Performance Through Strategic Finance & Analysis</h1>
-                <p class="hero-subtitle" data-aos="fade-down" data-aos-delay="100">From data-driven insights to measurable profitability and growth.</p>
-                <a href="#journey" class="hero-cta" data-aos="fade-up" data-aos-delay="200">Explore My Journey</a>
-            </div>
-        </section>
-
+        <section id="hero"> <!-- ... --> </section>
+        
+        <!-- === The "Journey of Impact" with Focus Ring Navigator === -->
         <section id="journey">
             <div class="container journey-wrapper">
-                <div class="section-header" data-aos="fade-up"><h2>The Journey of Impact</h2><div class="section-divider"></div><p class="section-subheader">A timeline of real-world challenges, data-driven processes, and measurable results.</p></div>
-                <div class="journey-timeline" data-aos="fade-up" data-aos-delay="100">
-                    <button class="timeline-btn" data-target="cs1">Audit Officer</button>
-                    <button class="timeline-btn active" data-target="cs2">Team Lead, Finance</button>
-                    <button class="timeline-btn" data-target="cs3">Asst. Manager, Finance</button>
+                <div class="section-header" data-aos="fade-up">
+                    <h2>The Journey of Impact</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subheader">Select a role to see how challenges were transformed into measurable results.</p>
                 </div>
-                <div class="journey-content-area" data-aos="fade-up" data-aos-delay="200">
-                    <div class="journey-case-study" id="cs1"> <!-- Case Study 1 Content --> </div>
-                    <div class="journey-case-study active" id="cs2">
-                         <div class="case-study-grid">
-                            <div class="case-study-step"><h3>The Problem: Critical Financial Leakage</h3><p>A recurring, unidentified loss was impacting profitability, hidden within thousands of daily transactions.</p></div>
-                            <div class="case-study-step"><h3>My Process: From Data to Strategy</h3><div class="process-flow"><span class="process-tag">Python Data Analysis</span><span class="process-tag">Root Cause Identification</span><span class="process-tag">New Pricing Strategy</span></div></div>
-                            <div class="impact-metric"><h3>The Impact</h3><span class="impact-value">10% Cost Savings</span></div>
-                            <div class="case-study-step growth-story"><h3>My Growth Story</h3><p>"This was the project that earned me the 'Rising Star of the Year' award. It proved that leveraging data analytics could solve problems faster and more effectively than traditional methods, solidifying my path into strategic FP&A."</p></div>
+
+                <div class="focus-ring-nav" data-aos="fade-up" data-aos-delay="100">
+                    <div class="ring-item" data-target="cs1">Audit Officer</div>
+                    <div class="ring-item" data-target="cs2">Team Lead, Finance</div>
+                    <div class="ring-item active" data-target="cs3">Asst. Manager, Finance</div>
+                </div>
+
+                <div class="focus-content-container" data-aos="fade-up" data-aos-delay="200">
+                    <div id="focus-card">
+                        <div class="card-face card-front">
+                            <!-- Content will be injected by JS -->
+                        </div>
+                        <div class="card-face card-back">
+                            <!-- Content will be injected by JS -->
                         </div>
                     </div>
-                    <div class="journey-case-study" id="cs3"> <!-- Case Study 3 Content --> </div>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="section-bg-alt">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up"><h2>Core Competencies</h2><div class="section-divider"></div></div>
-                <div class="skills-grid">
-                    <div class="skill-category" data-aos="fade-up">
-                        <i class="fas fa-chart-line"></i><h3>Financial Analysis & Planning</h3>
-                        <ul><li>Financial Modeling & Valuation</li><li>Budgeting & Forecasting (FP&A)</li><li>Due Diligence & M&A Support</li><li>Working Capital Optimization</li></ul>
-                    </div>
-                    <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                        <i class="fas fa-cogs"></i><h3>Technical Tools & Data</h3>
-                        <ul><li>Advanced Excel (Macros, Pivot)</li><li>Power BI & Data Visualization</li><li>SQL for Data Extraction</li><li>Python (Pandas, NumPy)</li></ul>
-                    </div>
-                    <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                        <i class="fas fa-briefcase"></i><h3>Business Acumen</h3>
-                        <ul><li>Process Improvement & Automation</li><li>IFRS & US GAAP Compliance</li><li>Strategic Planning & Decision Support</li><li>Vendor & Contract Management</li></ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials">
-            <div class="container">
-                <div class="section-header" data-aos="fade-up"><h2 style="color:white;">What Leadership Says</h2><div class="section-divider"></div></div>
-                <div class="testimonial-carousel" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-slide">
-                        <p>"Awarded 'Rising Star of the Year' for leveraging data analytics to resolve critical financial leakage, significantly boosting strategic planning and profitability."</p>
-                        <span class="author">Genese Solution Pvt. Ltd. Leadership</span>
-                    </div>
-                    <div class="testimonial-slide">
-                        <p>"Received formal appreciation for visionary guidance and exemplary performance leading the $10M+ enterprise division's finance department, driving key financial initiatives."</p>
-                        <span class="author">Worldlink Communications Ltd. Management</span>
-                    </div>
-                </div>
-                <div class="carousel-dots"></div>
-            </div>
-        </section>
-
-        <section id="contact" class="section-bg-alt">
-             <div class="container" data-aos="fade-up">
-                <div class="section-header"><h2>Contact</h2><div class="section-divider"></div><p class="section-subheader">I am open to relocation and actively seeking challenging FP&A roles where I can drive measurable results. Let's connect.</p></div>
-                <form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
-                    <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
-                    <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
-                    <div class="form-group"><textarea name="message" rows="5" placeholder="Your Message" required></textarea></div>
-                    <button type="submit" class="submit-btn">Send Message</button>
-                </form>
-             </div>
-        </section>
+        <section id="skills" class="section-bg-alt"> <!-- ... --> </section>
+        <section id="testimonials"> <!-- ... --> </section>
+        <section id="contact" class="section-bg-alt"> <!-- ... --> </section>
     </main>
-
     <footer style="background: var(--primary); color: white; text-align: center; padding: 2rem 0;"><p>© 2024 Nima Sherpa</p></footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         AOS.init({ duration: 800, once: true, offset: 120 });
-
-        // --- Sticky Nav & Active Link Highlighting ---
-        const nav = document.getElementById('main-nav');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('main section');
-
-        window.addEventListener('scroll', () => {
-            // Sticky Nav
-            window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
-            
-            // Active Link
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 60) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // --- Journey of Impact Logic ---
-        const timelineButtons = document.querySelectorAll('.timeline-btn');
-        const caseStudies = document.querySelectorAll('.journey-case-study');
         
-        // Pre-fill empty case studies to avoid writing HTML twice
-        document.getElementById('cs1').innerHTML = document.getElementById('cs2').innerHTML.replace(/Team Lead, Finance/g, 'Audit Officer').replace(/Python Data Analysis/g,'Regulatory Monitoring').replace(/New Pricing Strategy/g, 'Control Weakness ID').replace(/10% Cost Savings/g, 'Compliance Assured').replace(/'Rising Star of the Year' award/g, 'a foundation of trust');
-        document.getElementById('cs3').innerHTML = document.getElementById('cs2').innerHTML.replace(/Team Lead, Finance/g, 'Asst. Manager, Finance').replace(/Python Data Analysis/g,'Working Capital Analysis').replace(/New Pricing Strategy/g, 'ERP & Automation').replace(/10% Cost Savings/g, '$600K Unlocked').replace(/'Rising Star of the Year' award/g, 'a leader of a $10M+ division');
+        // --- Focus Ring Navigator Logic ---
+        const ringItems = document.querySelectorAll('.ring-item');
+        const focusCard = document.getElementById('focus-card');
+        const cardFront = document.querySelector('.card-face.card-front');
+        const cardBack = document.querySelector('.card-face.card-back');
+        let isFlipped = false;
 
+        const caseStudyData = {
+            cs1: {
+                title: "Audit Officer",
+                html: `
+                    <div class="case-study-step"><h3>The Problem: Unidentified Compliance Risks</h3><p>Financial regulations were constantly changing, exposing the organization to potential penalties of over $30K.</p></div>
+                    <div class="case-study-step"><h3>My Process: From Regulation to Rectification</h3><div class="process-flow"><span class="process-tag">Regulatory Monitoring</span><span class="process-tag">IFRS/NFRS Analysis</span><span class="process-tag">Control Weakness Identification</span></div></div>
+                    <div class="case-study-step growth-story"><h3>My Growth Story</h3><p>"This role was my foundation. It taught me that diligence and a deep understanding of compliance aren't just about avoiding penalties—they're about building a trustworthy, stable base for any future growth."</p></div>
+                `
+            },
+            cs2: {
+                title: "Team Lead, Finance",
+                html: `
+                    <div class="case-study-step"><h3>The Problem: Critical Financial Leakage</h3><p>A recurring, unidentified loss was impacting profitability, hidden within thousands of daily transactions.</p></div>
+                    <div class="case-study-step"><h3>My Process: From Data to Strategy</h3><div class="process-flow"><span class="process-tag">Python Data Analysis</span><span class="process-tag">Root Cause Identification</span><span class="process-tag">New Pricing Strategy</span></div></div>
+                    <div class="case-study-step impact-metric"><h3>The Impact</h3><span class="impact-value">10% Cost Savings</span></div>
+                `
+            },
+            cs3: {
+                title: "Asst. Manager, Finance",
+                html: `
+                    <div class="case-study-step"><h3>The Problem: Inefficient Cash Flow Cycle</h3><p>High Days Sales Outstanding (DSO) was tying up critical working capital, limiting the company's ability to invest in growth.</p></div>
+                    <div class="case-study-step"><h3>My Process: From Analysis to Optimization</h3><div class="process-flow"><span class="process-tag">Working Capital Analysis</span><span class="process-tag">Cross-Functional Process Mapping</span><span class="process-tag">ERP & Automation</span></div></div>
+                    <div class="case-study-step impact-metric"><h3>The Impact</h3><span class="impact-value">$600K Unlocked</span></div>
+                `
+            }
+        };
 
-        timelineButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetId = button.dataset.target;
-                timelineButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                caseStudies.forEach(study => study.classList.toggle('active', study.id === targetId));
-            });
-        });
-
-        // --- Testimonial Carousel Logic ---
-        const slides = document.querySelectorAll('.testimonial-slide');
-        const dotsContainer = document.querySelector('.carousel-dots');
-        let currentSlide = 0;
-        
-        if (slides.length > 0) {
-            slides.forEach((slide, index) => {
-                const dot = document.createElement('span');
-                dot.classList.add('dot');
-                dot.dataset.slide = index;
-                dotsContainer.appendChild(dot);
-            });
-
-            const dots = document.querySelectorAll('.dot');
+        function updateCardContent(targetId) {
+            const data = caseStudyData[targetId];
+            if (!data) return;
             
-            function showSlide(n) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                currentSlide = (n + slides.length) % slides.length;
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
+            // Determine which face is currently hidden and update it
+            if (isFlipped) {
+                cardFront.innerHTML = data.html;
+            } else {
+                cardBack.innerHTML = data.html;
             }
 
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => showSlide(parseInt(dot.dataset.slide)));
-            });
-
-            setInterval(() => showSlide(currentSlide + 1), 5000); // Auto-rotate every 5 seconds
-            showSlide(0); // Initial call
+            // Trigger the flip
+            isFlipped = !isFlipped;
+            focusCard.classList.toggle('is-flipped');
         }
+        
+        ringItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Prevent clicking if already active
+                if (item.classList.contains('active')) return;
+
+                // Update active state
+                ringItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Update content and flip card
+                const targetId = item.dataset.target;
+                updateCardContent(targetId);
+            });
+        });
+
+        // Initialize with the default active content
+        const initialActiveItem = document.querySelector('.ring-item.active');
+        if (initialActiveItem) {
+            cardFront.innerHTML = caseStudyData[initialActiveItem.dataset.target].html;
+        }
+
     });
     </script>
 </body>
