@@ -1,33 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nima Sherpa | Finance & Investment Strategist</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nima Sherpa | Chartered Accountant & CFA Candidate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #1a2a3a;  /* Deep navy */
-      --accent: #2ecc71;  /* Emerald green */
-      --light: #f8f9fa;
-      --dark: #333;
-      --gray: #6c757d;
+      --primary: #0A1A2F;  /* Deep navy */
+      --accent: #00E0C7;   /* Teal */
+      --secondary: #2A4B7C; /* Medium blue */
+      --light: #F5F9FC;
+      --dark: #222;
+      --gray: #6C757D;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { 
-      font-family: 'Inter', sans-serif; 
-      background: var(--light); 
-      color: var(--dark); 
-      line-height: 1.7; 
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    header { 
-      background: var(--primary); 
-      color: white; 
-      padding: 3rem 1rem; 
-      text-align: center; 
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      line-height: 1.7;
+      background-color: var(--light);
+    }
+    
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 3rem 1.5rem;
+      text-align: center;
       position: relative;
       overflow: hidden;
     }
+    
     header::after {
       content: "";
       position: absolute;
@@ -37,47 +48,81 @@
       height: 4px;
       background: linear-gradient(90deg, var(--accent), transparent);
     }
-    header h1 { 
-      font-family: 'Playfair Display', serif; 
-      font-size: 2.5rem; 
-      margin-bottom: 0.5rem; 
-      letter-spacing: -0.5px;
-    }
-    header p { 
-      color: rgba(255,255,255,0.8); 
-      font-weight: 500;
-      max-width: 600px;
+    
+    .header-content {
+      max-width: 900px;
       margin: 0 auto;
     }
+    
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+    
     .tagline {
       display: inline-block;
       background: rgba(255,255,255,0.1);
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1.25rem;
       border-radius: 50px;
       margin: 1rem 0;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      font-weight: 500;
     }
-    .social-links a { 
-      margin: 0 0.75rem; 
-      text-decoration: none; 
-      color: white; 
-      transition: opacity 0.3s;
-      display: inline-block;
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
     }
-    .social-links a:hover { opacity: 0.8; }
-    .social-links svg { width: 20px; height: 20px; vertical-align: middle; margin-right: 0.5rem; }
-    section { 
-      max-width: 900px; 
-      margin: 3rem auto; 
-      padding: 0 1.5rem; 
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
     }
-    h2 { 
-      font-family: 'Playfair Display', serif; 
-      color: var(--primary); 
-      margin-bottom: 1.5rem; 
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.25rem;
+      transition: transform 0.3s;
+    }
+    
+    .social-links a:hover {
+      transform: translateY(-3px);
+      color: var(--accent);
+    }
+    
+    /* Main Content Styles */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    section {
+      margin: 3rem 0;
+    }
+    
+    h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
       position: relative;
       display: inline-block;
     }
+    
     h2::after {
       content: "";
       position: absolute;
@@ -87,140 +132,556 @@
       height: 3px;
       background: var(--accent);
     }
-    .btn { 
-      display: inline-block; 
-      padding: 0.75rem 1.75rem; 
-      margin-top: 1rem; 
-      background: var(--accent); 
-      color: white; 
-      text-decoration: none; 
-      border-radius: 4px; 
-      font-weight: 600;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
+    
+    .section-intro {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: var(--dark);
     }
-    .btn:hover { 
-      transform: translateY(-2px); 
-      box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
-    }
-    .project { 
-      background: white; 
-      border-radius: 8px; 
-      padding: 1.5rem; 
-      margin-bottom: 2rem; 
-      box-shadow: 0 3px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s, box-shadow 0.3s;
+    
+    /* Professional Summary */
+    .summary-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
       border-left: 4px solid var(--accent);
     }
-    .project:hover {
+    
+    /* Career Highlights */
+    .highlights-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .highlight-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .highlight-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     }
-    .project h3 { color: var(--primary); margin-bottom: 0.5rem; }
-    .project p { color: var(--gray); margin-bottom: 1rem; }
-    .project-meta { 
-      display: flex; 
-      gap: 1rem; 
-      font-size: 0.85rem; 
-      color: var(--gray); 
+    
+    .highlight-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .highlight-card h3 i {
+      color: var(--accent);
+    }
+    
+    /* Experience Section */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 3rem auto;
+    }
+    
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background-color: var(--accent);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+    
+    .timeline-item {
+      padding: 10px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      top: 15px;
+      z-index: 1;
+    }
+    
+    .left {
+      left: 0;
+    }
+    
+    .right {
+      left: 50%;
+    }
+    
+    .left::after {
+      right: -10px;
+    }
+    
+    .right::after {
+      left: -10px;
+    }
+    
+    .timeline-content {
+      padding: 1.5rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .timeline-content h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .timeline-date {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    
+    .timeline-company {
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    
+    .timeline-achievements {
+      list-style-type: none;
+    }
+    
+    .timeline-achievements li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .timeline-achievements li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    
+    /* Education & Certifications */
+    .education-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .education-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .education-card h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .education-meta {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Skills Section */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .skill-category {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .skill-category h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-category h3 i {
+      color: var(--accent);
+    }
+    
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .skill-tag {
+      background: rgba(0, 224, 199, 0.1);
+      color: var(--primary);
+      padding: 0.35rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin: 3rem 0;
+    }
+    
+    .contact-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-group.full-width {
+      grid-column: span 2;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    textarea {
+      min-height: 120px;
+    }
+    
+    .submit-btn {
+      background: var(--accent);
+      color: var(--primary);
+      border: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 10px rgba(0, 224, 199, 0.3);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 224, 199, 0.4);
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      background: var(--accent);
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 10px rgba(0, 224, 199, 0.3);
       margin-top: 1rem;
     }
-    .project-meta span { background: rgba(0,0,0,0.05); padding: 0.25rem 0.5rem; border-radius: 4px; }
-    footer { 
-      text-align: center; 
-      padding: 3rem 1rem; 
-      color: var(--gray); 
-      font-size: 0.9rem; 
-      background: white;
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 224, 199, 0.4);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      margin-left: 1rem;
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--primary);
+      color: rgba(255,255,255,0.7);
       margin-top: 3rem;
     }
-
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    
+    .footer-text {
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
     }
-    section { animation: fadeIn 0.6s ease-out forwards; }
-    #projects { animation-delay: 0.2s; }
-
+    
     /* Responsive */
     @media (max-width: 768px) {
-      header h1 { font-size: 2rem; }
-      section { margin: 2rem auto; }
+      .timeline::after {
+        left: 31px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+      
+      .timeline-item::after {
+        left: 21px;
+      }
+      
+      .left::after, .right::after {
+        left: 21px;
+      }
+      
+      .right {
+        left: 0;
+      }
+      
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-group.full-width {
+        grid-column: span 1;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Nima Sherpa</h1>
-    <div class="tagline">Strategic Finance | Investment Research | Value Creation</div>
-    <p>Chartered Accountant | CFA Level III Candidate | Leveraging data-driven insights to optimize financial strategy</p>
-    <div class="social-links">
-      <a href="https://www.linkedin.com/in/nimaosherpa/">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.5-2.39-1.76-2.39-1.37 0-1.96.92-1.96 2.2V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.5c2.9 0 3.12 1.85 3.12 4.2z"/></svg>
-        LinkedIn
-      </a>
-      <a href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.78 0 12.29c0 5.19 3.37 9.59 8.05 11.15.6.1.8-.25.8-.55v-2.04c-3.34.72-4.04-1.61-4.04-1.61-.54-1.38-1.32-1.75-1.32-1.75-1.08-.74.08-.72.08-.72 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.78 1.3 3.46.99.1-.77.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 016 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.65.25 2.87.12 3.17.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .3.2.66.82.55C20.63 21.88 24 17.48 24 12.29 24 5.78 18.63.5 12 .5z"/></svg>
-        GitHub
-      </a>
-      <a href="mailto:nima.sherpa@mail.ca.in">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
-        Email
-      </a>
+    <div class="header-content">
+      <h1>Nima Sherpa</h1>
+      <div class="tagline">Chartered Accountant | CFA Level III Candidate | Financial Strategist</div>
+      
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Fairfield, IA (Open to relocation)</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+1 (641) 233-9702</span>
+        </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/nimaosherpa/" target="_blank" aria-label="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#" aria-label="Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
     </div>
   </header>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p style="margin-top: 1rem; font-size: 1.1rem;">
-      I'm a finance strategist with expertise in <strong>FP&A, investment research, and process optimization</strong>. 
-      My approach blends rigorous financial analysis with strategic storytelling to uncover hidden value and drive 
-      data-informed decisions. Currently pursuing the <strong>CFA designation</strong> to deepen my investment expertise.
-    </p>
-    <div style="margin-top: 1.5rem;">
-      <a href="#" class="btn">Download Resume</a>
-      <a href="#projects" class="btn" style="background: var(--primary); margin-left: 1rem;">View Case Studies</a>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>Selected Work</h2>
-    <div class="project">
-      <h3>Portfolio Optimization Strategy</h3>
-      <p>Developed a dynamic asset allocation model for a $50M portfolio, improving risk-adjusted returns by 18% over 12 months through factor-based tilts and tactical rebalancing.</p>
-      <div class="project-meta">
-        <span>Asset Allocation</span>
-        <span>Factor Investing</span>
-        <span>Risk Modeling</span>
+  
+  <main class="container">
+    <!-- Professional Summary -->
+    <section id="summary">
+      <h2>Professional Summary</h2>
+      <div class="summary-card">
+        <p>Dynamic Chartered Accountant (US CPA Equivalent) and CFA® Level III candidate with over 6 years of progressive experience in Corporate finance, Financial Planning & Analysis (FP&A), and process optimization. Proven expertise in directing complex due diligence and delivering data-driven insights that drive growth and profitability. Successfully managed financial operations for $10M+ divisions, achieving a 30% faster month-end close and unlocking $600K in working capital.</p>
+        <p>Seeking to leverage advanced analytical capabilities, financial modeling expertise, and strategic insights to drive measurable results in a challenging FP&A role.</p>
       </div>
-    </div>
-    <div class="project">
-      <h3>FP&A Process Automation</h3>
-      <p>Led the implementation of a Python-based forecasting tool that reduced monthly close time by 40% and improved forecast accuracy by standardizing data inputs.</p>
-      <div class="project-meta">
-        <span>Financial Modeling</span>
-        <span>Process Improvement</span>
-        <span>Python</span>
+    </section>
+    
+    <!-- Career Highlights -->
+    <section id="highlights">
+      <h2>Career Highlights</h2>
+      <div class="highlights-container">
+        <div class="highlight-card">
+          <h3><i class="fas fa-trophy"></i> Rising Star Award</h3>
+          <p>Awarded "Rising Star of the Year" at Genese Solution Pvt. Ltd. within 8 months for leveraging data analytics to resolve critical financial leakage, significantly boosting strategic planning and profitability.</p>
+        </div>
+        <div class="highlight-card">
+          <h3><i class="fas fa-award"></i> Executive Recognition</h3>
+          <p>Received formal appreciation from Worldlink Communications Ltd. for visionary guidance and exemplary performance leading the $10M+ enterprise division's finance and logistic department.</p>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <section id="insights">
-    <h2>Recent Insights</h2>
-    <div class="project">
-      <h3>The Evolving Role of ESG in Emerging Markets</h3>
-      <p>How sustainability metrics are becoming alpha drivers rather than just compliance checkboxes in frontier economies.</p>
-      <div class="project-meta">
-        <span>ESG Investing</span>
-        <span>Emerging Markets</span>
+    </section>
+    
+    <!-- Professional Experience -->
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <div class="timeline">
+        <!-- Worldlink -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <span class="timeline-date">Nov 2023 - Jan 2025</span>
+            <span class="timeline-company">Worldlink Communications Ltd.</span>
+            <h3>Assistant Manager - Finance</h3>
+            <ul class="timeline-achievements">
+              <li>Spearheaded cross-functional process implementation across customer acquisition, billing, and collections</li>
+              <li>Developed annual operating plans, budgeting, and forecasting for $10M enterprise division</li>
+              <li>Optimized working capital, decreasing Days Sales Outstanding by 15% and increasing cash flow by $600K</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Genese -->
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <span class="timeline-date">Aug 2022 - Nov 2023</span>
+            <span class="timeline-company">Genese Solution Pvt. Ltd.</span>
+            <h3>Team Lead - Finance</h3>
+            <ul class="timeline-achievements">
+              <li>Managed product licensing and vendor contracts, achieving 10% cost savings</li>
+              <li>Led strategic financial planning for $5M business guiding capital allocation</li>
+              <li>Strengthened internal controls, improving financial statement accuracy</li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- B&A Associates -->
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <span class="timeline-date">Sep 2021 - Aug 2022</span>
+            <span class="timeline-company">B. & A. Associates Chartered Accountants</span>
+            <h3>Audit Officer</h3>
+            <ul class="timeline-achievements">
+              <li>Directed financial due diligence on new projects and investments</li>
+              <li>Executed audits using IFRS and data analytics, identifying 20+ control weaknesses</li>
+              <li>Supported executive management with budget and variance analysis</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
-
+    </section>
+    
+    <!-- Education -->
+    <section id="education">
+      <h2>Education & Certifications</h2>
+      <div class="education-container">
+        <div class="education-card">
+          <h3>MBA (ERP & Business Analytics)</h3>
+          <div class="education-meta">Maharishi International University | Expected 2027</div>
+        </div>
+        <div class="education-card">
+          <h3>Chartered Financial Analyst®</h3>
+          <div class="education-meta">CFA Institute | Level III Candidate</div>
+        </div>
+        <div class="education-card">
+          <h3>Chartered Accountant (CA)</h3>
+          <div class="education-meta">Institute of Chartered Accountant of India | 2017-2021</div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Skills -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill-category">
+          <h3><i class="fas fa-chart-line"></i> Financial Analysis</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Financial Modeling</span>
+            <span class="skill-tag">Budgeting & Forecasting</span>
+            <span class="skill-tag">Valuation (DCF)</span>
+            <span class="skill-tag">Due Diligence</span>
+            <span class="skill-tag">Working Capital Optimization</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3><i class="fas fa-laptop-code"></i> Technical Tools</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Advanced Excel</span>
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">ERP Systems</span>
+          </div>
+        </div>
+        
+        <div class="skill-category">
+          <h3><i class="fas fa-balance-scale"></i> Accounting & Compliance</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">IFRS</span>
+            <span class="skill-tag">US GAAP</span>
+            <span class="skill-tag">Financial Reporting</span>
+            <span class="skill-tag">Audit</span>
+            <span class="skill-tag">Risk Management</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact Us Section -->
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <div class="contact-section">
+        <p>Interested in discussing opportunities or learning more about my experience? Feel free to reach out:</p>
+        
+        <div class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          
+          <div class="form-group full-width" style="text-align: right;">
+            <button type="submit" class="submit-btn">Send Message</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
   <footer>
-    &copy; 2025 Nima Sherpa. All rights reserved.<br>
-    <small style="opacity: 0.7;">Built with precision, like a well-balanced portfolio.</small>
+    <div class="footer-text">
+      <p>Let's connect to discuss how my financial expertise can contribute to your organization's success.</p>
+    </div>
+    <p>&copy; 2025 Nima Sherpa. All rights reserved.</p>
   </footer>
 </body>
 </html>
