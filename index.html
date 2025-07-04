@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nima Sherpa | Finance & Investment Strategist</title>
-    <meta name="description" content="Engage with a unique, interactive experience to discover your investment philosophy and see tailored strategies from finance professional Nima Sherpa.">
+    <meta name="description" content="A professional portfolio for Nima Sherpa, featuring an interactive investment philosophy tool.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -23,7 +23,7 @@
         .section-subheader { color: var(--gray); max-width: 600px; margin: 1rem auto 0; }
         a { text-decoration: none; color: var(--accent); }
 
-        /* Navigation & Hero (Simplified for clarity) */
+        /* Navigation */
         #main-header { position: fixed; width: 100%; top: 0; z-index: 1000; }
         #main-nav { background: rgba(10, 26, 47, 0.8); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 1.5rem 0; transition: all 0.4s ease; }
         #main-nav.scrolled { padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
@@ -31,45 +31,64 @@
         .nav-brand h1 { font-family: 'Playfair Display', serif; color: white; font-size: 1.5rem; }
         #main-menu ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
         #main-menu a { color: white; text-decoration: none; font-weight: 600; }
+
+        /* Hero Section */
         #hero { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; background: linear-gradient(135deg, var(--primary), #2A4B7C); }
         #hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); }
+        #hero .hero-subtitle { font-size: 1.25rem; margin-top: 1rem; color: rgba(255,255,255,0.9); }
+        
+        /* About Section [STYLES ADDED] */
+        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; }
+        .about-image img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .about-content h3 { font-size: 1.8rem; color: var(--primary); margin-bottom: 1.5rem; }
+        .about-content p { color: var(--gray); margin-bottom: 1rem; }
 
-        /* === Philosophy Compass [REBUILT & SIMPLIFIED] === */
+        /* Philosophy Compass */
         #philosophy-compass { background: var(--primary); color: var(--white); }
         .compass-wrapper { max-width: 800px; margin: 0 auto; text-align: center; }
         .compass-step { margin-bottom: 2rem; }
         .compass-step h3 { margin-bottom: 1rem; color: var(--accent); font-size: 1.2rem; }
         .choice-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        .choice-btn {
-            background-color: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
+        .choice-btn { background-color: transparent; border: 2px solid rgba(255, 255, 255, 0.3); color: white; padding: 0.8rem 1.5rem; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s ease; }
         .choice-btn:hover { background-color: rgba(0, 224, 199, 0.2); border-color: var(--accent); }
         .choice-btn.active { background-color: var(--accent); color: var(--primary); border-color: var(--accent); }
-        
         #compass-result-area { margin-top: 2.5rem; min-height: 120px; transition: opacity 0.5s; opacity: 0; }
         #compass-result-area.visible { opacity: 1; }
         #compass-result-text { font-size: 1.5rem; font-weight: bold; font-family: 'Playfair Display', serif; }
         #compass-result-description { max-width: 600px; margin: 1rem auto 1.5rem; color: rgba(255, 255, 255, 0.8); }
         .compass-cta { display: inline-block; background: var(--accent); color: var(--primary); padding: 0.8rem 2rem; border-radius: 4px; font-weight: 600; }
 
-        /* === Filtering Styles === */
+        /* Filtering & Portfolio Styles */
         .grid-item { transition: transform 0.4s ease, opacity 0.4s ease, height 0.4s ease, padding 0.4s ease, margin 0.4s ease; }
         .grid-item.is-hidden { transform: scale(0.8); opacity: 0; height: 0; padding: 0; margin: 0; overflow: hidden; border: none; }
-        
-        /* Portfolio Section Styles */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
         .project-item { background: var(--white); border-radius: 8px; box-shadow: 0 5px 25px rgba(0,0,0,0.07); overflow: hidden; text-decoration: none; color: inherit; display: block; }
+        .project-item:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .card-image-wrapper img { width: 100%; height: 200px; object-fit: cover; }
         .card-content { padding: 1.5rem; }
         .card-content h3 { color: var(--primary); }
+        
+        /* Contact Section [STYLES ADDED] */
+        .contact-form { max-width: 700px; margin: 0 auto; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background-color: var(--white);
+        }
+        .form-group input:focus, .form-group textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+        .submit-btn { width: 100%; background: var(--primary); color: white; border: none; padding: 1rem; border-radius: 4px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background-color 0.3s; }
+        .submit-btn:hover { background-color: #2A4B7C; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; text-align: center; }
+            #main-menu { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -93,24 +112,34 @@
     <main>
         <section id="hero">
             <h1 data-aos="fade-up">Strategic Finance Solutions</h1>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">Guiding Growth. Protecting Capital. Delivering Results.</p>
         </section>
 
         <section id="about" class="section-bg-alt">
-             <div class="container section-header" data-aos="fade-up">
-                <h2>About Me</h2>
-                <div class="section-divider"></div>
-                <p class="section-subheader">I combine rigorous financial analysis with innovative market insights to deliver exceptional results.</p>
+             <div class="container" data-aos="fade-up">
+                <div class="section-header">
+                    <h2>About Me</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop" alt="A professional portrait of Nima Sherpa">
+                    </div>
+                    <div class="about-content">
+                        <h3>Combining Rigor with Innovation</h3>
+                        <p>As a Chartered Accountant and CFA Level III candidate, I bring over six years of experience in synthesizing rigorous financial analysis with innovative market insights. My approach is rooted in a deep understanding of corporate finance, FP&A, and process optimization.</p>
+                        <p>I believe that the best financial strategies are both data-driven and forward-thinking. My mission is to partner with clients to navigate complex market dynamics, identify unique opportunities, and build a resilient foundation for long-term, sustainable growth.</p>
+                    </div>
+                </div>
              </div>
         </section>
 
-        <!-- === INVESTMENT PHILOSOPHY COMPASS (REBUILT) === -->
         <section id="philosophy-compass">
             <div class="container compass-wrapper">
                 <div class="section-header" data-aos="fade-up">
                     <h2 style="color: white;">Discover Your Investment Philosophy</h2>
                     <div class="section-divider"></div>
                 </div>
-                
                 <div class="compass-step" data-aos="fade-up" data-aos-delay="100">
                     <h3>Step 1: Choose your primary focus</h3>
                     <div class="choice-buttons" id="axis1-choices">
@@ -118,7 +147,6 @@
                         <button class="choice-btn" data-choice="growth">Aggressive Growth</button>
                     </div>
                 </div>
-
                 <div class="compass-step" data-aos="fade-up" data-aos-delay="200">
                     <h3>Step 2: Choose your analysis style</h3>
                      <div class="choice-buttons" id="axis2-choices">
@@ -126,7 +154,6 @@
                         <button class="choice-btn" data-choice="data">Data-Driven Analysis</button>
                     </div>
                 </div>
-
                 <div id="compass-result-area">
                     <h3 id="compass-result-text">Your Result</h3>
                     <p id="compass-result-description">Description will appear here.</p>
@@ -135,7 +162,6 @@
             </div>
         </section>
 
-        <!-- === PORTFOLIO SECTION === -->
         <section id="portfolio" class="section-bg-alt">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
@@ -144,11 +170,11 @@
                 </div>
                 <div id="project-grid" class="project-grid">
                     <a href="#" class="project-item grid-item" data-aos="fade-up" data-philosophy="growth data">
-                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop" alt="Financial charts on a screen"></div>
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop" alt="Financial charts"></div>
                         <div class="card-content"><h3>Portfolio Optimization</h3><p><b>Philosophy:</b> Growth / Data-Driven</p></div>
                     </a>
                     <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="100" data-philosophy="preservation data">
-                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop" alt="Dashboard analytics"></div>
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop" alt="Analytics dashboard"></div>
                         <div class="card-content"><h3>FP&A Automation</h3><p><b>Philosophy:</b> Preservation / Data-Driven</p></div>
                     </a>
                     <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="200" data-philosophy="growth intuition">
@@ -156,7 +182,7 @@
                         <div class="card-content"><h3>M&A Due Diligence</h3><p><b>Philosophy:</b> Growth / Intuition</p></div>
                     </a>
                      <a href="#" class="project-item grid-item" data-aos="fade-up" data-aos-delay="300" data-philosophy="preservation intuition">
-                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop" alt="Team strategy meeting"></div>
+                        <div class="card-image-wrapper"><img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop" alt="Strategy meeting"></div>
                         <div class="card-content"><h3>Resilient Sector Strategy</h3><p><b>Philosophy:</b> Preservation / Intuition</p></div>
                     </a>
                 </div>
@@ -164,10 +190,24 @@
         </section>
         
         <section id="contact">
-             <div class="container section-header" data-aos="fade-up">
-                <h2>Contact Me</h2>
-                <div class="section-divider"></div>
-                <p class="section-subheader">Let's discuss how my expertise can help you achieve your financial goals.</p>
+             <div class="container" data-aos="fade-up">
+                <div class="section-header">
+                    <h2>Contact Me</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-subheader">I'm currently available for consulting opportunities. Let's discuss how my expertise can help you achieve your financial goals.</p>
+                </div>
+                <form class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                     <div class="form-group">
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
              </div>
         </section>
     </main>
@@ -184,7 +224,7 @@
         const nav = document.getElementById('main-nav');
         if (nav) { window.addEventListener('scroll', () => { window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled'); }); }
         
-        // === Philosophy Compass [REBUILT & SIMPLIFIED] ===
+        // Philosophy Compass Logic
         const compassSection = document.getElementById('philosophy-compass');
         if (compassSection) {
             const axis1Buttons = document.querySelectorAll('#axis1-choices .choice-btn');
@@ -197,10 +237,10 @@
             const choices = { axis1: null, axis2: null };
 
             const philosophyMatrix = {
-                'growth data': { title: 'Data-Led Growth', desc: 'You prioritize high-growth opportunities, validated by rigorous quantitative analysis and financial modeling.'},
-                'growth intuition': { title: 'Intuitive Growth', desc: 'You seek high-growth sectors, guided by market trends, emerging technologies, and strategic foresight.'},
-                'preservation data': { title: 'Quantitative Preservation', desc: 'You focus on protecting capital through data-driven risk management and investments in stable, proven assets.'},
-                'preservation intuition': { title: 'Strategic Preservation', desc: 'You protect capital by understanding broad market shifts and identifying resilient sectors based on experience.'},
+                'growth data': { title: 'Result: Data-Led Growth', desc: 'You prioritize high-growth opportunities, validated by rigorous quantitative analysis and financial modeling.'},
+                'growth intuition': { title: 'Result: Intuitive Growth', desc: 'You seek high-growth sectors, guided by market trends, emerging technologies, and strategic foresight.'},
+                'preservation data': { title: 'Result: Quantitative Preservation', desc: 'You focus on protecting capital through data-driven risk management and investments in stable, proven assets.'},
+                'preservation intuition': { title: 'Result: Strategic Preservation', desc: 'You protect capital by understanding broad market shifts and identifying resilient sectors based on experience.'},
             };
 
             function updateResult() {
@@ -211,14 +251,9 @@
                         resultDesc.textContent = philosophyMatrix[philosophyKey].desc;
                         resultArea.classList.add('visible');
                         
-                        // Filter the grid items
                         gridItems.forEach(item => {
                             const itemPhilosophy = item.dataset.philosophy || '';
-                            if (itemPhilosophy === philosophyKey) {
-                                item.classList.remove('is-hidden');
-                            } else {
-                                item.classList.add('is-hidden');
-                            }
+                            item.classList.toggle('is-hidden', itemPhilosophy !== philosophyKey);
                         });
                     }
                 }
