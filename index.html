@@ -1287,10 +1287,10 @@
             const metricsObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        animateValue("metric1", 0, 6=, 1500);
-                        animateValue("metric2", 0, 42, 1500);
-                        animateValue("metric3", 0, -, 1500);
-                        animateValue("metric4", 0, -, 1500);
+                        animateValue("metric1", 0, 6, 1500);
+                        animateValue("metric2", 0, 0, 1500);
+                        animateValue("metric3", 0, 0, 1500);
+                        animateValue("metric4", 0, 0, 1500);
                         metricsObserver.unobserve(entry.target);
                     }
                 });
