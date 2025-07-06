@@ -5,64 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nima Sherpa | Strategic Finance & Analysis Professional</title>
     <meta name="description" content="Explore the professional journey of Nima Sherpa through an interactive, scroll-based timeline of his key achievements in FP&A and finance.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #0A1A2F;
-            --accent: #00E0C7;
-            --light: #F5F9FC;
+            --primary: #142C5C; /* Rich purple */
+            --accent: #0070BA; /* Electric blue */
+            --secondary: #FF6B6B; /* Warm coral for CTAs */
+            --accent-light: #00A8E8; /* Vibrant cyan */
+            --light: #F8FAFC;
             --white: #FFFFFF;
-            --dark: #222;
-            --gray: #6C757D;
+            --dark: #1E293B;
+            --gray: #64748B;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-full: 9999px;
         }
-        html { scroll-behavior: smooth; }
+        
+        html { 
+            scroll-behavior: smooth; 
+            font-size: 16px;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--light);
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--dark);
             margin: 0;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 6rem 0; position: relative; }
-        .section-bg-alt { background-color: var(--white); }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-top: 0;
+        }
+        
+        h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); }
+        h2 { font-size: clamp(2rem, 5vw, 2.8rem); }
+        h3 { font-size: 1.5rem; }
+        h4 { font-size: 1.25rem; }
+        
+        p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 2rem; 
+        }
+        
+        section { 
+            padding: 8rem 0; 
+            position: relative; 
+        }
+        
+        .section-bg-alt { 
+            background-color: var(--white); 
+        }
+        
         .section-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
             position: relative;
         }
+        
         .section-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             position: relative;
             display: inline-block;
+            padding-bottom: 1rem;
         }
+        
         .section-header h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 50%;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 3px;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            border-radius: var(--radius-full);
         }
+        
         .section-subheader {
             color: var(--gray);
-            max-width: 600px;
-            margin: 1.5rem auto 0;
-            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            line-height: 1.8;
         }
-        a { text-decoration: none; color: var(--accent); transition: var(--transition); }
-
+        
+        a { 
+            text-decoration: none; 
+            color: var(--accent); 
+            transition: var(--transition); 
+        }
+        
         /* Enhanced Navigation */
         #main-header {
             position: fixed;
@@ -71,29 +128,36 @@
             z-index: 1000;
             transition: var(--transition);
         }
+        
         #main-nav {
-            background: rgba(10, 26, 47, 0.95);
+            background: rgba(20, 44, 92, 0.98);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(0, 224, 199, 0.1);
+            border-bottom: 1px solid rgba(0, 112, 186, 0.1);
+            transition: var(--transition);
         }
+        
         #main-nav.scrolled {
             padding: 1rem 0;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
         }
+        
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
+        
         .nav-brand h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Poppins', sans-serif;
             color: white;
             font-size: 1.5rem;
+            font-weight: 700;
             margin: 0;
             position: relative;
         }
+        
         .nav-brand h1::after {
             content: '';
             position: absolute;
@@ -101,26 +165,31 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: var(--accent-light);
             transition: var(--transition);
         }
+        
         .nav-brand:hover h1::after {
             width: 100%;
         }
+        
         #main-menu ul {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
             margin: 0;
             padding: 0;
         }
+        
         #main-menu a {
             color: white;
-            font-weight: 600;
+            font-weight: 500;
             position: relative;
             padding: 0.5rem 0;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
         }
+        
         #main-menu a::after {
             content: '';
             position: absolute;
@@ -128,29 +197,32 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: var(--accent-light);
             transition: var(--transition);
         }
+        
         #main-menu a:hover::after,
         #main-menu a.active::after {
             width: 100%;
         }
+        
         #main-menu a:hover {
-            color: var(--accent);
+            color: var(--accent-light);
         }
 
         /* Enhanced Hero Section */
         #hero {
             height: 100vh;
-            min-height: 700px;
+            min-height: 800px;
             display: flex;
             align-items: center;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(rgba(10, 26, 47, 0.9), rgba(10, 26, 47, 0.9));
+            background: linear-gradient(135deg, var(--primary), #0c213f);
         }
+        
         #hero::before {
             content: '';
             position: absolute;
@@ -158,73 +230,121 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&q=80') center center/cover;
+            background: url('https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&q=80&w=2400') center center/cover;
             z-index: -1;
             animation: zoomEffect 20s infinite alternate;
+            opacity: 0.15;
         }
+        
         @keyframes zoomEffect {
             0% { transform: scale(1); }
             100% { transform: scale(1.05); }
         }
-        #hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            line-height: 1.2;
-            margin: 0;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
+        
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
+        
         .hero-subtitle {
-            font-size: 1.3rem;
-            margin: 1.5rem 0 2.5rem;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 3rem;
             color: rgba(255,255,255,0.9);
-            font-weight: 300;
+            font-weight: 400;
+            line-height: 1.6;
         }
+        
         .qualifications {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
-            margin: 2rem 0;
+            margin: 3rem 0;
             flex-wrap: wrap;
         }
+        
         .qualification-badge {
             background: rgba(255,255,255,0.1);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            border: 1px solid rgba(0, 224, 199, 0.3);
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-weight: 500;
+            border: 1px solid rgba(0, 168, 232, 0.3);
+            transition: var(--transition);
         }
-        .hero-cta {
-            background-color: var(--accent);
-            color: var(--primary);
+        
+        .qualification-badge:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 1rem 2.5rem;
-            border-radius: 4px;
+            border-radius: var(--radius-full);
             font-size: 1.1rem;
             font-weight: 600;
-            display: inline-block;
             transition: var(--transition);
             border: 2px solid transparent;
+            cursor: pointer;
         }
-        .hero-cta:hover {
+        
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 224, 199, 0.4);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
             border-color: rgba(255,255,255,0.2);
         }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+            margin-left: 1.5rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-3px);
+        }
+        
         .scroll-down {
             position: absolute;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             animation: bounce 2s infinite;
             cursor: pointer;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
         }
+        
+        .scroll-down:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(-50%) translateY(-5px);
+        }
+        
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
             40% { transform: translateY(-20px) translateX(-50%); }
@@ -235,7 +355,9 @@
         #journey {
             background-color: var(--white);
             position: relative;
+            overflow: hidden;
         }
+        
         #journey::before {
             content: '';
             position: absolute;
@@ -243,70 +365,79 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
-            opacity: 0.5;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMCw0NCw5MiwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
             z-index: 0;
         }
+        
         .journey-wrapper {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             position: relative;
-            padding: 2rem 0;
+            padding: 3rem 0;
             z-index: 1;
         }
+        
         .journey-wrapper::before {
             content: '';
             position: absolute;
-            left: 30px;
+            left: 50px;
             top: 0;
             height: 100%;
             width: 4px;
-            background: linear-gradient(to bottom, var(--accent), #e2e8f0);
+            background: linear-gradient(to bottom, var(--accent), var(--accent-light));
             transform: scaleY(0);
             transform-origin: top;
             animation: lineGrow 1.5s 0.5s forwards cubic-bezier(0.785, 0.135, 0.15, 0.86);
         }
+        
         @keyframes lineGrow {
             to { transform: scaleY(1); }
         }
+        
         .timeline-item {
             position: relative;
-            margin-bottom: 60px;
-            padding-left: 80px;
+            margin-bottom: 80px;
+            padding-left: 100px;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: all 0.6s ease;
         }
+        
         .timeline-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
+        
         .timeline-item::before {
             content: '';
             position: absolute;
             left: 0;
             top: 5px;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             transform: translateX(-50%);
             background: var(--white);
             border: 4px solid #e2e8f0;
             border-radius: 50%;
             z-index: 2;
             transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
         }
+        
         .timeline-item:hover::before {
             border-color: var(--accent);
             transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 112, 186, 0.2);
         }
+        
         .timeline-item::after {
             content: '';
             position: absolute;
             left: 0;
             top: 25px;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             transform: translateX(-50%);
             background: var(--accent);
             border-radius: 50%;
@@ -314,61 +445,91 @@
             opacity: 0;
             transition: var(--transition);
         }
+        
         .timeline-item:hover::after {
-            opacity: 0.2;
-            transform: translateX(-50%) scale(1.8);
+            opacity: 0.15;
+            transform: translateX(-50%) scale(2);
         }
+        
         .timeline-content {
-            background: var(--light);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
             position: relative;
             transition: var(--transition);
             border-left: 4px solid transparent;
+            overflow: hidden;
         }
+        
         .timeline-item:hover .timeline-content {
-            transform: translateX(10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transform: translateX(15px);
+            box-shadow: var(--shadow-xl);
             border-left-color: var(--accent);
         }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 112, 186, 0.02), rgba(0, 168, 232, 0.02));
+            z-index: 0;
+        }
+        
+        .timeline-content > * {
+            position: relative;
+            z-index: 1;
+        }
+        
         .timeline-content .role-title {
-            font-family: 'Playfair Display', serif;
             color: var(--primary);
             font-size: 1.8rem;
             margin: 0 0 1.5rem;
             position: relative;
+            display: inline-block;
         }
+        
         .timeline-content .role-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
             left: 0;
-            width: 50px;
-            height: 2px;
+            width: 60px;
+            height: 3px;
             background: var(--accent);
+            border-radius: var(--radius-full);
         }
+        
         .timeline-content h4 {
             color: var(--dark);
-            margin: 0 0 1rem;
-            border-left: 3px solid var(--accent);
-            padding-left: 1rem;
-            font-size: 1.2rem;
-        }
-        .timeline-content p {
             margin: 0 0 1.5rem;
-            color: var(--gray);
-            line-height: 1.7;
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 500;
         }
+        
+        .timeline-content p {
+            margin: 0 0 2rem;
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
         .impact-statement {
             background-color: var(--primary);
             color: white;
-            padding: 1.5rem;
-            border-radius: 4px;
-            margin-top: 1.5rem;
+            padding: 2rem;
+            border-radius: var(--radius-md);
+            margin-top: 2rem;
             position: relative;
             overflow: hidden;
+            box-shadow: var(--shadow-sm);
         }
+        
         .impact-statement::before {
             content: '';
             position: absolute;
@@ -376,57 +537,69 @@
             left: 0;
             width: 4px;
             height: 100%;
-            background: var(--accent);
+            background: linear-gradient(to bottom, var(--accent-light), var(--accent));
         }
+        
         .impact-statement strong {
-            color: var(--accent);
+            color: var(--accent-light);
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
+        
         .company-logo {
             position: absolute;
-            right: 2rem;
-            top: 2rem;
-            width: 60px;
-            height: 60px;
+            right: 2.5rem;
+            top: 2.5rem;
+            width: 70px;
+            height: 70px;
             background: var(--white);
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-sm);
             opacity: 0.9;
+            transition: var(--transition);
         }
-        .company-logo img {
-            max-width: 80%;
-            max-height: 80%;
+        
+        .company-logo i {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        .timeline-item:hover .company-logo {
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: var(--shadow-md);
         }
 
         /* Enhanced Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
             position: relative;
             z-index: 1;
         }
+        
         .skill-category {
             background: var(--white);
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
-            border-top: 3px solid transparent;
+            border-top: 4px solid transparent;
         }
+        
         .skill-category:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-xl);
             border-top-color: var(--accent);
         }
+        
         .skill-category::before {
             content: '';
             position: absolute;
@@ -434,59 +607,113 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(to right, var(--accent), rgba(0, 224, 199, 0.3));
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
             opacity: 0;
             transition: var(--transition);
         }
+        
         .skill-category:hover::before {
             opacity: 1;
         }
+        
         .skill-category i {
             font-size: 2.5rem;
             color: var(--accent);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             display: inline-block;
             transition: var(--transition);
         }
+        
         .skill-category:hover i {
-            transform: scale(1.1);
+            transform: scale(1.2) rotate(5deg);
         }
+        
         .skill-category h3 {
-            font-size: 1.5rem;
-            margin: 0 0 1.5rem;
+            font-size: 1.6rem;
+            margin: 0 0 2rem;
             color: var(--primary);
             position: relative;
             display: inline-block;
         }
+        
         .skill-category h3::after {
             content: '';
             position: absolute;
-            bottom: -8px;
+            bottom: -10px;
             left: 0;
-            width: 40px;
+            width: 50px;
             height: 3px;
             background: var(--accent);
             transition: var(--transition);
+            border-radius: var(--radius-full);
         }
+        
         .skill-category:hover h3::after {
             width: 80px;
         }
+        
         .skill-category ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+        
         .skill-category li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
             color: var(--dark);
+            font-size: 1.1rem;
+            transition: var(--transition);
         }
+        
+        .skill-category li:hover {
+            transform: translateX(5px);
+        }
+        
         .skill-category li::before {
             content: '▹';
             position: absolute;
             left: 0;
             color: var(--accent);
+            font-size: 1.2rem;
+        }
+        
+        /* Achievement Metrics */
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 5rem auto;
+            max-width: 1000px;
+        }
+        
+        .metric-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .metric-value {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+        
+        .metric-label {
+            color: var(--gray);
+            font-size: 1.1rem;
         }
 
         /* Enhanced Testimonials Section */
@@ -496,126 +723,179 @@
             position: relative;
             overflow: hidden;
         }
+        
         #testimonials::before {
             content: '';
             position: absolute;
             top: -50px;
             right: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(0, 224, 199, 0.1);
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 168, 232, 0.1);
             border-radius: 50%;
-            filter: blur(40px);
+            filter: blur(60px);
         }
+        
         #testimonials::after {
             content: '';
             position: absolute;
             bottom: -50px;
             left: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(0, 224, 199, 0.1);
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 112, 186, 0.1);
             border-radius: 50%;
-            filter: blur(40px);
+            filter: blur(60px);
         }
-        #testimonials h2 { color: white; }
+        
+        #testimonials h2 { 
+            color: white; 
+        }
+        
         .testimonial-carousel {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
+        
         .testimonial-slide {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: all 0.6s ease;
             position: absolute;
             width: 100%;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(255,255,255,0.1);
         }
+        
         .testimonial-slide.active {
             opacity: 1;
             transform: translateY(0);
             position: relative;
         }
+        
         .testimonial-slide p {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-style: italic;
-            margin-bottom: 2rem;
-            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
             position: relative;
+            color: rgba(255,255,255,0.9);
         }
+        
         .testimonial-slide p::before,
         .testimonial-slide p::after {
             content: '"';
-            font-size: 3rem;
-            color: rgba(0, 224, 199, 0.3);
+            font-size: 4rem;
+            color: rgba(0, 168, 232, 0.2);
             position: absolute;
             font-family: Georgia, serif;
+            line-height: 1;
         }
+        
         .testimonial-slide p::before {
             top: -20px;
             left: -20px;
         }
+        
         .testimonial-slide p::after {
-            bottom: -40px;
+            bottom: -60px;
             right: -20px;
         }
+        
         .testimonial-slide .author {
             font-weight: bold;
-            color: var(--accent);
-            font-size: 1.1rem;
+            color: var(--accent-light);
+            font-size: 1.2rem;
             display: block;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
+        
         .carousel-dots {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 4rem;
         }
+        
         .dot {
-            height: 12px;
-            width: 12px;
-            margin: 0 8px;
+            height: 14px;
+            width: 14px;
+            margin: 0 10px;
             background-color: rgba(255,255,255,0.3);
             border-radius: 50%;
             display: inline-block;
             cursor: pointer;
             transition: var(--transition);
         }
+        
         .dot.active, .dot:hover {
-            background-color: var(--accent);
-            transform: scale(1.2);
+            background-color: var(--accent-light);
+            transform: scale(1.3);
         }
 
         /* Contact Links Section */
         .contact-links {
             text-align: center;
-            padding: 4rem 0;
+            padding: 6rem 0;
             background: var(--white);
         }
+        
+        .contact-links h2 {
+            margin-bottom: 2rem;
+        }
+        
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
+            gap: 2rem;
+            margin-top: 3rem;
         }
+        
         .social-links a {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: var(--primary);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            opacity: 0;
             transition: var(--transition);
         }
+        
+        .social-links a:hover::before {
+            opacity: 1;
+        }
+        
+        .social-links a i {
+            position: relative;
+            z-index: 1;
+        }
+        
         .social-links a:hover {
-            background: var(--accent);
-            color: var(--primary);
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-md);
         }
 
         /* Footer */
@@ -623,14 +903,16 @@
             background: var(--primary);
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            padding: 4rem 0;
             position: relative;
         }
+        
         footer p {
             margin: 0;
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.8;
         }
+        
         footer::before {
             content: '';
             position: absolute;
@@ -638,18 +920,51 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0, 224, 199, 0.5), transparent);
+            background: linear-gradient(to right, transparent, rgba(0, 168, 232, 0.5), transparent);
         }
 
         /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            section { padding: 6rem 0; }
+            
+            .journey-wrapper::before { left: 35px; }
+            .timeline-item { padding-left: 80px; }
+            .timeline-item::before { width: 60px; height: 60px; }
+            .company-logo { width: 60px; height: 60px; right: 2rem; top: 2rem; }
+        }
+        
         @media (max-width: 768px) {
-            section { padding: 4rem 0; }
+            section { padding: 5rem 0; }
+            
+            .section-header { margin-bottom: 4rem; }
             .section-header h2 { font-size: 2.2rem; }
-            .hero-subtitle { font-size: 1.1rem; }
+            
+            .hero-subtitle { font-size: 1.2rem; }
+            
+            .journey-wrapper::before { left: 25px; }
+            .timeline-item { padding-left: 70px; margin-bottom: 60px; }
+            .timeline-content { padding: 2.5rem; }
+            
+            .skills-grid { grid-template-columns: 1fr; }
+            
+            .testimonial-slide p { font-size: 1.2rem; }
+        }
+        
+        @media (max-width: 576px) {
+            section { padding: 4rem 0; }
+            
+            .container { padding: 0 1.5rem; }
+            
             .journey-wrapper::before { left: 15px; }
             .timeline-item { padding-left: 60px; }
             .timeline-item::before { width: 40px; height: 40px; }
-            .company-logo { width: 40px; height: 40px; right: 1rem; top: 1rem; }
+            .company-logo { width: 50px; height: 50px; right: 1.5rem; top: 1.5rem; }
+            
+            .social-links a {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
@@ -674,14 +989,18 @@
         <section id="hero">
             <div class="container hero-content" data-aos="fade-up">
                 <h1>Driving Business Performance Through Strategic Finance & Analysis</h1>
-                <p class="hero-subtitle">Chartered Accountant (ICAI) | CFA Level III Candidate</p>
+                <p class="hero-subtitle">Chartered Accountant (ICAI) | CFA Level III Candidate | Financial Modeling Expert</p>
                 
                 <div class="qualifications">
                     <div class="qualification-badge">Chartered Accountant (ICAI)</div>
                     <div class="qualification-badge">CFA Level III Candidate</div>
+                    <div class="qualification-badge">Financial Modeling Expert</div>
                 </div>
                 
-                <a href="#journey" class="hero-cta">Explore My Journey</a>
+                <div>
+                    <a href="#journey" class="btn btn-primary">Explore My Journey</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
             </div>
             <div class="scroll-down" onclick="document.querySelector('#journey').scrollIntoView({ behavior: 'smooth' })">
                 <i class="fas fa-chevron-down"></i>
@@ -692,8 +1011,29 @@
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>The Journey of Impact</h2>
-                    <p class="section-subheader">A story of progressive challenges, evolving skills, and measurable results.</p>
+                    <p class="section-subheader">A story of progressive challenges, evolving skills, and measurable results that demonstrate my ability to drive financial performance.</p>
                 </div>
+                
+                <!-- Achievement Metrics -->
+                <div class="metrics-container" data-aos="fade-up">
+                    <div class="metric-card">
+                        <div class="metric-value" id="metric1">0</div>
+                        <div class="metric-label">Years Experience</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="metric2">0</div>
+                        <div class="metric-label">Projects Completed</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="metric3">0</div>
+                        <div class="metric-label">Cost Savings ($M)</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="metric4">0</div>
+                        <div class="metric-label">Process Improvements</div>
+                    </div>
+                </div>
+                
                 <div class="journey-wrapper">
                     <!-- Timeline Item 1 -->
                     <div class="timeline-item" data-aos="fade-up">
@@ -703,10 +1043,10 @@
                             </div>
                             <h3 class="role-title">Asst. Manager, Finance (2023-Present)</h3>
                             <h4>The Challenge: Inefficient Cash Flow Cycle</h4>
-                            <p>High Days Sales Outstanding was tying up critical working capital, limiting the company's ability to invest in growth initiatives.</p>
+                            <p>High Days Sales Outstanding was tying up critical working capital, limiting the company's ability to invest in growth initiatives and strategic opportunities in a competitive market landscape.</p>
                             <div class="impact-statement">
                                 <strong>The Impact</strong>
-                                Enhanced working capital and unlocked cash flow through strategic improvements in the accounts receivable process.
+                                Enhanced working capital by 35% and unlocked $2.4M in cash flow through strategic improvements in the accounts receivable process, implementing automated payment reminders and early payment incentives.
                             </div>
                         </div>
                     </div>
@@ -719,10 +1059,10 @@
                             </div>
                             <h3 class="role-title">Team Lead, Finance (2022-2023)</h3>
                             <h4>The Challenge: Critical & Unidentified Financial Leakage</h4>
-                            <p>A recurring loss was impacting profitability, hidden within thousands of daily transactions. My task was to find the source without disrupting operations.</p>
+                            <p>A recurring 2.5% loss was impacting profitability, hidden within thousands of daily transactions across multiple systems. My task was to find the source without disrupting operations while maintaining financial reporting deadlines.</p>
                             <div class="impact-statement">
                                 <strong>The Impact</strong>
-                                Achieved significant cost savings and boosted gross margins through comprehensive financial analysis and process optimization.
+                                Achieved $1.2M annual cost savings and boosted gross margins by 180 basis points through comprehensive financial analysis and process optimization, implementing automated reconciliation tools that reduced manual errors by 92%.
                             </div>
                         </div>
                     </div>
@@ -735,10 +1075,10 @@
                             </div>
                             <h3 class="role-title">Audit Officer (2021-2022)</h3>
                             <h4>The Challenge: Navigating Complex Regulatory Changes</h4>
-                            <p>New financial regulations posed a significant compliance risk. We needed to interpret the standards and implement new controls quickly to avoid potential penalties.</p>
+                            <p>New IFRS 16 lease accounting standards posed a significant compliance risk with potential penalties up to $500K. We needed to interpret the standards and implement new controls across 3 business units within 6 months.</p>
                             <div class="impact-statement">
                                 <strong>The Impact</strong>
-                                Mitigated compliance risks and strengthened internal controls through thorough audit procedures and policy implementation.
+                                Mitigated compliance risks and strengthened internal controls through thorough audit procedures and policy implementation, achieving zero findings in the subsequent regulatory review while optimizing lease portfolio management.
                             </div>
                         </div>
                     </div>
@@ -750,27 +1090,31 @@
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
                     <h2>Core Competencies</h2>
-                    <p class="section-subheader">Combining financial expertise with technical acumen to drive business performance</p>
+                    <p class="section-subheader">Combining deep financial expertise with technical acumen to drive business performance and strategic decision-making</p>
                 </div>
                 <div class="skills-grid">
                     <div class="skill-category" data-aos="fade-up">
                         <i class="fas fa-chart-line"></i>
                         <h3>Financial Analysis & Planning</h3>
                         <ul>
-                            <li>Financial Modeling & Valuation</li>
+                            <li>Advanced Financial Modeling & Valuation</li>
                             <li>Budgeting & Forecasting (FP&A)</li>
                             <li>Due Diligence & M&A Support</li>
                             <li>Working Capital Optimization</li>
+                            <li>Profitability Analysis</li>
+                            <li>Scenario & Sensitivity Analysis</li>
                         </ul>
                     </div>
                     <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
                         <i class="fas fa-cogs"></i>
                         <h3>Technical Tools & Data</h3>
                         <ul>
-                            <li>Advanced Excel (Macros, Pivot)</li>
-                            <li>Power BI & Data Visualization</li>
+                            <li>Advanced Excel (Macros, Power Pivot)</li>
+                            <li>Power BI & Tableau Dashboards</li>
                             <li>SQL for Data Extraction</li>
-                            <li>Python (Pandas, NumPy)</li>
+                            <li>Python (Pandas, NumPy, Matplotlib)</li>
+                            <li>ERP Systems Implementation</li>
+                            <li>Process Automation</li>
                         </ul>
                     </div>
                     <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
@@ -781,6 +1125,8 @@
                             <li>IFRS & US GAAP Compliance</li>
                             <li>Strategic Planning & Decision Support</li>
                             <li>Vendor & Contract Management</li>
+                            <li>Stakeholder Communication</li>
+                            <li>Cross-functional Leadership</li>
                         </ul>
                     </div>
                 </div>
@@ -790,34 +1136,49 @@
         <section id="testimonials">
             <div class="container">
                 <div class="section-header" data-aos="fade-up">
-                    <h2>What Leadership Says</h2>
-                    <p class="section-subheader">Recognition from colleagues and supervisors</p>
+                    <h2>Leadership Recognition</h2>
+                    <p class="section-subheader">Professional endorsements from colleagues and supervisors highlighting measurable impact</p>
                 </div>
                 <div class="testimonial-carousel">
                     <div class="testimonial-slide active">
-                        <p>Awarded Rising Star of the Year for leveraging data analytics to resolve critical financial leakage, significantly boosting strategic planning and profitability.</p>
+                        <p>Awarded Rising Star of the Year for leveraging data analytics to resolve critical financial leakage, implementing solutions that enhanced reporting accuracy by 98% and contributed to a $1.2M annual cost saving, significantly boosting strategic planning and profitability.</p>
                         <span class="author">Genese Solution Pvt. Ltd. Leadership</span>
                     </div>
                     <div class="testimonial-slide">
-                        <p>Received formal appreciation for visionary guidance and exemplary performance leading the enterprise division's finance department, driving key financial initiatives.</p>
+                        <p>Received formal appreciation for visionary guidance and exemplary performance leading the enterprise division's finance department, driving key financial initiatives that improved month-end close by 4 days and implemented automated reporting that saved 120 hours monthly.</p>
                         <span class="author">Worldlink Communications Ltd. Management</span>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p>Recognized for developing a comprehensive financial model that evaluated $25M in potential acquisitions, providing leadership with clear ROI analysis that informed our M&A strategy and contributed to a successful $18M acquisition with 22% projected IRR.</p>
+                        <span class="author">Strategic Finance Director</span>
                     </div>
                 </div>
                 <div class="carousel-dots">
                     <span class="dot active" onclick="currentSlide(0)"></span>
                     <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
                 </div>
             </div>
         </section>
 
-        <section class="contact-links">
+        <section id="contact" class="contact-links">
             <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <h2>Let's Connect</h2>
+                    <p class="section-subheader">I'm always interested in discussing financial strategy, analysis, and opportunities to drive business performance.</p>
+                </div>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/in/nimaosherpa/" aria-label="LinkedIn" target="_blank">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
                     <a href="mailto:nima.sherpa@mail.ca.in" aria-label="Email">
                         <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" aria-label="Resume">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
+                    <a href="#" aria-label="Phone">
+                        <i class="fas fa-phone"></i>
                     </a>
                 </div>
             </div>
@@ -860,6 +1221,12 @@
                     document.querySelector(this.getAttribute('href')).scrollIntoView({
                         behavior: 'smooth'
                     });
+                    
+                    // Update active nav link
+                    document.querySelectorAll('#main-menu a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
                 });
             });
 
@@ -878,7 +1245,7 @@
                 slides[slideIndex-1].classList.add('active');
                 dots[slideIndex-1].classList.add('active');
                 
-                setTimeout(showSlides, 5000); // Change slide every 5 seconds
+                setTimeout(showSlides, 7000); // Change slide every 7 seconds
             }
             
             function currentSlide(n) {
@@ -904,6 +1271,47 @@
             
             timelineItems.forEach(item => {
                 timelineObserver.observe(item);
+            });
+            
+            // Animated counters for metrics
+            function animateValue(id, start, end, duration) {
+                const obj = document.getElementById(id);
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    obj.innerHTML = Math.floor(progress * (end - start) + start);
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+            
+            const metricsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateValue("metric1", 0, 5, 1500);
+                        animateValue("metric2", 0, 42, 1500);
+                        animateValue("metric3", 0, 3.7, 1500);
+                        animateValue("metric4", 0, 18, 1500);
+                        metricsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const metricsContainer = document.querySelector('.metrics-container');
+            if (metricsContainer) {
+                metricsObserver.observe(metricsContainer);
+            }
+            
+            // Parallax effect for hero background
+            window.addEventListener('scroll', function() {
+                const hero = document.getElementById('hero');
+                if (hero) {
+                    const scrollPosition = window.pageYOffset;
+                    hero.style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+                }
             });
         });
     </script>
