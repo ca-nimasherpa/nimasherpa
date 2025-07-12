@@ -3,948 +3,472 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nima Sherpa | Strategic Finance & Analysis Professional</title>
-    <meta name="description" content="Explore the professional journey of Nima Sherpa through an interactive, scroll-based timeline of his key achievements in FP&A and finance.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <title>Nima Sherpa | Strategic Finance & Investment Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* PayPal-inspired color palette */
-            --primary: #0070BA;
-            --primary-dark: #003087;
-            --secondary: #FFC439;
-            --secondary-light: #FFB700;
-            --accent: #00D4CC;
-            --light: #F7F9FA;
-            --white: #FFFFFF;
-            --gray-light: #EAECED;
-            --gray-medium: #D8D8D8;
-            --gray-dark: #2C2E2F;
-            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-            --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --radius-xl: 16px;
-            --radius-full: 50px;
+            --dark-bg: #0F0F12;
+            --glass-bg: rgba(25, 25, 35, 0.6);
+            --primary: #00FEFC;
+            --secondary: #FF00FF;
+            --text: #E0E0E0;
+            --text-light: #A0A0A0;
         }
         
-        html { 
-            scroll-behavior: smooth; 
-            font-size: 16px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--light);
+            background-color: var(--dark-bg);
+            color: var(--text);
             line-height: 1.6;
-            color: var(--gray-dark);
-            margin: 0;
             overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(0, 254, 252, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
         }
         
-        h1, h2, h3, h4, h5 {
-            font-weight: 600;
-            line-height: 1.3;
-            margin-top: 0;
-            color: var(--primary-dark);
-        }
-        
-        h1 { 
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-            font-weight: 700;
-        }
-        h2 { 
-            font-size: clamp(2rem, 5vw, 2.5rem);
-            margin-bottom: 2rem;
-        }
-        h3 { font-size: 1.5rem; }
-        h4 { font-size: 1.25rem; }
-        
-        p {
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            color: var(--gray-dark);
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        
-        .container { 
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 2rem; 
-        }
-        
-        section { 
-            padding: 6rem 0; 
-            position: relative; 
-        }
-        
-        .section-bg-alt { 
-            background-color: var(--white); 
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-        
-        .section-header h2 {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 1rem;
-        }
-        
-        .section-header h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: var(--radius-full);
-        }
-        
-        .section-subheader {
-            color: var(--gray-dark);
-            max-width: 700px;
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            opacity: 0.9;
+            padding: 0 20px;
         }
         
-        a { 
-            text-decoration: none; 
-            color: var(--primary);
-            transition: var(--transition); 
-        }
-
-        /* PayPal-inspired Navigation */
-        #main-header {
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-        
-        #main-nav {
-            background: rgba(255,255,255,0.98);
+        /* Glass Morphism Effect */
+        .glass-card {
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            padding: 1.25rem 0;
-            border-bottom: 1px solid var(--gray-light);
-            transition: var(--transition);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
         }
         
-        #main-nav.scrolled {
-            padding: 0.75rem 0;
-            box-shadow: var(--shadow-md);
+        .glass-card:hover {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
         }
         
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .nav-brand h1 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0;
-            position: relative;
-        }
-        
-        .nav-brand h1::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: var(--transition);
-        }
-        
-        .nav-brand:hover h1::after {
-            width: 100%;
-        }
-        
-        #main-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            margin: 0;
-            padding: 0;
-        }
-        
-        #main-menu a {
-            color: var(--gray-dark);
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-            font-size: 1rem;
-        }
-        
-        #main-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: var(--transition);
-        }
-        
-        #main-menu a:hover::after,
-        #main-menu a.active::after {
-            width: 100%;
-        }
-        
-        #main-menu a:hover {
-            color: var(--primary);
-        }
-
-        /* PayPal-inspired Hero Section */
-        #hero {
-            height: 100vh;
-            min-height: 800px;
-            display: flex;
-            align-items: center;
+        /* Header Styles */
+        header {
+            padding: 60px 0 40px;
             text-align: center;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
         }
         
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.8s 0.3s forwards;
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
         
-        @keyframes fadeInUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
         }
         
-        #hero h1 {
-            color: var(--white);
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin: 1.5rem 0 3rem;
-            color: rgba(255,255,255,0.9);
-            font-weight: 400;
-            line-height: 1.6;
-        }
-        
-        .qualifications {
+        .contact-info {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin: 3rem 0;
             flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
         }
         
-        .qualification-badge {
-            background: rgba(255,255,255,0.1);
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius-full);
-            font-size: 0.95rem;
-            font-weight: 500;
-            border: 1px solid rgba(255, 196, 57, 0.3);
-            transition: var(--transition);
-        }
-        
-        .qualification-badge:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-3px);
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 2.5rem;
-            border-radius: var(--radius-full);
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: var(--transition);
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-        
-        .btn-primary {
-            background-color: var(--white);
-            color: var(--primary);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: var(--white);
-            border-color: rgba(255,255,255,0.3);
-            margin-left: 1rem;
-        }
-        
-        .btn-outline:hover {
-            background-color: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.5);
-            transform: translateY(-3px);
-        }
-        
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--white);
-            font-size: 1.8rem;
-            animation: bounce 2s infinite;
-            cursor: pointer;
-            width: 50px;
-            height: 50px;
+        .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: var(--transition);
+            gap: 8px;
+            color: var(--text-light);
         }
         
-        .scroll-down:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateX(-50%) translateY(-5px);
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
         }
         
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-15px) translateX(-50%); }
-            60% { transform: translateY(-7px) translateX(-50%); }
+        .contact-item a:hover {
+            color: var(--primary);
         }
-
-        /* PayPal-inspired Journey Timeline */
-        #journey {
-            background-color: var(--white);
+        
+        /* Section Headers */
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 20px;
             position: relative;
+            display: inline-block;
         }
         
-        .journey-wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        h3 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text);
+            font-size: 1.5rem;
+            margin: 20px 0 10px;
+        }
+        
+        /* Highlight Box */
+        .highlight {
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .skill-category h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .skill-category ul {
+            list-style-type: none;
+        }
+        
+        .skill-category li {
+            margin-bottom: 8px;
             position: relative;
-            padding: 3rem 0;
+            padding-left: 20px;
+        }
+        
+        .skill-category li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
         }
         
         .timeline-item {
             position: relative;
-            margin-bottom: 4rem;
-            padding-left: 100px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-        
-        .timeline-item.visible {
-            opacity: 1;
-            transform: translateY(0);
+            margin-bottom: 30px;
+            padding-bottom: 20px;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 30px;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: var(--gray-light);
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid var(--secondary);
         }
         
-        .timeline-content {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            position: relative;
-            transition: var(--transition);
-            border-left: 4px solid var(--primary);
+        .job-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 5px;
         }
         
-        .timeline-item:hover .timeline-content {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .timeline-content .role-title {
-            font-size: 1.5rem;
-            margin: 0 0 1rem;
-        }
-        
-        .timeline-content h4 {
-            color: var(--primary);
-            margin: 0 0 1rem;
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-        
-        .impact-statement {
-            background-color: var(--light);
-            color: var(--gray-dark);
-            padding: 1.5rem;
-            border-radius: var(--radius-md);
-            margin-top: 1.5rem;
-            position: relative;
-        }
-        
-        .impact-statement strong {
+        .company {
             color: var(--primary);
             font-weight: 600;
-            display: block;
-            margin-bottom: 0.5rem;
         }
         
-        .company-logo {
-            position: absolute;
-            right: 2rem;
-            top: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--white);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-sm);
+        .date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
         }
         
-        .company-logo i {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        /* PayPal-inspired Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+        .job-description ul {
+            list-style-type: none;
         }
         
-        .skill-category {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border-top: 4px solid var(--primary);
-        }
-        
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .skill-category i {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-        
-        .skill-category h3 {
-            font-size: 1.4rem;
-            margin: 0 0 1.5rem;
-        }
-        
-        .skill-category ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .skill-category li {
-            margin-bottom: 0.8rem;
+        .job-description li {
+            margin-bottom: 8px;
             position: relative;
-            padding-left: 1.5rem;
+            padding-left: 20px;
         }
         
-        .skill-category li::before {
-            content: '•';
+        .job-description li::before {
+            content: '▹';
             position: absolute;
             left: 0;
             color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* PayPal-inspired Testimonials Section */
-        #testimonials {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
         }
         
-        #testimonials h2 { 
-            color: white; 
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
         }
         
-        .testimonial-carousel {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
+        .education-item {
+            padding: 20px;
         }
         
-        .testimonial-slide {
-            text-align: center;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-            position: absolute;
-            width: 100%;
+        .degree {
+            font-weight: 600;
+            margin-bottom: 5px;
         }
         
-        .testimonial-slide.active {
-            opacity: 1;
-            transform: translateY(0);
-            position: relative;
+        .institution {
+            color: var(--primary);
+            margin-bottom: 5px;
         }
         
-        .testimonial-slide p {
-            font-size: 1.3rem;
-            font-style: italic;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-            position: relative;
-            color: rgba(255,255,255,0.9);
-        }
-        
-        .testimonial-slide .author {
-            font-weight: bold;
-            color: var(--secondary);
-            font-size: 1.1rem;
-            display: block;
-            margin-top: 1.5rem;
-        }
-        
-        .carousel-dots {
-            text-align: center;
-            margin-top: 3rem;
-        }
-        
-        .dot {
-            height: 12px;
-            width: 12px;
-            margin: 0 8px;
-            background-color: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .dot.active, .dot:hover {
-            background-color: var(--secondary);
-            transform: scale(1.2);
-        }
-
-        /* PayPal-inspired Contact Section */
-        .contact-links {
-            text-align: center;
-            padding: 5rem 0;
-            background: var(--white);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .social-links a {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-        }
-
-        /* PayPal-inspired Footer */
-        footer {
-            background: var(--primary-dark);
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-        }
-        
-        footer p {
-            margin: 0;
+        .education-date {
+            color: var(--text-light);
             font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 992px) {
-            section { padding: 5rem 0; }
         }
         
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
-            section { padding: 4rem 0; }
-            
-            .section-header { margin-bottom: 3rem; }
-            
-            .journey-wrapper::before { left: 15px; }
-            .timeline-item { padding-left: 60px; }
-            .timeline-item::before { width: 40px; height: 40px; }
-            .company-logo { width: 40px; height: 40px; right: 1.5rem; top: 1.5rem; }
-            
-            .skills-grid { grid-template-columns: 1fr; }
-        }
-        
-        @media (max-width: 576px) {
-            section { padding: 3rem 0; }
-            
-            .container { padding: 0 1.5rem; }
-            
-            #main-menu ul {
-                gap: 1.5rem;
+            h1 {
+                font-size: 2.5rem;
             }
             
-            .hero-subtitle { font-size: 1.1rem; }
-            
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 1rem;
+            .tagline {
+                font-size: 1.2rem;
             }
             
-            .social-links a {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
+            .skills-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-
-    <header id="main-header">
-        <nav id="main-nav">
-            <div class="container nav-container">
-                <a href="#hero" class="nav-brand"><h1>Nima Sherpa</h1></a>
-                <div id="main-menu">
-                    <ul>
-                        <li><a href="#journey" class="nav-link">My Journey</a></li>
-                        <li><a href="#skills" class="nav-link">Skills</a></li>
-                        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
-                    </ul>
+    <div class="container">
+        <header>
+            <h1>NIMA SHERPA</h1>
+            <p class="tagline">Strategic Finance & Investment Professional</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Fairfield, IA (Open to relocation)</span>
+                </div>
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>+1 (641) 233-9702</span>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:nimaonchhosherpa@gmail.com">nimaonchhosherpa@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <span>🔗</span>
+                    <a href="https://linkedin.com/in/nimaosherpa/" target="_blank">linkedin.com/in/nimaosherpa</a>
                 </div>
             </div>
-        </nav>
-    </header>
+        </header>
 
-    <main>
-        <section id="hero">
-            <div class="container hero-content">
-                <h1>Driving Business Performance Through Strategic Finance & Analysis</h1>
-                <p class="hero-subtitle">Chartered Accountant (ICAI) | CFA Level III Candidate | Financial Modeling Expert</p>
-                
-                <div class="qualifications">
-                    <div class="qualification-badge">Chartered Accountant (ICAI)</div>
-                    <div class="qualification-badge">CFA Level III Candidate</div>
-                    <div class="qualification-badge">Financial Modeling Expert</div>
+        <main>
+            <section class="glass-card">
+                <h2>PROFESSIONAL SUMMARY</h2>
+                <div class="highlight">
+                    <p>Dynamic Chartered Accountant (US CPA Equivalent) and CFA® Level III candidate with over 6 years of progressive experience in strategic finance, Financial Planning & Analysis (FP&A), and process optimization. Proven expertise in directing complex due diligence and delivering data-driven insights that drive growth and profitability. Successfully managed financial operations for $10M+ divisions, achieving a 30% faster month-end close and unlocking $600K in working capital. Seeking to leverage advanced analytical capabilities, financial modeling expertise, and strategic insights to drive measurable results in a challenging FP&A role.</p>
                 </div>
-                
-                <div>
-                    <a href="#journey" class="btn btn-primary">Explore My Journey</a>
-                    <a href="#contact" class="btn btn-outline">Contact Me</a>
-                </div>
-            </div>
-            <div class="scroll-down" onclick="document.querySelector('#journey').scrollIntoView({ behavior: 'smooth' })">
-                <i class="fas fa-chevron-down"></i>
-            </div>
-        </section>
+            </section>
 
-        <section id="journey">
-            <div class="container">
-                <div class="section-header">
-                    <h2>The Journey of Impact</h2>
-                    <p class="section-subheader">A story of progressive challenges, evolving skills, and measurable results that demonstrate my ability to drive financial performance.</p>
-                </div>
-                
-                <div class="journey-wrapper">
-                    <!-- Timeline Item 1 -->
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="company-logo">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <h3 class="role-title">Asst. Manager, Finance (2023-2025)</h3>
-                            <h4>The Challenge: Inefficient Cash Flow Cycle</h4>
-                            <p>High Days Sales Outstanding was tying up critical working capital, limiting the company's ability to invest in growth initiatives and strategic opportunities in a competitive market landscape.</p>
-                            <div class="impact-statement">
-                                <strong>The Impact</strong>
-                                Enhanced working capital and unlocked cash flow through strategic improvements in the accounts receivable process, implementing automated payment reminders and early payment incentives.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Timeline Item 2 -->
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="company-logo">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <h3 class="role-title">Team Lead, Finance (2022-2023)</h3>
-                            <h4>The Challenge: Critical & Unidentified Financial Leakage</h4>
-                            <p>A recurring loss was impacting profitability, hidden within thousands of daily transactions across multiple systems. My task was to find the source without disrupting operations while maintaining financial reporting deadlines.</p>
-                            <div class="impact-statement">
-                                <strong>The Impact</strong>
-                                Achieved annual cost savings and boosted gross margins through comprehensive financial analysis and process optimization, implementing automated reconciliation tools that reduced manual errors by 92%.
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Timeline Item 3 -->
-                    <div class="timeline-item">
-                        <div class="timeline-content">
-                            <div class="company-logo">
-                                <i class="fas fa-file-invoice-dollar"></i>
-                            </div>
-                            <h3 class="role-title">Audit Officer (2021-2022)</h3>
-                            <h4>The Challenge: Navigating Complex Regulatory Changes</h4>
-                            <p>Multiple financial processes lacked proper controls, creating compliance vulnerabilities with potential penalties and inaccuracies across accounts.</p>
-                            <div class="impact-statement">
-                                <strong>The Impact</strong>
-                                Mitigated compliance risks and strengthened internal controls through thorough audit procedures and policy implementation, achieving zero findings in the subsequent regulatory review while optimizing lease portfolio management.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+            <section class="glass-card">
+                <h2>CAREER HIGHLIGHTS</h2>
+                <ul>
+                    <li>Awarded "Rising Star of the Year" at Genese Solution Pvt. Ltd. within 8 months for leveraging data analytics to resolve critical financial leakage, significantly boosting strategic planning and profitability.</li>
+                    <li>Received formal appreciation from Worldlink Communications Ltd. for visionary guidance and exemplary performance leading the $10M+ enterprise division's finance and logistic department, driving key financial initiatives.</li>
+                </ul>
+            </section>
 
-        <section id="skills" class="section-bg-alt">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Core Competencies</h2>
-                    <p class="section-subheader">Combining deep financial expertise with technical acumen to drive business performance and strategic decision-making</p>
-                </div>
+            <section class="glass-card">
+                <h2>SKILLS</h2>
                 <div class="skills-grid">
                     <div class="skill-category">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Financial Analysis & Planning</h3>
+                        <h4>Financial Analysis & Planning</h4>
                         <ul>
-                            <li>Advanced Financial Modeling & Valuation</li>
-                            <li>Budgeting & Forecasting (FP&A)</li>
-                            <li>Due Diligence</li>
+                            <li>Financial modeling</li>
+                            <li>Budgeting & Forecasting</li>
+                            <li>Valuation (DCF, Comparables)</li>
+                            <li>Due diligence</li>
+                            <li>Data Analysis</li>
                             <li>Working Capital Optimization</li>
-                            <li>Profitability Analysis</li>
-                            <li>Scenario & Sensitivity Analysis</li>
+                            <li>Cash Flow Analysis</li>
+                            <li>Variance Analysis</li>
+                            <li>KPI Development</li>
+                            <li>Strategic Planning</li>
                         </ul>
                     </div>
                     <div class="skill-category">
-                        <i class="fas fa-cogs"></i>
-                        <h3>Technical Tools & Data</h3>
+                        <h4>Technical Tools & Data</h4>
                         <ul>
-                            <li>Advanced Excel (Macros, Power Pivot)</li>
-                            <li>Power BI & Tableau Dashboards</li>
-                            <li>SQL for Data Extraction</li>
+                            <li>Advanced Excel (Vlookup, Pivot, Macros)</li>
+                            <li>Power BI</li>
+                            <li>SQL</li>
                             <li>Python (Pandas, NumPy, Matplotlib)</li>
-                            <li>ERP Systems Implementation</li>
-                            <li>Process Automation</li>
+                            <li>Data Visualization</li>
+                            <li>ERP Systems (SAP, Oracle)</li>
                         </ul>
                     </div>
                     <div class="skill-category">
-                        <i class="fas fa-briefcase"></i>
-                        <h3>Business Acumen</h3>
+                        <h4>Accounting & Compliance</h4>
                         <ul>
-                            <li>Process Improvement & Automation</li>
-                            <li>IFRS & US GAAP Compliance</li>
-                            <li>Strategic Planning & Decision Support</li>
-                            <li>Vendor & Contract Management</li>
-                            <li>Stakeholder Communication</li>
-                            <li>Cross-functional Leadership</li>
+                            <li>IFRS</li>
+                            <li>US GAAP</li>
+                            <li>Financial reporting</li>
+                            <li>Reconciliation</li>
+                            <li>Audit</li>
+                            <li>Internal Controls</li>
+                            <li>Risk management</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Business Acumen</h4>
+                        <ul>
+                            <li>Process improvement</li>
+                            <li>Vendor/Contract Management</li>
+                            <li>Cross-functional collaboration</li>
+                            <li>Decision Support</li>
                         </ul>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="testimonials">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Leadership Recognition</h2>
-                    <p class="section-subheader">Professional endorsements from colleagues and supervisors highlighting measurable impact</p>
-                </div>
-                <div class="testimonial-carousel">
-                    <div class="testimonial-slide active">
-                        <p>Awarded Rising Star of the Year for leveraging data analytics to resolve critical financial leakage, implementing solutions that enhanced reporting accuracy by 98% and contributed to a $1.2M annual cost saving, significantly boosting strategic planning and profitability.</p>
-                        <span class="author">Genese Solution Pvt. Ltd. Leadership</span>
+            <section class="glass-card">
+                <h2>PROFESSIONAL EXPERIENCE</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="job-title">Assistant Manager - Finance</div>
+                        <div class="company">Worldlink Communications Ltd.</div>
+                        <div class="date">Nov 2023 - Jan 2025 | Lalitpur, Nepal</div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Spearheaded cross-functional process implementation across customer acquisition, billing, and collections, alongside ERP and process automation projects, significantly improving data integrity and reducing monthly closing time by 30%.</li>
+                                <li>Developed and orchestrated annual operating plans, budgeting, and forecasting for the $10M enterprise division, supervising a team of 7 direct reports aligning financial forecasts, budgets, and cash flow projections with key business objectives.</li>
+                                <li>Directed comprehensive financial analysis and modeling to optimize working capital, decreasing Days Sales Outstanding by 15% and increasing cash flow by $600K.</li>
+                                <li>Collaborated with unit leaders to deliver actionable insights, resulting in a 10% increase in division profitability, alongside facilitating due diligence and valuation for complex strategic transactions.</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="testimonial-slide">
-                        <p>Received formal appreciation for visionary guidance and exemplary performance leading the enterprise division's finance department, driving key financial initiatives that improved month-end close by 4 days and implemented automated reporting that saved 120 hours monthly.</p>
-                        <span class="author">Worldlink Communications Ltd. Management</span>
-                    </div>
-                </div>
-                <div class="carousel-dots">
-                    <span class="dot active" onclick="currentSlide(0)"></span>
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact-links">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Let's Connect</h2>
-                    <p class="section-subheader">I'm always interested in discussing financial strategy, analysis, and opportunities to drive business performance.</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/nimaosherpa/" aria-label="LinkedIn" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="mailto:nima.sherpa@mail.ca.in" aria-label="Email">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© <span id="year"></span> Nima Sherpa. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize AOS
-            AOS.init({
-                duration: 800,
-                once: true,
-                easing: 'ease-out-quart'
-            });
-
-            // Set current year in footer
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            // Sticky navigation
-            const nav = document.getElementById('main-nav');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                }
-            });
-
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
                     
-                    // Update active nav link
-                    document.querySelectorAll('#main-menu a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                });
-            });
+                    <div class="timeline-item">
+                        <div class="job-title">Team Lead - Finance</div>
+                        <div class="company">Genese Solution Pvt. Ltd.</div>
+                        <div class="date">Aug 2022 - Nov 2023 | Lalitpur, Nepal</div>
+                        <div class="job-description">
+                            <ul>
+                                <li>Managed product licensing and vendor contracts, leveraging data analytics to develop and execute pricing strategies that achieved 10% cost savings, and increased gross margins by 8%.</li>
+                                <li>Led a 3-person team in strategic financial planning for a $5M business guiding capital allocation and strengthening internal controls, resulting in improved financial statement accuracy for board presentations.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional experience items would follow the same pattern -->
+                </div>
+            </section>
 
-            // Testimonial carousel
-            let slideIndex = 0;
-            const slides = document.querySelectorAll('.testimonial-slide');
-            const dots = document.querySelectorAll('.dot');
-            
-            function showSlides() {
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                slideIndex++;
-                if (slideIndex > slides.length) { slideIndex = 1; }
-                
-                slides[slideIndex-1].classList.add('active');
-                dots[slideIndex-1].classList.add('active');
-                
-                setTimeout(showSlides, 7000); // Change slide every 7 seconds
-            }
-            
-            function currentSlide(n) {
-                slideIndex = n;
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                slides[n].classList.add('active');
-                dots[n].classList.add('active');
-            }
-            
-            showSlides(); // Start the carousel
+            <section class="glass-card">
+                <h2>EDUCATION & PROFESSIONAL QUALIFICATIONS</h2>
+                <div class="education-grid">
+                    <div class="education-item">
+                        <div class="degree">MBA (Enterprise Resource Planning & Business Analytics)</div>
+                        <div class="institution">Maharishi International University</div>
+                        <div class="education-date">Expected 2027</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="degree">Chartered Financial Analyst® Level III Candidate</div>
+                        <div class="institution">CFA Institute</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="degree">Diploma in IFRS</div>
+                        <div class="institution">Association of Chartered Certified Accountant (ACCA)</div>
+                        <div class="education-date">2023</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="degree">Bachelor of Commerce (Accounts & Finance)</div>
+                        <div class="institution">IGNOU University</div>
+                        <div class="education-date">2020 - 2022</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="degree">Chartered Accountant (CA) (Equivalent to US CPA)</div>
+                        <div class="institution">Institute of Chartered Accountant of India (ICAI)</div>
+                        <div class="education-date">2017 - 2021</div>
+                    </div>
+                </div>
+            </section>
 
-            // Timeline item animation on scroll
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            
-            const timelineObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            timelineItems.forEach(item => {
-                timelineObserver.observe(item);
-            });
-            
-            // Hero content animation
-            const heroContent = document.querySelector('.hero-content');
-            if (heroContent) {
-                heroContent.style.opacity = '1';
-                heroContent.style.transform = 'translateY(0)';
-            }
-        });
-    </script>
+            <section class="glass-card">
+                <h2>CERTIFICATIONS</h2>
+                <ul>
+                    <li>Foundation of Financial Engineering - WorldQuant University, 2025</li>
+                    <li>Financial Analyst Career Track - 365 Data Science, 2023</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2024 Nima Sherpa. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
