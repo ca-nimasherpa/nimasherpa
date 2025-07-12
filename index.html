@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nima Sherpa | FP&A + Investment Strategy</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Nima Sherpa | Finance & Analytics</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -22,20 +20,6 @@
             color: var(--text);
             margin: 0;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(0, 254, 252, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1) 0%, transparent 30%);
-        }
-        
-        /* 3D Canvas Background */
-        #3d-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.3;
         }
         
         /* Hero Section */
@@ -45,162 +29,119 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 254, 252, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1) 0%, transparent 30%);
+            z-index: -1;
         }
         
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 4rem);
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 20px;
-            animation: float 6s ease-in-out infinite;
         }
         
-        .tagline {
-            font-size: 1.8rem;
-            margin-bottom: 40px;
-        }
-        
-        /* Glass Cards */
+        /* Glass Card */
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(12px);
             border-radius: 16px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            padding: 40px;
+            max-width: 900px;
             margin: 40px auto;
-            max-width: 1000px;
+            padding: 30px;
             transition: transform 0.3s;
         }
         
         .glass-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-5px);
         }
         
-        /* Interactive Elements */
-        .interactive-demo {
-            height: 500px;
-            margin: 60px 0;
-            position: relative;
+        /* Simple 3D Button */
+        .cta-button {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: var(--dark-bg);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0, 254, 252, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        #portfolio-globe {
-            width: 100%;
-            height: 100%;
-        }
-        
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 254, 255, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(0, 254, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 254, 255, 0); }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 254, 252, 0.4);
         }
     </style>
 </head>
 <body>
-    <!-- 3D Background Canvas -->
-    <canvas id="3d-bg"></canvas>
-    
     <!-- Hero Section -->
     <section class="hero">
         <div>
             <h1>NIMA SHERPA</h1>
-            <p class="tagline">FP&A Strategy × Investment Analytics</p>
-            <div class="cta-buttons">
-                <a href="#consult" class="cta-button">Book Consultation</a>
-            </div>
+            <p class="tagline">Strategic Finance & Investment Leadership</p>
+            <a href="#contact" class="cta-button">Get in Touch</a>
         </div>
     </section>
     
-    <!-- Interactive Portfolio Globe -->
+    <!-- Content Section -->
     <section class="glass-card">
-        <h2>Investment Galaxy</h2>
-        <p>Explore my global investment thesis through interactive 3D visualization</p>
-        <div class="interactive-demo">
-            <div id="portfolio-globe"></div>
-        </div>
+        <h2>FP&A × Investment Strategy</h2>
+        <p>6+ years transforming financial data into actionable insights for $10M+ divisions.</p>
+        <ul>
+            <li>30% faster month-end close processes</li>
+            <li>$600K working capital unlocked</li>
+            <li>Data-driven investment frameworks</li>
+        </ul>
     </section>
     
-    <!-- FP&A Simulator -->
+    <!-- Simple 3D Animation (No Library Needed) -->
     <section class="glass-card">
-        <h2>FP&A Simulator</h2>
-        <p>Interactive financial modeling playground</p>
-        <div class="interactive-demo">
-            <canvas id="fpa-simulator"></canvas>
+        <h2>Interactive Elements</h2>
+        <div style="height: 300px; position: relative; overflow: hidden; border-radius: 12px;">
+            <div id="floating-cube" style="
+                width: 100px;
+                height: 100px;
+                background: linear-gradient(45deg, var(--primary), var(--secondary));
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotateX(0) rotateY(0);
+                animation: rotate 8s infinite linear;
+            "></div>
         </div>
     </section>
     
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.24.0/dist/globe.gl.min.js"></script>
-    <script>
-        // 3D Background (Floating Data Points)
-        const bgCanvas = document.getElementById('3d-bg');
-        const bgScene = new THREE.Scene();
-        const bgCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const bgRenderer = new THREE.WebGLRenderer({ canvas: bgCanvas, alpha: true });
-        
-        // Create floating financial elements
-        const bgGeometry = new THREE.IcosahedronGeometry(0.5, 1);
-        const bgMaterial = new THREE.MeshBasicMaterial({ 
-            color: 0x00feff, 
-            wireframe: true 
-        });
-        
-        const bgPoints = [];
-        for (let i = 0; i < 50; i++) {
-            const point = new THREE.Mesh(bgGeometry, bgMaterial);
-            point.position.set(
-                Math.random() * 20 - 10,
-                Math.random() * 20 - 10,
-                Math.random() * 20 - 10
-            );
-            bgScene.add(point);
-            bgPoints.push(point);
+    <style>
+        @keyframes rotate {
+            0% { transform: translate(-50%, -50%) rotateX(0) rotateY(0); }
+            100% { transform: translate(-50%, -50%) rotateX(360deg) rotateY(360deg); }
         }
-        
-        bgCamera.position.z = 5;
-        
-        // Animation loop
-        function animateBackground() {
-            requestAnimationFrame(animateBackground);
-            bgPoints.forEach(point => {
-                point.rotation.x += 0.005;
-                point.rotation.y += 0.005;
-            });
-            bgRenderer.render(bgScene, bgCamera);
-        }
-        animateBackground();
-        
-        // Interactive Globe
-        const globe = Globe()
-            .globeImageUrl('//unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-            .pointsData([
-                { lat: 40.7, lng: -74, size: 0.2, color: 'gold' },  // NYSE
-                { lat: 51.5, lng: -0.1, size: 0.2, color: 'cyan' }, // LSE
-                { lat: 35.6, lng: 139.7, size: 0.2, color: 'magenta' }, // TSE
-            ])
-            .pointAltitude(0.05)
-            .pointColor('color')
-            (document.getElementById('portfolio-globe'));
-        
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            bgCamera.aspect = window.innerWidth / window.innerHeight;
-            bgCamera.updateProjectionMatrix();
-            bgRenderer.setSize(window.innerWidth, window.innerHeight);
-        });
-    </script>
+    </style>
+    
+    <!-- Contact Section -->
+    <section class="glass-card" id="contact">
+        <h2>Connect</h2>
+        <p>nimaonchhosherpa@gmail.com | +1 (641) 233-9702</p>
+        <p><a href="https://linkedin.com/in/nimaosherpa" style="color: var(--primary);">linkedin.com/in/nimaosherpa</a></p>
+    </section>
 </body>
 </html>
