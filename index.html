@@ -19,6 +19,22 @@
             --coral: #FF7E79;
             --gold: #FFC107;
             --purple: #7E57C2;
+            --blue-600: #2563EB; /* Added from React styles */
+            --green-600: #16A34A; /* Added from React styles */
+            --purple-600: #9333EA; /* Added from React styles */
+            --orange-600: #EA580C; /* Added from React styles */
+            --slate-800: #1E293B; /* Added from React styles */
+            --blue-300: #93C5FD; /* Added from React styles */
+            --blue-100: #DBEAFE; /* Added from React styles */
+            --slate-100: #F1F5F9; /* Added from React styles */
+            --slate-700: #334155; /* Added from React styles */
+            --slate-500: #64748B; /* Added from React styles */
+            --green-500: #22C55E; /* Added from React styles */
+            --green-700: #047857; /* Added from React styles */
+            --slate-600: #475569; /* Added from React styles */
+            --slate-200: #E2E8F0; /* Added from React styles */
+            --blue-500: #3B82F6; /* Added from React styles */
+            --blue-200: #BFDBFE; /* Added from React styles */
         }
         
         body {
@@ -533,24 +549,560 @@
         .footer-link:hover {
             color: var(--teal);
         }
+
+        /* New styles from React design */
+        .hero-section {
+            background: linear-gradient(to right, var(--navy), var(--slate-800));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section .overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section .content {
+            position: relative;
+            max-width: 1200px; /* equivalent to max-w-6xl */
+            margin: 0 auto;
+            padding: 80px 24px; /* py-20 px-6 */
+        }
+
+        .hero-section h1 {
+            font-size: 4.5rem; /* text-5xl md:text-6xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 24px; /* mb-6 */
+            line-height: 1.25; /* leading-tight */
+            position: relative; /* To override previous h1 style */
+            display: block; /* To override previous h1 style */
+            text-align: left; /* To align left */
+        }
+
+        .hero-section h1::after {
+            content: none; /* Remove the underline from the old h1 style */
+        }
+
+        .hero-section .subheading {
+            display: block;
+            color: var(--blue-300);
+        }
+
+        .hero-section .tagline-new {
+            font-size: 1.5rem; /* text-xl md:text-2xl */
+            color: var(--blue-100);
+            max-width: 768px; /* max-w-3xl */
+            line-height: 1.625; /* leading-relaxed */
+        }
+
+        /* Animations for new sections */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+        .delay-600 { transition-delay: 0.6s; }
+        .delay-700 { transition-delay: 0.7s; }
+        .delay-800 { transition-delay: 0.8s; }
+        .delay-900 { transition-delay: 0.9s; }
+        .delay-1000 { transition-delay: 1s; }
+        .delay-1100 { transition-delay: 1.1s; }
+        
+        /* About Me section */
+        .about-section {
+            padding: 64px 0; /* py-16 */
+        }
+
+        .about-section h2 {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            color: var(--slate-800);
+            margin-bottom: 32px; /* mb-8 */
+            text-align: center;
+            position: relative;
+            display: block; /* to override flex from original h2 */
+        }
+        
+        .about-section h2::after {
+            content: none; /* Remove the underline from the old h2 style */
+        }
+
+        .about-card {
+            background-color: white;
+            border-radius: 1rem; /* rounded-2xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            padding: 32px; /* p-8 md:p-12 */
+            border: 1px solid var(--slate-100);
+            max-width: 896px; /* max-w-4xl */
+            margin: 0 auto;
+        }
+
+        .about-card p {
+            font-size: 1.125rem; /* text-lg */
+            color: var(--slate-700);
+            line-height: 1.625; /* leading-relaxed */
+            margin-bottom: 24px; /* mb-6 */
+        }
+        .about-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Experience Timeline Grid */
+        .experience-grid {
+            display: grid;
+            gap: 32px; /* gap-8 */
+        }
+        @media (min-width: 768px) {
+            .experience-grid {
+                grid-template-columns: repeat(3, 1fr); /* md:grid-cols-3 */
+            }
+        }
+
+        .experience-card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 24px; /* p-6 */
+            border: 1px solid var(--slate-100);
+            transition: all 0.3s ease; /* transition-all duration-300 */
+        }
+        .experience-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+            transform: translateY(-4px); /* hover:-translate-y-1 */
+        }
+
+        .experience-card .icon-wrapper {
+            width: 48px; /* w-12 */
+            height: 48px; /* h-12 */
+            background-color: var(--blue-600);
+            border-radius: 9999px; /* rounded-full */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px; /* mr-4 */
+        }
+
+        .experience-card .icon-wrapper i {
+            font-size: 24px; /* w-6 h-6 */
+            color: white;
+        }
+
+        .experience-card h4 {
+            font-weight: 700; /* font-bold */
+            color: var(--slate-800);
+        }
+
+        .experience-card .text-sm {
+            font-size: 0.875rem;
+            color: var(--slate-500);
+        }
+
+        .experience-card .font-medium {
+            font-weight: 500;
+            color: var(--slate-700);
+        }
+
+        /* Credentials Grid */
+        .credentials-grid {
+            display: grid;
+            gap: 24px; /* gap-6 */
+        }
+        @media (min-width: 768px) {
+            .credentials-grid {
+                grid-template-columns: repeat(2, 1fr); /* md:grid-cols-2 */
+            }
+        }
+        @media (min-width: 1024px) {
+            .credentials-grid {
+                grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
+            }
+        }
+
+        .credential-card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 24px; /* p-6 */
+            border: 1px solid var(--slate-100);
+            transition: all 0.3s ease; /* transition-all duration-300 */
+        }
+        .credential-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+            transform: translateY(-4px); /* hover:-translate-y-1 */
+        }
+
+        .credential-card .icon-wrapper {
+            width: 48px; /* w-12 */
+            height: 48px; /* h-12 */
+            border-radius: 9999px; /* rounded-full */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px; /* mr-3 */
+        }
+
+        .credential-card .icon-wrapper i {
+            font-size: 24px; /* w-6 h-6 */
+            color: white;
+        }
+
+        .credential-card h4 {
+            font-weight: 700; /* font-bold */
+            color: var(--slate-800);
+            font-size: 0.875rem; /* text-sm */
+        }
+
+        .credential-card .text-xs {
+            font-size: 0.75rem;
+            color: var(--slate-500);
+        }
+
+        .credential-card .status-completed {
+            display: flex;
+            align-items: center;
+        }
+
+        .credential-card .status-completed .dot {
+            width: 12px; /* w-3 */
+            height: 12px; /* h-3 */
+            background-color: var(--green-500);
+            border-radius: 9999px; /* rounded-full */
+            margin-right: 8px; /* mr-2 */
+        }
+
+        .credential-card .status-completed .text-green {
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            color: var(--green-700);
+        }
+
+        .credential-card .progress-bar-container {
+            width: 100%;
+            background-color: var(--slate-200);
+            border-radius: 9999px; /* rounded-full */
+            height: 8px; /* h-2 */
+        }
+
+        .credential-card .progress-bar {
+            height: 8px; /* h-2 */
+            border-radius: 9999px; /* rounded-full */
+            transition: width 1s ease-out; /* transition-all duration-1000 */
+        }
+        
+        /* Value Statement */
+        .value-statement {
+            max-width: 896px; /* max-w-4xl */
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .value-statement-card {
+            background: linear-gradient(to right, var(--blue-600), var(--purple-600));
+            border-radius: 1rem; /* rounded-2xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+            padding: 32px; /* p-8 md:p-12 */
+            color: white;
+        }
+
+        .value-statement-card i {
+            font-size: 64px; /* w-16 h-16 */
+            margin: 0 auto 24px; /* mx-auto mb-6 */
+            color: var(--blue-200);
+        }
+
+        .value-statement-card h3 {
+            font-size: 1.5rem; /* text-2xl md:text-3xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 24px; /* mb-6 */
+        }
+
+        .value-statement-card p {
+            font-size: 1.125rem; /* text-lg md:text-xl */
+            line-height: 1.625; /* leading-relaxed */
+            margin-bottom: 16px; /* mb-4 */
+        }
+        .value-statement-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Personal Insight Quote */
+        .quote-section {
+            max-width: 768px; /* max-w-3xl */
+            margin: 0 auto;
+        }
+
+        .quote-card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+            padding: 32px; /* p-8 */
+            border-left: 4px solid var(--blue-600);
+        }
+
+        .quote-card blockquote {
+            font-size: 1.25rem; /* text-xl */
+            color: var(--slate-700);
+            font-style: italic;
+            line-height: 1.625; /* leading-relaxed */
+        }
+
+        .quote-author {
+            margin-top: 24px; /* mt-6 */
+            display: flex;
+            align-items: center;
+        }
+
+        .quote-author .avatar {
+            width: 48px; /* w-12 */
+            height: 48px; /* h-12 */
+            background: linear-gradient(to right, var(--blue-500), var(--purple-600));
+            border-radius: 9999px; /* rounded-full */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quote-author .avatar span {
+            color: white;
+            font-weight: 700; /* font-bold */
+            font-size: 1.125rem; /* text-lg */
+        }
+
+        .quote-author .details {
+            margin-left: 16px; /* ml-4 */
+        }
+
+        .quote-author .details p {
+            font-weight: 600; /* font-semibold */
+            color: var(--slate-800);
+            margin-bottom: 0; /* Override default paragraph margin */
+        }
+
+        .quote-author .details .text-sm {
+            font-size: 0.875rem;
+            color: var(--slate-500);
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Nima Sherpa</h1>
-            <p class="tagline">Transforming financial operations through data-driven strategy and innovative process optimization</p>
-            <div class="contact-bar">
-                <div class="contact-chip"><i class="fas fa-map-marker-alt"></i> Fairfield, IA</div>
-                <div class="contact-chip"><i class="fas fa-phone"></i> +1 (641) 233-9702</div>
-                <div class="contact-chip"><i class="fas fa-envelope"></i> nimaonchhosherpa@gmail.com</div>
-                <div class="contact-chip"><i class="fab fa-linkedin"></i> linkedin.com/in/nimaosherpa</div>
-            </div>
+    <header class="hero-section">
+        <div class="overlay"></div>
+        <div class="content fade-in">
+            <h1>Strategic Finance <span class="subheading">Leadership</span></h1>
+            <p class="tagline-new">Transforming financial complexity into strategic clarity through data-driven insights and systems thinking</p>
         </div>
     </header>
     
     <div class="container">
-        <!-- Career Journey Timeline -->
+        <section class="about-section">
+            <div class="mb-16 fade-in delay-300">
+                <h2 class="text-4xl font-bold text-slate-800 mb-8 text-center">About Me</h2>
+                <div class="about-card">
+                    <p>
+                        With over six years of progressive experience spanning Financial Planning & Analysis, Strategic Finance, and Audit, 
+                        I've developed expertise across diverse sectors including telecommunications, cloud solutions, and consulting. My career 
+                        journey has taken me from audit foundations at B&A Associates to strategic finance leadership at Genese, and comprehensive 
+                        FP&A responsibilities at Worldlink, where I've consistently delivered data-driven insights that drive organizational growth.
+                    </p>
+                    <p>
+                        This cross-functional experience has equipped me with a unique perspective on financial operations, enabling me to bridge 
+                        the gap between tactical execution and strategic vision. I thrive in fast-paced environments where analytical rigor meets 
+                        strategic thinking, consistently transforming complex financial data into actionable business intelligence that empowers 
+                        leadership teams to make informed decisions with confidence.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-16 fade-in delay-500">
+                <h3 class="text-3xl font-bold text-slate-800 mb-8 text-center">Professional Journey</h3>
+                <div class="experience-grid">
+                    <div class="group">
+                        <div class="experience-card">
+                            <div class="flex items-center mb-4">
+                                <div class="icon-wrapper" style="background-color: var(--blue-600);">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Worldlink</h4>
+                                    <p class="text-sm text-slate-500">Telecommunications</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-700 font-medium">Financial Planning & Analysis</p>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="experience-card">
+                            <div class="flex items-center mb-4">
+                                <div class="icon-wrapper" style="background-color: var(--blue-600);">
+                                    <i class="fas fa-bullseye"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Genese</h4>
+                                    <p class="text-sm text-slate-500">Cloud Solutions</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-700 font-medium">Strategic Finance</p>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="experience-card">
+                            <div class="flex items-center mb-4">
+                                <div class="icon-wrapper" style="background-color: var(--blue-600);">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">B&A Associates</h4>
+                                    <p class="text-sm text-slate-500">Consulting</p>
+                                </div>
+                            </div>
+                            <p class="text-slate-700 font-medium">Audit Services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-16 fade-in delay-700">
+                <h3 class="text-3xl font-bold text-slate-800 mb-8 text-center">Credentials & Milestones</h3>
+                <div class="credentials-grid">
+                    <div class="group">
+                        <div class="credential-card">
+                            <div class="flex items-center mb-4">
+                                <div class="icon-wrapper" style="background-color: var(--blue-600);">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-slate-800 text-sm">Chartered Accountant</h4>
+                                    <p class="text-xs text-slate-500">US CPA Equivalent</p>
+                                </div>
+                            </div>
+                            <div class="status-completed">
+                                <div class="dot"></div>
+                                <span class="text-sm font-medium text-green-700">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="credential-card">
+                            <div class="flex items-center mb-4">
+                                <div class="icon-wrapper" style="background-color: var(--green-600);">
+                                    <i class="fas fa-arrow-alt-circle-up"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-slate-800 text-sm">CFA Level III</h4>
+                                    <p class="text-xs text-slate-500">Candidate</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-slate-600">In Progress</span>
+                                    <span class="text-sm font-bold text-slate-800">75%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 75%; background-color: var(--green-600);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="credential-card">
+                            <div class="flex items-center mb-4">
+                                <div class="icon-wrapper" style="background-color: var(--purple-600);">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-slate-800 text-sm">MBA</h4>
+                                    <p class="text-xs text-slate-500">ERP & Business Analytics</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-slate-600">In Progress</span>
+                                    <span class="text-sm font-bold text-slate-800">60%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 60%; background-color: var(--purple-600);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group">
+                        <div class="credential-card">
+                            <div class="flex items-center mb-4">
+                                <div class="icon-wrapper" style="background-color: var(--orange-600);">
+                                    <i class="fas fa-crosshairs"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-slate-800 text-sm">MSc Financial Engineering</h4>
+                                    <p class="text-xs text-slate-500">Ongoing Studies</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-sm font-medium text-slate-600">In Progress</span>
+                                    <span class="text-sm font-bold text-slate-800">40%</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar" style="width: 40%; background-color: var(--orange-600);"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-16 fade-in delay-900">
+                <div class="value-statement">
+                    <div class="value-statement-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3 class="text-2xl md:text-3xl font-bold mb-6">My Approach</h3>
+                        <p class="text-lg md:text-xl leading-relaxed mb-4">
+                            I combine financial rigor with systems thinking to drive clarity, efficiency, and strategic alignment in 
+                            fast-moving environments. My approach centers on transforming complex data into actionable insights while 
+                            maintaining the highest standards of analytical precision.
+                        </p>
+                        <p class="text-lg md:text-xl leading-relaxed">
+                            Continuous learning isn't just a philosophy—it's a competitive advantage that allows me to stay ahead 
+                            of industry trends and deliver innovative solutions that create lasting value.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-in delay-1100">
+                <div class="quote-section">
+                    <div class="quote-card">
+                        <blockquote class="text-xl text-slate-700 italic leading-relaxed">
+                            "The best financial decisions are made when technical expertise meets strategic vision. 
+                            I believe in making complex financial concepts accessible to all stakeholders, ensuring 
+                            that data-driven insights become the foundation for confident decision-making."
+                        </blockquote>
+                        <div class="quote-author">
+                            <div class="avatar">
+                                <span>NS</span>
+                            </div>
+                            <div class="details">
+                                <p class="font-semibold text-slate-800">Nima Sherpa</p>
+                                <p class="text-sm text-slate-500">Strategic Finance & Analytics</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section class="timeline">
             <h2 style="text-align: center; margin-bottom: 60px;"><i class="fas fa-road"></i> My Professional Journey</h2>
             
@@ -589,7 +1141,6 @@
             </div>
         </section>
         
-        <!-- Dynamic Stock Analysis Section -->
         <section class="card floating" style="animation-delay: 0.3s;">
             <h2><i class="fas fa-chart-line"></i> Comprehensive Stock Analysis</h2>
             
@@ -723,6 +1274,16 @@
         // Alpha Vantage API Key
         const API_KEY = '9JRLRACL6GVGTUQM'; // Replace with your key
         
+        // Utility function for intersection observer
+        const animateOnScroll = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
         // Initialize charts on page load
         document.addEventListener('DOMContentLoaded', function() {
             // Initialize Skills Radar Chart
@@ -877,6 +1438,16 @@
             
             // Tab functionality
             setupTabs();
+
+            // Set up Intersection Observer for fade-in animations
+            const faders = document.querySelectorAll('.fade-in');
+            const observerOptions = {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+            const observer = new IntersectionObserver(animateOnScroll, observerOptions);
+            faders.forEach(fader => {
+                observer.observe(fader);
+            });
         });
         
         function setupTabs() {
@@ -1118,6 +1689,17 @@
         }
         
         function updateFinancialHealth(balanceSheetData, overviewData) {
+            // Check if balanceSheetData and its properties exist
+            if (!balanceSheetData || !balanceSheetData.annualReports || balanceSheetData.annualReports.length === 0) {
+                console.warn("Balance sheet data not available for financial health calculation.");
+                document.getElementById('currentRatio').textContent = '--';
+                document.getElementById('debtEquity').textContent = '--';
+                document.getElementById('roe').textContent = '--';
+                document.getElementById('profitMargin').textContent = '--';
+                updateHealthChart([0, 0, 0, 0]); // Update chart with empty data
+                return;
+            }
+
             // Calculate financial health metrics
             const currentAssets = parseFloat(balanceSheetData.annualReports[0].totalCurrentAssets);
             const currentLiabilities = parseFloat(balanceSheetData.annualReports[0].totalCurrentLiabilities);
@@ -1127,31 +1709,44 @@
             const revenue = parseFloat(overviewData.RevenueTTM);
             
             // Current Ratio
-            const currentRatio = (currentAssets / currentLiabilities).toFixed(2);
+            const currentRatio = (currentLiabilities > 0) ? (currentAssets / currentLiabilities).toFixed(2) : '--';
             document.getElementById('currentRatio').textContent = currentRatio;
-            document.getElementById('currentRatio').className = currentRatio > 1.5 ? 'indicator-value indicator-good' : 
-                                                              currentRatio > 1 ? 'indicator-value indicator-warning' : 
-                                                              'indicator-value indicator-bad';
+            if (currentRatio !== '--') {
+                document.getElementById('currentRatio').className = parseFloat(currentRatio) > 1.5 ? 'indicator-value indicator-good' : 
+                                                                  parseFloat(currentRatio) > 1 ? 'indicator-value indicator-warning' : 
+                                                                  'indicator-value indicator-bad';
+            } else {
+                document.getElementById('currentRatio').className = 'indicator-value';
+            }
             
             // Debt to Equity
-            const debtEquity = (totalDebt / totalEquity).toFixed(2);
+            const debtEquity = (totalEquity > 0) ? (totalDebt / totalEquity).toFixed(2) : '--';
             document.getElementById('debtEquity').textContent = debtEquity;
-            document.getElementById('debtEquity').className = debtEquity < 0.5 ? 'indicator-value indicator-good' : 
-                                                             debtEquity < 1 ? 'indicator-value indicator-warning' : 
-                                                             'indicator-value indicator-bad';
+            if (debtEquity !== '--') {
+                document.getElementById('debtEquity').className = parseFloat(debtEquity) < 0.5 ? 'indicator-value indicator-good' : 
+                                                                  parseFloat(debtEquity) < 1 ? 'indicator-value indicator-warning' : 
+                                                                  'indicator-value indicator-bad';
+            } else {
+                document.getElementById('debtEquity').className = 'indicator-value';
+            }
             
             // Return on Equity
-            const roe = ((netIncome / totalEquity) * 100).toFixed(1) + '%';
+            const roe = (totalEquity > 0 && !isNaN(netIncome)) ? ((netIncome / totalEquity) * 100).toFixed(1) + '%' : '--';
             document.getElementById('roe').textContent = roe;
-            document.getElementById('roe').className = 'indicator-value indicator-good';
+            document.getElementById('roe').className = 'indicator-value ' + (roe !== '--' && parseFloat(roe) > 10 ? 'indicator-good' : 'indicator-warning'); // Simple check, adjust as needed
             
             // Profit Margin
-            const profitMargin = ((netIncome / revenue) * 100).toFixed(1) + '%';
+            const profitMargin = (revenue > 0 && !isNaN(netIncome)) ? ((netIncome / revenue) * 100).toFixed(1) + '%' : '--';
             document.getElementById('profitMargin').textContent = profitMargin;
-            document.getElementById('profitMargin').className = 'indicator-value indicator-good';
+            document.getElementById('profitMargin').className = 'indicator-value ' + (profitMargin !== '--' && parseFloat(profitMargin) > 5 ? 'indicator-good' : 'indicator-warning'); // Simple check, adjust as needed
             
             // Update health chart
-            updateHealthChart([currentRatio, debtEquity, parseFloat(roe), parseFloat(profitMargin)]);
+            updateHealthChart([
+                parseFloat(currentRatio) || 0, 
+                parseFloat(debtEquity) || 0, 
+                parseFloat(roe) || 0, 
+                parseFloat(profitMargin) || 0
+            ]);
         }
         
         function updateValuationMetrics(overviewData) {
