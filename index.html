@@ -12,6 +12,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- The CSS file path has been updated to reflect the new file structure -->
     <link rel="stylesheet" href="style.css">
+    <style>
+        .libutton {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 7px;
+            text-align: center;
+            outline: none;
+            text-decoration: none !important;
+            color: #ffffff !important;
+            width: 200px;
+            height: 32px;
+            border-radius: 16px;
+            background-color: #0A66C2;
+            font-family: "SF Pro Text", Helvetica, sans-serif;
+            transition: transform 0.2s ease-in-out;
+            margin-top: 1rem; /* Added margin for spacing */
+        }
+        .libutton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -383,6 +406,8 @@
                         <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
                         <a href="#" class="social-link"><i class="fas fa-file-pdf"></i></a>
                     </div>
+                    <!-- New LinkedIn button added -->
+                    <a class="libutton" href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=nimaosherpa" target="_blank">Follow on LinkedIn</a>
                 </div>
             </div>
         </div>
